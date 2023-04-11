@@ -28,4 +28,4 @@ for current_path, directories, file_names in os.walk(input_path):
 							with open(non_h265_roster, "a") as openFile:
 								openFile.write(current_path + '/' + file_name + "\n")
 			except ffmpeg.Error as e:
-				print(Style.BRIGHT + Back.BLACK + Fore.RED + e.stderr)
+				print(e.stderr)
