@@ -2,7 +2,7 @@
 import os
 import ffmpeg
 from colorama import init, Fore, Back, Style
-input_path = '/mnt/data/Media/Movies/'
+input_path = '/mnt/data/Media/Movies/Life_(2017)/'
 non_h265_roster = '/mnt/data/Media/Movies/nonH265Roster.txt'
 h265_roster = '/mnt/data/Media/Movies/h265Roster.txt'
 os.system('clear')
@@ -14,7 +14,7 @@ for current_path, directories, file_names in os.walk(input_path):
 	for file_name in file_names:
 		file_size = os.path.getsize(current_path + '/' + file_name)
 		if file_size > 268435456:
-			print(Style.BRIGHT + Back.BLACK + Fore.BLUE + current_path + '/' + file_name)
+			print(Style.BRIGHT + Back.BLACK + Fore.YELLOW + current_path + '/' + file_name)
 			probe_output = ffmpeg.probe(current_path + '/' + file_name)
 			for stream in probe_output['streams']:
 				if (stream['codec_type'] == 'video'):
