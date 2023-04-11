@@ -15,14 +15,17 @@ for current_path, directories, file_names in os.walk(input_path):
 		file_size = os.path.getsize(current_path + '/' + file_name)
 		if file_size > 268435456:
 			print(Style.BRIGHT + Back.BLACK + Fore.YELLOW + current_path + '/' + file_name)
-			probe_output = ffmpeg.probe(current_path + '/' + file_name)
-			for stream in probe_output['streams']:
-				if (stream['codec_type'] == 'video'):
-					if (stream['codec_name'] == 'hevc'):
-						print(Style.BRIGHT + Back.BLACK + Fore.GREEN + file_name)
-						with open(h265_roster, "a") as openFile:
-							openFile.write(current_path + '/' + file_name + "\n")
-					else:
-						print(Style.BRIGHT + Back.BLACK + Fore.RED + file_name)
-						with open(non_h265_roster, "a") as openFile:
-							openFile.write(current_path + '/' + file_name + "\n")
+			try:
+				probe_output = ffmpeg.probe(current_path + '/' + file_name)
+				for stream in probe_output['streams']:
+					if (stream['codec_type'] == 'video'):
+						if (stream['codec_name'] == 'hevc'):
+							print(Style.BRIGHT + Back.BLACK + Fore.GREEN + file_name)
+							with open(h265_roster, "a") as openFile:
+								openFile.write(current_path + '/' + file_name + "\n")
+						else:
+							print(Style.BRIGHT + Back.BLACK + Fore.RED + file_name)
+							with open(non_h265_roster, "a") as openFile:
+								openFile.write(current_path + '/' + file_name + "\n")
+			except ffmpeg.Error as e:
+				print(e.stderr)
