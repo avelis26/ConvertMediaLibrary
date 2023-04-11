@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import ffmpeg
+from colorama import init, Fore, Back, Style
 input_path = '/mnt/data/Media/Movies/'
 non_h265_roster = '/mnt/data/Media/Movies/nonH265Roster.txt'
 h265_roster = '/mnt/data/Media/Movies/h265Roster.txt'
@@ -17,12 +18,10 @@ for current_path, directories, file_names in os.walk(input_path):
 			for stream in probe_output['streams']:
 				if (stream['codec_type'] == 'video'):
 					if (stream['codec_name'] == 'hevc'):
+						print(Style.BRIGHT + Back.BLACK + Fore.GREEN + file_name)
 						with open(h265_roster, "a") as openFile:
 							openFile.write(current_path + '/' + file_name + "\n")
 					else:
+						print(Style.BRIGHT + Back.BLACK + Fore.RED + file_name)
 						with open(non_h265_roster, "a") as openFile:
 							openFile.write(current_path + '/' + file_name + "\n")
-print('---1---')
-os.system('cat ' + non_h265_roster)
-print('---2---')
-os.system('cat ' + h265_roster)
