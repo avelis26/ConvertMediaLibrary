@@ -2,7 +2,7 @@
 import os
 import ffmpeg
 from colorama import init, Fore, Back, Style
-input_path = '/mnt/data/Media/Movies/Life_(2017)/'
+input_path = '/mnt/data/Media/Movies/'
 non_h265_roster = '/mnt/data/Media/Movies/nonH265Roster.txt'
 h265_roster = '/mnt/data/Media/Movies/h265Roster.txt'
 os.system('clear')
