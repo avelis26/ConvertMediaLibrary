@@ -14,6 +14,7 @@ for current_path, directories, file_names in os.walk(input_path):
 	for file_name in file_names:
 		file_size = os.path.getsize(current_path + '/' + file_name)
 		if file_size > 268435456:
+			print(Style.BRIGHT + Back.BLACK + Fore.BLUE + current_path + '/' + file_name)
 			probe_output = ffmpeg.probe(current_path + '/' + file_name)
 			for stream in probe_output['streams']:
 				if (stream['codec_type'] == 'video'):
