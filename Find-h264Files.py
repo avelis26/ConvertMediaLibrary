@@ -14,7 +14,7 @@ for current_path, directories, file_names in os.walk(input_path):
 	for file_name in file_names:
 		file_size = os.path.getsize(current_path + '/' + file_name)
 		if file_size > 268435456:
-			print(Style.BRIGHT + Back.BLACK + Fore.YELLOW + current_path + '/' + file_name)
+			print(Style.BRIGHT + Back.BLACK + Fore.WHITE + current_path + '/' + file_name)
 			try:
 				probe_output = ffmpeg.probe(current_path + '/' + file_name)
 				for stream in probe_output['streams']:
@@ -24,8 +24,8 @@ for current_path, directories, file_names in os.walk(input_path):
 							with open(h265_roster, "a") as openFile:
 								openFile.write(current_path + '/' + file_name + "\n")
 						else:
-							print(Style.BRIGHT + Back.BLACK + Fore.RED + file_name)
+							print(Style.BRIGHT + Back.BLACK + Fore.CYAN + file_name)
 							with open(non_h265_roster, "a") as openFile:
 								openFile.write(current_path + '/' + file_name + "\n")
 			except ffmpeg.Error as e:
-				print(e.stderr)
+				print(Style.BRIGHT + Back.BLACK + Fore.RED + e.stderr)
