@@ -1,0 +1,17 @@
+{
+	"movies_parent_path": "/mnt/data/Media/Movies/",
+	"movies_manifest_filename": "non_h265_movies.txt",
+	"name": "Cake",
+	"image":
+		{
+			"url": "images/0001.jpg",
+			"width": 200,
+			"height": 200
+		},
+	"thumbnail":
+		{
+			"url": "images/thumbnails/0001.jpg",
+			"width": 32,
+			"height": 32
+		}
+}
