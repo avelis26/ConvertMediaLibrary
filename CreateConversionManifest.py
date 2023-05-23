@@ -5,18 +5,14 @@ import json
 from colorama import init, Fore, Back, Style
 # Load parameters.json
 parameters = json.load(open('parameters.json'))
-
-input_path = '/mnt/data/Media/Movies/'
-movies_manifest_path = '/mnt/data/Media/Movies/nonH265Roster.txt'
-# h265_roster = '/mnt/data/Media/Movies/h265Roster.txt'
-errorLog = '/mnt/data/Media/Movies/errorLog.txt'
+input_path = parameters['movies_parent_path']
+movies_manifest_path = parameters['log_parent_path'] + parameters['movies_manifest_filename']
+opsLog = parameters['log_parent_path'] + parameters['log_filename']
 os.system('clear')
-# if os.path.exists(h265_roster):
-# 	os.remove(h265_roster)
 if os.path.exists(movies_manifest_path):
 	os.remove(movies_manifest_path)
-if os.path.exists(errorLog):
-	os.remove(errorLog)
+if os.path.exists(opsLog):
+	os.remove(opsLog)
 for current_path, directories, file_names in os.walk(input_path):
 	for file_name in file_names:
 		file_size = os.path.getsize(current_path + '/' + file_name)
@@ -35,6 +31,6 @@ for current_path, directories, file_names in os.walk(input_path):
 							with open(movies_manifest_path, "a") as openFile:
 								openFile.write(current_path + '/' + file_name + "\n")
 			except ffmpeg.Error as e:
-				with open(errorLog, "a") as openFile:
+				with open(opsLog, "a") as openFile:
 					openFile.write(current_path + '/' + file_name + "\n")
 				print(e.stderr)
