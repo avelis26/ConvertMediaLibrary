@@ -16,6 +16,8 @@ print('opsLog: ' + opsLog)
 print('##### Parameters #####')
 if os.path.exists(parameters['log_parent_path']):
 	print('log_parent_path found')
+else:
+	print('log_parent_path NOT found')
 if os.path.exists(movies_manifest_path):
 	os.remove(movies_manifest_path)
 if os.path.exists(opsLog):
