@@ -1,2 +1,8 @@
 # ConvertMediaLibrary
-Python script to comb my media library and convert all h264 to h265.
+
+Python scripts to automate converting all h264 videos to h265.
+
+## Basic order of operations:
+* Cron calls `Vilicus.py`.
+* `Vilicus.py` calls `CreateConversionManifest.py` and creates a list of all h264 videos found.
+* `Vilicus.py` reads h264 manifest and calls `ConvertToH265.py` for each file.
