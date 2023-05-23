@@ -9,4 +9,5 @@ Python scripts to automate converting all h264 videos to h265.
 
 ### Author
 - [Graham Pinkston](https://github.com/avelis26)
+
 ![Python logo](/assets/images/python_logo_small.png)
