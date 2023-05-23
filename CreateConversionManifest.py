@@ -6,8 +6,8 @@ from colorama import init, Fore, Back, Style
 # Load parameters.json
 parameters = json.load(open('parameters.json'))
 input_path = parameters['movies_parent_path']
-movies_manifest_path = parameters['log_parent_path'] + parameters['movies_manifest_filename']
-opsLog = parameters['log_parent_path'] + parameters['log_filename']
+movies_manifest_path = parameters['log_parent_path'] + '/' + parameters['movies_manifest_filename']
+opsLog = parameters['log_parent_path'] + '/' + parameters['log_filename']
 os.system('clear')
 if os.path.exists(movies_manifest_path):
 	os.remove(movies_manifest_path)
