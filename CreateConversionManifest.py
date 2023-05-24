@@ -40,7 +40,6 @@ for current_path, directories, file_names in os.walk(input_path):
 						if (stream['codec_name'] == 'hevc'):
 							continue
 						else:
-							#logging.info(file_name)
 							movie_list.append(current_path + '/' + file_name)
 			except ffmpeg.Error as e:
 				with open(opsLog, "a") as openFile:
@@ -48,7 +47,8 @@ for current_path, directories, file_names in os.walk(input_path):
 				print(e.stderr)
 movie_set = set(movie_list)
 logging.info('Total Non-h265 Movies: ' + str(len(movie_set)))
-#with open(movies_manifest_path, "a") as openFile:
-#	openFile.write(movie_set)
+with open(movies_manifest_path, 'w') as openFile:
+	for movie in movie_set:
+		openFile.write("%s\n" % movie)
 logging.info('EXECUTION STOP')
 logging.info('******************************************************')
