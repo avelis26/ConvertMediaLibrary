@@ -16,12 +16,12 @@ if os.path.exists(parameters['log_parent_path']):
 else:
 	os.mkdir(parameters['log_parent_path'])
 logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.FileHandler(opsLog),
-        logging.StreamHandler(sys.stdout)
-    ]
+	level=logging.DEBUG,
+	format="%(asctime)s [%(levelname)s] %(message)s",
+	handlers=[
+		logging.FileHandler(opsLog),
+		logging.StreamHandler(sys.stdout)
+	]
 )
 logging.info('EXECUTION START')
 logging.info('Creating non-h265 movie manifest...')
