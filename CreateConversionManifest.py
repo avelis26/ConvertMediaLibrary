@@ -10,11 +10,6 @@ parameters = json.load(open('parameters.json'))
 input_path = parameters['movies_parent_path']
 movies_manifest_path = parameters['log_parent_path'] + parameters['movies_manifest_filename']
 opsLog = parameters['log_parent_path'] + parameters['log_filename']
-if os.path.exists(parameters['log_parent_path']):
-	if os.path.exists(movies_manifest_path):
-		os.remove(movies_manifest_path)
-else:
-	os.mkdir(parameters['log_parent_path'])
 logging.basicConfig(
 	level=logging.DEBUG,
 	format="%(asctime)s [%(levelname)s] %(message)s",
