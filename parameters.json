@@ -1,6 +1,7 @@
 {
 	"movies_parent_path": "/mnt/data/Media/Movies/",
 	"movies_manifest_filename": "movies_manifest.txt",
-    "log_parent_path": "~/vilicus",
-	"log_filename": "vilicus.log"
+    "log_parent_path": "/home/avelis/vilicus/",
+	"log_filename": "vilicus.log",
+	"min_file_size": 268435456
 }
