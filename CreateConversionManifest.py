@@ -23,8 +23,6 @@ logging.basicConfig(
 		logging.StreamHandler(sys.stdout)
 	]
 )
-logging.info('EXECUTION START')
-logging.info('Creating non-h265 movie manifest...')
 logging.debug('input_path:           ' + input_path)
 logging.debug('movies_manifest_path: ' + movies_manifest_path)
 logging.debug('opsLog:               ' + opsLog)
@@ -50,5 +48,3 @@ logging.info('Total Non-h265 Movies: ' + str(len(movie_set)))
 with open(movies_manifest_path, 'w') as openFile:
 	for movie in movie_set:
 		openFile.write("%s\n" % movie)
-logging.info('EXECUTION STOP')
-logging.info('******************************************************')
