@@ -30,6 +30,6 @@ manifest_file = open(movies_manifest_path, 'r')
 lines = manifest_file.readlines()
 for line in lines:
 	logging.debug("ConvertToH265.py " + str(line))
-	subprocess.run(["python3", "ConvertToH265.py ", line])
+	subprocess.run(["python3", "ConvertToH265.py", line])
 logging.info('EXECUTION STOP')
 logging.info('******************************************************')
