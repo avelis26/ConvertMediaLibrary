@@ -1,10 +1,13 @@
 clear
 sleep 4
+echo "removing vilicus"
 cd /home/avelis
 rm -rf ./vilicus
 sleep 4
 cd /mnt/data/Media
+echo "removing Movies_temp"
 rm -rf ./Movies_temp/
+echo "making Movies_temp"
 mkdir Movies_temp
 sleep 4
 mkdir '/mnt/data/Media/Movies_temp/Monsters_University_(2013)'
