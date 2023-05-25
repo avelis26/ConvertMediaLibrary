@@ -4,8 +4,6 @@ import ffmpeg
 import json
 import logging
 import sys
-from colorama import init, Fore, Back, Style
-from shutil import rmtree
 parameters = json.load(open('parameters.json'))
 input_path = parameters['movies_parent_path']
 movies_manifest_path = parameters['log_parent_path'] + parameters['movies_manifest_filename']
@@ -33,6 +31,7 @@ for current_path, directories, file_names in os.walk(input_path):
 						if (stream['codec_name'] == 'hevc'):
 							continue
 						else:
+							print(file_name)
 							movie_list.append(current_path + '/' + file_name)
 			except ffmpeg.Error as e:
 				with open(opsLog, "a") as openFile:

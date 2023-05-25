@@ -5,6 +5,7 @@ import logging
 import sys
 import os
 import re
+import subprocess
 parser = argparse.ArgumentParser()
 parser.add_argument("input", help="Full path to video file to convert to h265.")
 args = parser.parse_args()
@@ -18,13 +19,21 @@ logging.basicConfig(
 		logging.StreamHandler(sys.stdout)
 	]
 )
-logging.info('Converting ' + args.input + 'to h265...')
-outputFile = args.input
-size = len(outputFile)
-replacement = 'mkv'
-outputFile = outputFile.replace(outputFile[size - 3:], replacement)
+base = os.path.splitext(args.input)[0]
+outputFile = base + '.mkv'
+#os.rename(my_file, base + '.mp4')
+#cmd = 'ffmpeg -i ' + re.escape(args.input.strip()) + ' -c:v libx265 -vtag hvc1 ' + re.escape(outputFile)
 logging.debug(outputFile)
-cmd = 'ffmpeg -i ' + re.escape(args.input) + ' -c:v libx265 -vtag hvc1 ' + re.escape(outputFile)
-logging.debug(cmd)
-os.system(cmd)
+#os.system(cmd)
+#re.escape(args.input.strip())
+subprocess.call([
+	'ffmpeg',
+	'-i',
+	args.input.strip(),
+	'-c:v',
+	'libx265',
+	'-vtag',
+	'hvc1',
+	outputFile
+])
 logging.info('Conversion complete.')

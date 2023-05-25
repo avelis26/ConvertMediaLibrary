@@ -21,6 +21,7 @@ logging.basicConfig(
 		logging.StreamHandler(sys.stdout)
 	]
 )
+logging.info('******************************************************')
 logging.info('EXECUTION START')
 logging.info('Creating non-h265 movie manifest...')
 subprocess.run(["python3", "CreateConversionManifest.py"])
@@ -29,7 +30,6 @@ logging.info('Beginning ffmpeg converstions...')
 manifest_file = open(movies_manifest_path, 'r')
 lines = manifest_file.readlines()
 for line in lines:
-	logging.debug("ConvertToH265.py " + str(line))
 	subprocess.run(["python3", "ConvertToH265.py", line])
 logging.info('EXECUTION STOP')
 logging.info('******************************************************')
