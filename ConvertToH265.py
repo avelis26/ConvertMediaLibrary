@@ -4,8 +4,9 @@ import json
 import logging
 import sys
 import os
-import re
+#import re
 import subprocess
+import ffmpeg
 parser = argparse.ArgumentParser()
 parser.add_argument("input", help="Full path to video file to convert to h265.")
 args = parser.parse_args()
@@ -20,21 +21,33 @@ logging.basicConfig(
 	]
 )
 base = os.path.splitext(args.input)[0]
-outputFile = base + '.mkv'
-#os.rename(my_file, base + '.mp4')
-#cmd = 'ffmpeg -i ' + re.escape(args.input.strip()) + ' -c:v libx265 -vtag hvc1 ' + re.escape(outputFile)
+outputFile = base + '.gp26'
 logging.debug(outputFile)
-#os.system(cmd)
 #re.escape(args.input.strip())
-subprocess.call([
-	'ffmpeg',
-	'-i',
-	args.input.strip(),
-	'-c:v',
-	'libx265',
-	'-vtag',
-	'hvc1',
-    '-y',
-	outputFile
-])
+try:
+	subprocess.call([
+		'ffmpeg',
+		'-i',
+		args.input.strip(),
+		'-c:v',
+		'libx265',
+		'-vtag',
+		'hvc1',
+		outputFile
+	])
+except:
+	logging.error("H265 conversion failed!!!")
+try:
+	(
+		ffmpeg
+		.input(outputFile)
+		.output("null", f="null")
+		.run()
+	)
+except ffmpeg._run.Error:
+	logging.error("Corrupt video!!!")
+else:
+	logging.info("Video validation succeeded.")
+os.remove(args.input)
+os.rename(outputFile, base + '.mkv')
 logging.info('Conversion complete.')
