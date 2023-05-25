@@ -19,9 +19,13 @@ logging.basicConfig(
 	]
 )
 logging.info('Converting ' + args.input + 'to h265...')
-time.sleep(64)
-#inputFile = '/mnt/data/Media/Movies/Spies_Like_Us_\(1985\)/Spies_Like_Us_\(1985\).mp4'
-#outputFile = '/mnt/data/Media/Movies/Spies_Like_Us_\(1985\)/test.mp4'
-#cmd = 'ffmpeg -i ' + inputFile + ' -c:v libx265 -vtag hvc1 ' + outputFile
-#os.system(cmd)
+
+/mnt/data/Media/Movies/Back_To_The_Future_Part_II_(1989)/Back_To_The_Future_Part_II_(1989).mp4
+outputFile = args.input
+size = len(outputFile)
+replacement = 'test.mkv'
+outputFile = outputFile.replace(outputFile[size - 3:], replacement)
+logging.debug(outputFile)
+cmd = 'ffmpeg -i ' + args.input + ' -c:v libx265 -vtag hvc1 ' + outputFile
+os.system(cmd)
 logging.info('Conversion complete.')
