@@ -10,7 +10,6 @@ movies_manifest_path = parameters['log_parent_path'] + parameters['movies_manife
 if os.path.exists(parameters['log_parent_path']):
 	if os.path.exists(movies_manifest_path):
 		os.remove(movies_manifest_path)
-		#print('remove me')
 else:
 	os.mkdir(parameters['log_parent_path'])
 logging.basicConfig(
@@ -33,5 +32,3 @@ for line in lines:
 	subprocess.run(["python3", "ConvertToH265.py", line])
 logging.info('EXECUTION STOP')
 logging.info('******************************************************')
-
-#268435456

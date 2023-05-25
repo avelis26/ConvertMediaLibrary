@@ -4,7 +4,6 @@ import json
 import logging
 import sys
 import os
-#import re
 import subprocess
 import ffmpeg
 parser = argparse.ArgumentParser()
@@ -23,7 +22,6 @@ logging.basicConfig(
 base = os.path.splitext(args.input)[0]
 outputFile = base + '.mkv'
 logging.debug(outputFile)
-#re.escape(args.input.strip())
 try:
 	os.rename(args.input.strip(), args.input.strip() + '.old')
 	subprocess.call([
