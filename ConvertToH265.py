@@ -28,12 +28,13 @@ logging.debug(outputFile)
 #re.escape(args.input.strip())
 subprocess.call([
 	'ffmpeg',
-	'-i -y',
+	'-i',
 	args.input.strip(),
 	'-c:v',
 	'libx265',
 	'-vtag',
 	'hvc1',
+    '-y',
 	outputFile
 ])
 logging.info('Conversion complete.')
