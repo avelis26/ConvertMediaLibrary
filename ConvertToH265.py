@@ -21,14 +21,15 @@ logging.basicConfig(
 	]
 )
 base = os.path.splitext(args.input)[0]
-outputFile = base + '.gp26'
+outputFile = base + '.mkv'
 logging.debug(outputFile)
 #re.escape(args.input.strip())
 try:
+	os.rename(args.input.strip(), args.input.strip() + '.old')
 	subprocess.call([
 		'ffmpeg',
 		'-i',
-		args.input.strip(),
+		args.input.strip() + '.old',
 		'-c:v',
 		'libx265',
 		'-vtag',
@@ -37,6 +38,7 @@ try:
 	])
 except:
 	logging.error("H265 conversion failed!!!")
+	exit()
 try:
 	(
 		ffmpeg
@@ -46,8 +48,11 @@ try:
 	)
 except ffmpeg._run.Error:
 	logging.error("Corrupt video!!!")
-else:
-	logging.info("Video validation succeeded.")
-os.remove(args.input)
-os.rename(outputFile, base + '.mkv')
+	exit()
+logging.info("Video validation succeeded.")
+try:
+	os.remove(args.input.strip() + '.old')
+except:
+	logging.error("Failed to remove source video!!!")
+	exit()
 logging.info('Conversion complete.')
