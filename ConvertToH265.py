@@ -28,7 +28,7 @@ logging.debug(outputFile)
 #re.escape(args.input.strip())
 subprocess.call([
 	'ffmpeg',
-	'-i',
+	'-i -y',
 	args.input.strip(),
 	'-c:v',
 	'libx265',

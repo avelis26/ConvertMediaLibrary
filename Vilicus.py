@@ -10,7 +10,7 @@ movies_manifest_path = parameters['log_parent_path'] + parameters['movies_manife
 if os.path.exists(parameters['log_parent_path']):
 	if os.path.exists(movies_manifest_path):
 		os.remove(movies_manifest_path)
-		print('remove me')
+		#print('remove me')
 else:
 	os.mkdir(parameters['log_parent_path'])
 logging.basicConfig(
