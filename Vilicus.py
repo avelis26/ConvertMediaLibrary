@@ -79,6 +79,7 @@ except Exception as e:
 
 # Define function to rename source file, convert to h265, validate, delete source file.
 def ConvertToH265(sourceFilePath):
+	sourceFilePath = sourceFilePath.strip()
 	base = os.path.splitext(sourceFilePath)[0]
 	outputFile = base + '.mkv'
 	logging.debug(outputFile)
