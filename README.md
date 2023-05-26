@@ -3,11 +3,12 @@
 Python scripts to automate converting all h264 videos to h265.
 
 ## Basic order of operations:
-* Cron calls `Vilicus.py`.
-* `Vilicus.py` calls `CreateConversionManifest.py` and creates a list of all h264 videos found.
-* `Vilicus.py` reads h264 manifest and calls `ConvertToH265.py` for each file.
+* `Vilicus.py`:
+    - loads `parameters.json`.
+    - creates (if not exist) working directory `log_parent_path` and deletes manifest (if exists).
+    - scans files larger than `min_file_size` recursivley starting at `movies_parent_path`.
+    - adds non-h265 files found to manifest `movies_manifest_filename`.
+    - reads each line in the manifest and calls a convert function using ffmpeg.
 
 ### Author
 - [Graham Pinkston](https://github.com/avelis26)
-
-![Python logo](/assets/images/python_logo_small.png)

@@ -5,7 +5,7 @@ import sys
 import subprocess
 import os
 import ffmpeg
-#268435456
+
 # Load parameters from json file and set vars.
 try:
 	parameters = json.load(open('parameters.json'))
