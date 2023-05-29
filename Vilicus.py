@@ -65,15 +65,14 @@ def ConvertToH265(sourceFilePath):
 	try:
 		os.rename(sourceFilePath, sourceFilePath + '.old')
 		subprocess.call([
-			'ffmpeg',
-			'-vaapi_device',
-			'/dev/dri/renderD128',
+			'/usr/local/bin/ffmpeg',
+			'-y',
+			'-hwaccel',
+			'cuda',
 			'-i',
 			sourceFilePath + '.old',
-			'-vf',
-			'format=nv12,hwupload',
 			'-c:v',
-			'hevc_vaapi',
+			'hevc',
 			'-vtag',
 			'hvc1',
 			outputFile
