@@ -8,6 +8,7 @@ import ffmpeg
 
 # Load parameters from json file and set vars.
 try:
+	counter = 0
 	parameters = json.load(open('parameters.json'))
 	input_path = parameters['movies_parent_path']
 	opsLog = parameters['log_parent_path'] + parameters['log_filename']
@@ -96,7 +97,7 @@ def ConvertToH265(sourceFilePath):
 	except Exception as e:
 		logging.error("ERROR07: " + str(e))
 		exit()
-	logging.info('Conversion complete.')
+	logging.info('Conversions complete: ' + str(counter))
 
 # Create non-h265 movie manifest.
 try:
@@ -134,6 +135,7 @@ logging.info('Beginning ffmpeg converstions...')
 manifest_file = open(movies_manifest_path, 'r')
 lines = manifest_file.readlines()
 for line in lines:
+	counter = counter + 1
 	ConvertToH265(line)
 	softExit()
 logging.info('EXECUTION STOP')
