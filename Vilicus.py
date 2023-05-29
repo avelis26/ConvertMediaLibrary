@@ -93,11 +93,18 @@ def ConvertToH265(sourceFilePath):
 		exit()
 	logging.info("Video validation succeeded.")
 	try:
+		before_file_size = os.path.getsize(sourceFilePath + '.old')
+		after_file_size = os.path.getsize(outputFile)
+		total_before_filesize.append(before_file_size)
+		total_after_filesize.append(after_file_size)
+		total_difference = sum(total_before_filesize) - sum(total_after_filesize)
+		space_saved = total_difference // 1073741824
 		os.remove(sourceFilePath + '.old')
 	except Exception as e:
 		logging.error("ERROR07: " + str(e))
 		exit()
 	logging.info('Conversions complete: ' + str(counter))
+	logging.info('Gigabytes saved: ' + str(space_saved) + ' GBs')
 
 # Create non-h265 movie manifest.
 try:
@@ -134,6 +141,8 @@ softExit()
 logging.info('Beginning ffmpeg converstions...')
 manifest_file = open(movies_manifest_path, 'r')
 lines = manifest_file.readlines()
+total_before_filesize = []
+total_after_filesize = []
 for line in lines:
 	counter = counter + 1
 	ConvertToH265(line)
