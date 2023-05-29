@@ -95,6 +95,8 @@ def ConvertToH265(sourceFilePath):
 	try:
 		before_file_size = os.path.getsize(sourceFilePath + '.old')
 		after_file_size = os.path.getsize(outputFile)
+		logging.debug('Before Size: ' + str(before_file_size))
+		logging.debug('After Size: ' + str(after_file_size))
 		total_before_filesize.append(before_file_size)
 		total_after_filesize.append(after_file_size)
 		total_difference = sum(total_before_filesize) - sum(total_after_filesize)
