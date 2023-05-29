@@ -12,6 +12,7 @@ try:
 	input_path = parameters['movies_parent_path']
 	opsLog = parameters['log_parent_path'] + parameters['log_filename']
 	movies_manifest_path = parameters['log_parent_path'] + parameters['movies_manifest_filename']
+	exitFile = parameters['log_parent_path'] + parameters['exit_filename']
 except Exception as e:
 	print("ERROR01: ",e)
 	exit()
@@ -42,10 +43,61 @@ try:
 	logging.debug('input_path:           ' + input_path)
 	logging.debug('movies_manifest_path: ' + movies_manifest_path)
 	logging.debug('opsLog:               ' + opsLog)
+	logging.debug('exitFile:             ' + exitFile)
 	logging.info('Creating non-h265 movie manifest...')
 except Exception as e:
 	logging.error("ERROR03: " + str(e))
 	exit()
+
+# Define exit function to gracefully exit if exit file is found.
+def softExit():
+	if os.path.exists(exitFile):
+		logging.info('EXECUTION STOPPED BY USER')
+		logging.info('******************************************************')
+		exit()
+
+# Define function to rename source file, convert to h265, validate, delete source file.
+def ConvertToH265(sourceFilePath):
+	sourceFilePath = sourceFilePath.strip()
+	base = os.path.splitext(sourceFilePath)[0]
+	outputFile = base + '.mkv'
+	logging.debug(outputFile)
+	try:
+		os.rename(sourceFilePath, sourceFilePath + '.old')
+		subprocess.call([
+			'ffmpeg',
+			'-vaapi_device',
+			'/dev/dri/renderD128',
+			'-i',
+			sourceFilePath + '.old',
+			'-vf',
+			'format=nv12,hwupload',
+			'-c:v',
+			'hevc_vaapi',
+			'-vtag',
+			'hvc1',
+			outputFile
+		])
+	except Exception as e:
+		logging.error("ERROR05: " + str(e))
+		exit()
+	try:
+		(
+			ffmpeg
+			.input(outputFile)
+			.output("null", f="null")
+			.run()
+		)
+	except ffmpeg._run.Error as e:
+		logging.error("ERROR06: " + str(e))
+		exit()
+	logging.info("Video validation succeeded.")
+	try:
+		os.remove(sourceFilePath + '.old')
+	except Exception as e:
+		logging.error("ERROR07: " + str(e))
+		exit()
+	logging.info('Conversion complete.')
 
 # Create non-h265 movie manifest.
 try:
@@ -76,45 +128,7 @@ try:
 except Exception as e:
 	logging.error("ERROR04: " + str(e))
 	exit()
-
-# Define function to rename source file, convert to h265, validate, delete source file.
-def ConvertToH265(sourceFilePath):
-	sourceFilePath = sourceFilePath.strip()
-	base = os.path.splitext(sourceFilePath)[0]
-	outputFile = base + '.mkv'
-	logging.debug(outputFile)
-	try:
-		os.rename(sourceFilePath, sourceFilePath + '.old')
-		subprocess.call([
-			'ffmpeg',
-			'-i',
-			sourceFilePath + '.old',
-			'-c:v',
-			'libx265',
-			'-vtag',
-			'hvc1',
-			outputFile
-		])
-	except Exception as e:
-		logging.error("ERROR05: " + str(e))
-		exit()
-	try:
-		(
-			ffmpeg
-			.input(outputFile)
-			.output("null", f="null")
-			.run()
-		)
-	except ffmpeg._run.Error as e:
-		logging.error("ERROR06: " + str(e))
-		exit()
-	logging.info("Video validation succeeded.")
-	try:
-		os.remove(sourceFilePath + '.old')
-	except Exception as e:
-		logging.error("ERROR07: " + str(e))
-		exit()
-	logging.info('Conversion complete.')
+softExit()
 
 # Read manifest and convert 1 movie at a time.
 logging.info('Beginning ffmpeg converstions...')
@@ -122,5 +136,6 @@ manifest_file = open(movies_manifest_path, 'r')
 lines = manifest_file.readlines()
 for line in lines:
 	ConvertToH265(line)
+	softExit()
 logging.info('EXECUTION STOP')
 logging.info('******************************************************')

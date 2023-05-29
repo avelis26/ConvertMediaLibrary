@@ -48,3 +48,5 @@ echo "Converting James_And_The_Giant_Peach_(1996)..."
 mkdir '/mnt/data/Media/Movies_temp/James_And_The_Giant_Peach_(1996)/'
 sleep 0.2
 ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/James_And_The_Giant_Peach_(1996)/James_And_The_Giant_Peach_(1996).avi' -t 30 -map 0 -c copy '/mnt/data/Media/Movies_temp/James_And_The_Giant_Peach_(1996)/James_And_The_Giant_Peach_(1996).avi'
+
+echo "Done"
