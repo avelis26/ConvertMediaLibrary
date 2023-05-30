@@ -5,6 +5,7 @@ import sys
 import subprocess
 import os
 import ffmpeg
+import decimal
 
 # Load parameters from json file and set vars.
 try:
@@ -66,16 +67,13 @@ def ConvertToH265(sourceFilePath):
 	try:
 		os.rename(sourceFilePath, sourceFilePath + '.old')
 		subprocess.call([
-			'/usr/local/bin/ffmpeg',
-			'-y',
-			'-hwaccel',
-			'cuda',
+			'/usr/bin/ffmpeg',
 			'-i',
 			sourceFilePath + '.old',
 			'-c:v',
-			'hevc',
-			'-vtag',
-			'hvc1',
+			'libx265',
+			'-crf',
+			'26',
 			outputFile
 		])
 	except Exception as e:
@@ -95,17 +93,20 @@ def ConvertToH265(sourceFilePath):
 	try:
 		before_file_size = os.path.getsize(sourceFilePath + '.old')
 		after_file_size = os.path.getsize(outputFile)
-		logging.debug('Before Size: ' + str(before_file_size))
-		logging.debug('After Size: ' + str(after_file_size))
 		total_before_filesize.append(before_file_size)
 		total_after_filesize.append(after_file_size)
 		total_difference = sum(total_before_filesize) - sum(total_after_filesize)
-		space_saved = total_difference // 1073741824
+		space_saved = decimal.Decimal(total_difference) / decimal.Decimal(1073741824)
+		space_saved = round(space_saved, 2)
+		logging.debug('Before Size: ' + str(before_file_size))
+		logging.debug('After Size:  ' + str(after_file_size))
+		logging.debug('Difference:  ' + str(before_file_size - after_file_size))
 		os.remove(sourceFilePath + '.old')
 	except Exception as e:
 		logging.error("ERROR07: " + str(e))
 		exit()
 	logging.info('Conversions complete: ' + str(counter))
+	logging.debug('Total Diff:  ' + str(total_difference))
 	logging.info('Gigabytes saved: ' + str(space_saved) + ' GBs')
 
 # Create non-h265 movie manifest.
