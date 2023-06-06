@@ -3,7 +3,7 @@
 Python scripts to automate converting all h264 videos to h265.
 
 ## Basic order of operations:
-* `nohup /home/avelis/source/ConvertMediaLibrary/Vilicus.py > /home/avelis/vilicus/output.log &`
+* `cd /home/avelis/source/ConvertMediaLibrary && nohup python3 Vilicus.py > /home/avelis/vilicus/output.log &`
 * `Vilicus.py`:
     - loads `parameters.json`.
     - creates (if not exist) working directory `log_parent_path` and deletes manifest (if exists).
