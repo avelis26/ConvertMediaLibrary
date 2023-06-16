@@ -1,154 +1,80 @@
-#!/usr/bin/env python3
-import json
-import logging
-import sys
-import subprocess
 import os
-import ffmpeg
-import decimal
+import shutil
+import subprocess
+import argparse
+import logging
+from multiprocessing import Pool
 
-# Load parameters from json file and set vars.
-try:
-	counter = 0
-	parameters = json.load(open('parameters.json'))
-	input_path = parameters['movies_parent_path']
-	opsLog = parameters['log_parent_path'] + parameters['log_filename']
-	movies_manifest_path = parameters['log_parent_path'] + parameters['movies_manifest_filename']
-	exitFile = parameters['log_parent_path'] + parameters['exit_filename']
-except Exception as e:
-	print("ERROR01: ",e)
-	exit()
 
-# Create working directory ~/vilicus/ if not exist, delete manifest if exists.
-try:
-	if os.path.exists(parameters['log_parent_path']):
-		if os.path.exists(movies_manifest_path):
-			os.remove(movies_manifest_path)
-	else:
-		os.mkdir(parameters['log_parent_path'])
-except Exception as e:
-	print("ERROR02: ",e)
-	exit()
+def convert_media_file(file_path, destination_dir, conversion_options):
+    # Extract the file name and extension
+    file_name = os.path.basename(file_path)
+    file_base_name, file_extension = os.path.splitext(file_name)
 
-# Set up logging to terminal and file.
-try:
-	logging.basicConfig(
-		level=logging.DEBUG,
-		format="%(asctime)s [%(levelname)s] %(message)s",
-		handlers=[
-			logging.FileHandler(opsLog),
-			logging.StreamHandler(sys.stdout)
-		]
-	)
-	logging.info('******************************************************')
-	logging.info('EXECUTION START')
-	logging.debug('input_path:           ' + input_path)
-	logging.debug('movies_manifest_path: ' + movies_manifest_path)
-	logging.debug('opsLog:               ' + opsLog)
-	logging.debug('exitFile:             ' + exitFile)
-	logging.info('Creating non-h265 movie manifest...')
-except Exception as e:
-	logging.error("ERROR03: " + str(e))
-	exit()
+    # Create the destination file path with the desired format
+    destination_file_path = os.path.join(destination_dir, file_base_name + conversion_options['output_format'])
 
-# Define exit function to gracefully exit if exit file is found.
-def softExit():
-	if os.path.exists(exitFile):
-		logging.info('EXECUTION STOPPED BY USER')
-		logging.info('******************************************************')
-		exit()
+    # Execute FFmpeg command to convert the media file
+    command = ['ffmpeg', '-i', file_path] + conversion_options['extra_args'] + [destination_file_path]
+    subprocess.run(command, check=True)
 
-# Define function to rename source file, convert to h265, validate, delete source file.
-def ConvertToH265(sourceFilePath):
-	sourceFilePath = sourceFilePath.strip()
-	base = os.path.splitext(sourceFilePath)[0]
-	outputFile = base + '.mkv'
-	logging.debug(outputFile)
-	try:
-		os.rename(sourceFilePath, sourceFilePath + '.old')
-		subprocess.call([
-			'/usr/bin/ffmpeg',
-			'-i',
-			sourceFilePath + '.old',
-			'-c:v',
-			'libx265',
-			'-crf',
-			'26',
-			outputFile
-		])
-	except Exception as e:
-		logging.error("ERROR05: " + str(e))
-		exit()
-	try:
-		(
-			ffmpeg
-			.input(outputFile)
-			.output("null", f="null")
-			.run()
-		)
-	except ffmpeg._run.Error as e:
-		logging.error("ERROR06: " + str(e))
-		exit()
-	logging.info("Video validation succeeded.")
-	try:
-		before_file_size = os.path.getsize(sourceFilePath + '.old')
-		after_file_size = os.path.getsize(outputFile)
-		total_before_filesize.append(before_file_size)
-		total_after_filesize.append(after_file_size)
-		total_difference = sum(total_before_filesize) - sum(total_after_filesize)
-		space_saved = decimal.Decimal(total_difference) / decimal.Decimal(1073741824)
-		space_saved = round(space_saved, 2)
-		logging.debug('Before Size: ' + str(before_file_size))
-		logging.debug('After Size:  ' + str(after_file_size))
-		logging.debug('Difference:  ' + str(before_file_size - after_file_size))
-		os.remove(sourceFilePath + '.old')
-	except Exception as e:
-		logging.error("ERROR07: " + str(e))
-		exit()
-	logging.info('Conversions complete: ' + str(counter))
-	logging.debug('Total Diff:  ' + str(total_difference))
-	logging.info('Gigabytes saved: ' + str(space_saved) + ' GBs')
+    return destination_file_path
 
-# Create non-h265 movie manifest.
-try:
-	movie_list = []
-	for current_path, directories, file_names in os.walk(input_path):
-		for file_name in file_names:
-			file_size = os.path.getsize(current_path + '/' + file_name)
-			if file_size > parameters['min_file_size']:
-				try:
-					probe_output = ffmpeg.probe(current_path + '/' + file_name)
-					for stream in probe_output['streams']:
-						if (stream['codec_type'] == 'video'):
-							if (stream['codec_name'] == 'hevc'):
-								continue
-							else:
-								print(file_name)
-								movie_list.append(current_path + '/' + file_name)
-				except ffmpeg.Error as e:
-					with open(opsLog, "a") as openFile:
-						openFile.write(current_path + '/' + file_name + "\n")
-					print(e.stderr)
-	movie_set = set(movie_list)
-	logging.info('Total Non-h265 Movies: ' + str(len(movie_set)))
-	with open(movies_manifest_path, 'w') as openFile:
-		for movie in movie_set:
-			openFile.write("%s\n" % movie)
-	logging.info('Non-h265 movie manifest created.')
-except Exception as e:
-	logging.error("ERROR04: " + str(e))
-	exit()
-softExit()
 
-# Read manifest and convert 1 movie at a time.
-logging.info('Beginning ffmpeg converstions...')
-manifest_file = open(movies_manifest_path, 'r')
-lines = manifest_file.readlines()
-total_before_filesize = []
-total_after_filesize = []
-for line in lines:
-	counter = counter + 1
-	ConvertToH265(line)
-	softExit()
-logging.info('EXECUTION STOP')
-logging.info('******************************************************')
+def convert_media_library(source_dir, destination_dir, conversion_options):
+    # Create a temporary directory to store the converted files
+    temp_dir = os.path.join(destination_dir, 'temp')
+    os.makedirs(temp_dir, exist_ok=True)
+
+    # Walk through the source directory and convert media files
+    files_to_convert = []
+    for root, _, files in os.walk(source_dir):
+        for file_name in files:
+            file_path = os.path.join(root, file_name)
+            if os.path.isfile(file_path) and file_name.lower().endswith(conversion_options['allowed_extensions']):
+                files_to_convert.append(file_path)
+
+    # Use multiprocessing to convert files concurrently
+    with Pool() as pool:
+        converted_files = pool.starmap(convert_media_file, [(file_path, temp_dir, conversion_options) for file_path in files_to_convert])
+
+    # Move the converted files from the temporary directory to the destination directory
+    for converted_file in converted_files:
+        destination_path = os.path.join(destination_dir, os.path.basename(converted_file))
+        shutil.move(converted_file, destination_path)
+
+    # Remove the temporary directory
+    shutil.rmtree(temp_dir)
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Media Library Conversion Tool')
+    parser.add_argument('-s', '--source', help='Source directory', required=True)
+    parser.add_argument('-d', '--destination', help='Destination directory', required=True)
+    parser.add_argument('-f', '--format', help='Output format (e.g., .mp4, .mkv)', default='.mp4')
+    parser.add_argument('-e', '--extensions', help='Allowed file extensions (comma-separated)', default='.avi,.mpg,.mov,.wmv')
+    parser.add_argument('-a', '--extra-args', help='Additional FFmpeg arguments', default='', nargs='+')
+
+    args = parser.parse_args()
+
+    # Validate source and destination directories
+    if not os.path.isdir(args.source):
+        logging.error('Source directory does not exist.')
+        return
+    if not os.path.isdir(args.destination):
+        logging.error('Destination directory does not exist.')
+        return
+
+    # Prepare conversion options
+    conversion_options = {
+        'output_format': args.format,
+        'allowed_extensions': tuple(args.extensions.lower().split(',')),
+        'extra_args': args.extra_args
+    }
+
+    # Convert the media library
+    convert_media_library(args.source, args.destination, conversion_options)
+
+
+if __name__ == '__main__':
+    main()
