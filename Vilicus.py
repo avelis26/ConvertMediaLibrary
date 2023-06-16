@@ -48,8 +48,9 @@ def convert_media_library(source_dir, destination_dir, conversion_options):
     for root, _, files in os.walk(source_dir):
         for file_name in files:
             file_path = os.path.join(root, file_name)
-            if os.path.isfile(file_path) and file_name.lower().endswith(conversion_options['allowed_extensions']):
-                files_to_convert.append(file_path)
+            if os.path.isfile(file_path):
+                if probe_video_encoding(file_path):
+                    files_to_convert.append(file_path)
 
     # Use multiprocessing to convert files concurrently
     with Pool() as pool:
@@ -70,7 +71,6 @@ def main():
     parser.add_argument('-s', '--source', help='Source directory', required=True)
     parser.add_argument('-d', '--destination', help='Destination directory', required=True)
     parser.add_argument('-f', '--format', help='Output format (e.g., .mp4, .mkv)', default='.mp4')
-    parser.add_argument('-e', '--extensions', help='Allowed file extensions (comma-separated)', default='.avi,.mpg,.mov,.wmv')
     parser.add_argument('-a', '--extra-args', help='Additional FFmpeg arguments', default='', nargs='+')
 
     args = parser.parse_args()
@@ -86,7 +86,6 @@ def main():
     # Prepare conversion options
     conversion_options = {
         'output_format': args.format,
-        'allowed_extensions': tuple(args.extensions.lower().split(',')),
         'extra_args': args.extra_args
     }
 
