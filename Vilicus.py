@@ -6,10 +6,27 @@ import logging
 from multiprocessing import Pool
 
 
+def probe_video_encoding(file_path):
+    # Execute FFmpeg command to probe video encoding
+    command = ['ffmpeg', '-i', file_path]
+    result = subprocess.run(command, capture_output=True, text=True)
+
+    # Check if the output contains H.265/HEVC
+    return 'hevc' in result.stdout.lower()
+
+
 def convert_media_file(file_path, destination_dir, conversion_options):
+    # Check video encoding using FFmpeg probing
+    is_hevc = probe_video_encoding(file_path)
+
+    if is_hevc:
+        # File is already encoded with H.265/HEVC, no conversion needed
+        logging.info(f'Skipping conversion for {file_path}')
+        return None
+
     # Extract the file name and extension
     file_name = os.path.basename(file_path)
-    file_base_name, file_extension = os.path.splitext(file_name)
+    file_base_name, _ = os.path.splitext(file_name)
 
     # Create the destination file path with the desired format
     destination_file_path = os.path.join(destination_dir, file_base_name + conversion_options['output_format'])
@@ -40,8 +57,9 @@ def convert_media_library(source_dir, destination_dir, conversion_options):
 
     # Move the converted files from the temporary directory to the destination directory
     for converted_file in converted_files:
-        destination_path = os.path.join(destination_dir, os.path.basename(converted_file))
-        shutil.move(converted_file, destination_path)
+        if converted_file:
+            destination_path = os.path.join(destination_dir, os.path.basename(converted_file))
+            shutil.move(converted_file, destination_path)
 
     # Remove the temporary directory
     shutil.rmtree(temp_dir)
