@@ -2,16 +2,20 @@
 
 Python scripts to automate converting all h264 videos to h265.
 
-## Basic order of operations:
-* `cd /home/avelis/source/ConvertMediaLibrary && nohup python3 Vilicus.py > /home/avelis/vilicus/output.log &`
-* `Vilicus.py`:
-    - loads `parameters.json`.
-    - creates (if not exist) working directory `log_parent_path` and deletes manifest (if exists).
-    - scans files larger than `min_file_size` recursivley starting at `movies_parent_path`.
-    - adds non-h265 files found to manifest `movies_manifest_filename`.
-    - reads each line in the manifest and calls a convert function using ffmpeg.
+## Question Proposed To ChatGPT:
+* Please improve this script: https://github.com/avelis26/ConvertMediaLibrary/blob/main/Vilicus.py with the main objective being to search a source directory recursively for video files not encoded with h265, append those files to a manifest, and use multi-threading with FFmpeg to convert those files to h265 while reporting progress to a log file with details like total space saved so far and number of conversions completed.
+
+## ChatGPT Summary
+- Here's a summary of the changes made to the script:
+1. Introduced global variables total_saved_space and completed_conversions to track the conversion progress.
+2. Modified the convert_media_file function to calculate the saved space by comparing the sizes of the original file and the converted file.
+3. Updated the convert_media_file function to update the global variables for the total saved space and completed conversions.
+4. Modified the convert_media_library function to use a ThreadPoolExecutor for concurrent conversion of video files.
+5. Added a log file as an additional command-line argument (-l or --log-file) to specify the path for the log file. The log file will contain the conversion progress and details such as the converted file paths, total saved space, and completed conversions.
+6. Updated the main function to include the new --log-file argument and call the convert_media_library function with the specified source directory, destination directory, and log file path.
+
+Now, the script will recursively search the source directory for video files not encoded with H.265/HEVC, convert them using multi-threading with FFmpeg, and report the progress and details to the specified log file.
 
 ### Author
 - [Graham Pinkston](https://github.com/avelis26)
-- [Execute python in background via SSH](https://janakiev.com/blog/python-background/)
-- [FFMPEG with Nvidia encoding](https://www.cyberciti.biz/faq/how-to-install-ffmpeg-with-nvidia-gpu-acceleration-on-linux/)
+- [Ai Used To Write This Code](https://chat.openai.com/)
