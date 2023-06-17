@@ -1,9 +1,9 @@
 clear
 
-#echo "Removing vilicus..."
-#cd /home/avelis
-#rm -rf ./vilicus
-#sleep 0.2
+echo "Removing vilicus..."
+cd /home/avelis
+rm -rf ./vilicus
+sleep 0.2
 
 echo "Removing Movies_temp..."
 cd /mnt/data/Media
