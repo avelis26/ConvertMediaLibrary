@@ -31,9 +31,6 @@ def setup_logging(ops_log):
                 logging.StreamHandler(sys.stdout)
             ]
         )
-        logging.info('******************************************************')
-        logging.info('EXECUTION START')
-        logging.debug(f'ops_log: {ops_log}')
     except Exception as e:
         logging.error(f"Failed to set up logging: {e}")
         sys.exit(1)
@@ -122,6 +119,9 @@ def main():
     exit_file_path = os.path.join(LOG_PARENT_PATH, EXIT_FILE)
 
     setup_logging(ops_log)
+    logging.info('******************************************************')
+    logging.info('EXECUTION START')
+    logging.debug(f'ops_log: {ops_log}')
     soft_exit(exit_file_path)
 
     logging.info('Beginning ffmpeg conversions...')
