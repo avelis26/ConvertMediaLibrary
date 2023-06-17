@@ -1,100 +1,149 @@
-param (
-    [Parameter(Mandatory = $true, HelpMessage = "Source directory")]
-    [ValidateScript({Test-Path $_ -PathType Container})]
-    [string]$Source,
+# Load parameters from JSON file
+$parameters = Get-Content -Raw -Path "parameters.json" | ConvertFrom-Json
+$inputPath = $parameters.movies_parent_path
+$logParentPath = $parameters.log_parent_path
+$opsLog = Join-Path $logParentPath $parameters.log_filename
+$moviesManifestPath = Join-Path $logParentPath $parameters.movies_manifest_filename
+$exitFile = Join-Path $logParentPath $parameters.exit_filename
 
-    [Parameter(Mandatory = $true, HelpMessage = "Destination directory")]
-    [ValidateScript({Test-Path $_ -PathType Container})]
-    [string]$Destination,
-
-    [string]$LogFile = "conversion.log"
-)
-
-# Global variables to track conversion progress
-$totalSavedSpace = 0
-$completedConversions = 0
-
-function Probe-VideoEncoding {
-    param (
-        [Parameter(Mandatory = $true)]
-        [string]$FilePath
-    )
-
-    # Execute FFmpeg command to probe video encoding
-    $result = & ffmpeg -i $FilePath 2>&1
-
-    # Check if the output contains H.265/HEVC
-    return $result.ToLower().Contains("hevc")
+# Create working directory if it doesn't exist
+if (-not (Test-Path $logParentPath)) {
+    New-Item -ItemType Directory -Path $logParentPath | Out-Null
 }
 
-function Convert-MediaFile {
-    param (
-        [Parameter(Mandatory = $true)]
-        [string]$FilePath,
-
-        [Parameter(Mandatory = $true)]
-        [string]$DestinationDir
-    )
-
-    # Extract the file name and extension
-    $fileName = Split-Path -Leaf $FilePath
-    $fileBaseName = [System.IO.Path]::GetFileNameWithoutExtension($fileName)
-    $fileExt = [System.IO.Path]::GetExtension($fileName)
-
-    # Create the destination file path with H.265/HEVC encoding
-    $destinationFilePath = Join-Path -Path $DestinationDir -ChildPath ("{0}_hevc{1}" -f $fileBaseName, $fileExt)
-
-    # Execute FFmpeg command to convert the media file to H.265/HEVC
-    & ffmpeg -i $FilePath -c:v libx265 -crf 28 -c:a copy $destinationFilePath
-
-    # Calculate the saved space by comparing file sizes
-    $originalSize = (Get-Item $FilePath).Length
-    $convertedSize = (Get-Item $destinationFilePath).Length
-    $savedSpace = $originalSize - $convertedSize
-
-    # Update the global variables
-    $totalSavedSpace += $savedSpace
-    $completedConversions++
-}
-
-function Convert-MediaLibrary {
-    param (
-        [Parameter(Mandatory = $true)]
-        [string]$SourceDir,
-
-        [Parameter(Mandatory = $true)]
-        [string]$DestinationDir,
-
-        [Parameter(Mandatory = $true)]
-        [string]$LogFile
-    )
-
-    # Create the destination directory if it doesn't exist
-    if (-not (Test-Path -Path $DestinationDir -PathType Container)) {
-        New-Item -ItemType Directory -Path $DestinationDir | Out-Null
+# Set up logging to file and console
+$loggingLevel = "Debug"
+$loggingFormat = "%(asctime)s [%(levelname)s] %(message)s"
+$loggingHandlers = @(
+    New-Object -TypeName "System.Object" -Property @{
+        logtype = "File"
+        path = $opsLog
+        level = $loggingLevel
+        format = $loggingFormat
     }
+    New-Object -TypeName "System.Object" -Property @{
+        logtype = "Console"
+        level = $loggingLevel
+        format = $loggingFormat
+    }
+)
+$logging = New-Object -TypeName "System.Object" -Property @{
+    handlers = $loggingHandlers
+}
+$logging.handlers.logtype = "File"
+$logging.handlers.path = $opsLog
+$logging.handlers.level = $loggingLevel
+$logging.handlers.format = $loggingFormat
 
-    # Open the log file in append mode
-    $log = [System.IO.File]::AppendAllText($LogFile, "Conversion Progress:`n")
+$logging.info("******************************************************")
+$logging.info("EXECUTION START")
+$logging.debug("input_path:           $inputPath")
+$logging.debug("movies_manifest_path: $moviesManifestPath")
+$logging.debug("opsLog:               $opsLog")
+$logging.debug("exitFile:             $exitFile")
+$logging.info("Creating non-h265 movie manifest...")
 
-    # Walk through the source directory and convert video files
-    Get-ChildItem -Path $SourceDir -Recurse | ForEach-Object {
-        if ($_.PSIsContainer -eq $false -and $_.Name -match '\.(mp4|mkv|avi|mov)$') {
-            $filePath = $_.FullName
-            if (-not (Probe-VideoEncoding -FilePath $filePath)) {
-                Convert-MediaFile -FilePath $filePath -DestinationDir $DestinationDir
-                $log.WriteLine("Converted: $filePath")
+# Create non-h265 movie manifest
+$movieList = @()
+$minFileSize = $parameters.min_file_size
+Get-ChildItem -Path $inputPath -File -Recurse | ForEach-Object {
+    $fileSize = $_.Length
+    if ($fileSize -gt $minFileSize) {
+        try {
+            $probeOutput = ffmpeg.probe($_.FullName)
+            foreach ($stream in $probeOutput.streams) {
+                if ($stream.codec_type -eq "video" -and $stream.codec_name -ne "hevc") {
+                    $movieList += $_.FullName
+                    break
+                }
             }
+        } catch {
+            $logging.error("ERROR06: $($_.FullName)")
+            $logging.error($_.Exception)
         }
     }
-
-    # Log the total saved space and number of conversions
-    $log.WriteLine("Total Saved Space: {0} MB" -f ($totalSavedSpace / (1024 * 1024)))
-    $log.WriteLine("Completed Conversions: $completedConversions")
-
-    # Close the log file
-    $log.Close()
 }
 
-# Convert the media library
-Convert-MediaLibrary -SourceDir $Source -DestinationDir $Destination -LogFile $LogFile
+$movieSet = $movieList | Select-Object -Unique
+$movieSet | Out-File -FilePath $moviesManifestPath
+$logging.info("Total Non-h265 Movies: $($movieSet.Count)")
+$logging.info("Non-h265 movie manifest created.")
+
+# Read manifest and convert one movie at a time
+$exitFlag = $false
+$manifestFile = Get-Content -Path $moviesManifestPath
+$conversionCounter = 0
+foreach ($line in $manifestFile) {
+    $conversionCounter++
+    ConvertToH265 $line
+    if (Test-Path $exitFile) {
+        $logging.info("EXECUTION STOPPED BY USER")
+        $logging.info("******************************************************")
+        $exitFlag = $true
+        break
+    }
+}
+
+$logging.info("EXECUTION STOP")
+$logging.info("******************************************************")
+
+# Define function to convert file to H.265
+function ConvertToH265($sourceFilePath) {
+    $sourceFilePath = $sourceFilePath.Trim()
+    $base = [System.IO.Path]::GetFileNameWithoutExtension($sourceFilePath)
+    $outputFile = $base + ".mkv"
+
+    try {
+        Rename-Item -Path $sourceFilePath -NewName ($sourceFilePath + ".old")
+        ffmpeg.input($sourceFilePath + ".old").output($outputFile, "-c:v libx265 -crf 28 -c:a copy").run()
+        Start-Sleep -Seconds 2
+        ffmpeg.input($outputFile).output("null", "-f null").run()
+        $logging.info("Video validation succeeded.")
+
+        $beforeFileSize = (Get-Item -Path ($sourceFilePath + ".old")).Length
+        $afterFileSize = (Get-Item -Path $outputFile).Length
+        $totalDifference = $beforeFileSize - $afterFileSize
+        $spaceSaved = [decimal]::Divide($totalDifference, 1073741824)
+        $spaceSaved = [Math]::Round($spaceSaved, 2)
+
+        $logging.debug("Before Size: $beforeFileSize")
+        $logging.debug("After Size:  $afterFileSize")
+        $logging.debug("Difference:  $totalDifference")
+
+        Remove-Item -Path ($sourceFilePath + ".old")
+    } catch {
+        $logging.error("ERROR04: $($_.Exception)")
+        $logging.error($_.Exception)
+        return
+    }
+
+    $logging.info("Conversions complete: $conversionCounter")
+    $logging.debug("Total Diff:  $totalDifference")
+    $logging.info("Gigabytes saved: $spaceSaved GBs")
+}
+
+# Define function to check exit file and stop execution if it exists
+function SoftExit($exitFilePath) {
+    if (Test-Path $exitFilePath) {
+        $logging.info("EXECUTION STOPPED BY USER")
+        $logging.info("******************************************************")
+        $exitFlag = $true
+    }
+}
+
+# Start the main script execution
+$exitFilePath = Join-Path $logParentPath $exitFile
+SoftExit $exitFilePath
+$exitFlag = $false
+$manifestFile = Get-Content -Path $moviesManifestPath
+$conversionCounter = 0
+foreach ($line in $manifestFile) {
+    $conversionCounter++
+    ConvertToH265 $line
+    if ($exitFlag) {
+        break
+    }
+    SoftExit $exitFilePath
+}
+$logging.info("EXECUTION STOP")
+$logging.info("******************************************************")
