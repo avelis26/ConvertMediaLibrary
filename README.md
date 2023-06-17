@@ -4,7 +4,7 @@ Python scripts to automate converting all h264 videos to h265.
 
 ## Question Proposed To ChatGPT:
 Please review and suggest improvements for the following python script:
-```
+```python
 #!/usr/bin/env python3
 import json
 import logging
