@@ -11,6 +11,7 @@ total_after_filesize = []
 conversion_counter = 0
 
 def main():
+	global conversion_counter
 	# Load parameters from json file and set vars.
 	try:
 		parameters = json.load(open('parameters.json'))
@@ -98,6 +99,9 @@ def softExit(exitFilePath):
 
 # Define function to rename source file, convert to h265, validate, delete source file.
 def ConvertToH265(sourceFilePath):
+	global conversion_counter
+	global total_before_filesize
+	global total_after_filesize
 	sourceFilePath = sourceFilePath.strip()
 	base = os.path.splitext(sourceFilePath)[0]
 	outputFile = base + '.mkv'
