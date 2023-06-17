@@ -2,7 +2,7 @@
 import json
 import logging
 import sys
-import subprocess
+import time
 import os
 import ffmpeg
 import decimal
@@ -66,30 +66,13 @@ def ConvertToH265(sourceFilePath):
 	logging.debug(outputFile)
 	try:
 		os.rename(sourceFilePath, sourceFilePath + '.old')
-		subprocess.call([
-			'/usr/bin/ffmpeg',
-			'-i',
-			sourceFilePath + '.old',
-			'-c:v',
-			'libx265',
-			'-crf',
-			'26',
-			outputFile
-		])
+		ffmpeg.input(sourceFilePath + '.old').output(outputFile, vcodec="libx265", crf=28, acodec="copy").run()
+		time.sleep(2)
+		ffmpeg.input(outputFile).output("null", f="null").run()
+		logging.info("Video validation succeeded.")
 	except Exception as e:
-		logging.error("ERROR05: " + str(e))
+		logging.error("ERROR04: " + str(e))
 		exit()
-	try:
-		(
-			ffmpeg
-			.input(outputFile)
-			.output("null", f="null")
-			.run()
-		)
-	except ffmpeg._run.Error as e:
-		logging.error("ERROR06: " + str(e))
-		exit()
-	logging.info("Video validation succeeded.")
 	try:
 		before_file_size = os.path.getsize(sourceFilePath + '.old')
 		after_file_size = os.path.getsize(outputFile)
@@ -103,7 +86,7 @@ def ConvertToH265(sourceFilePath):
 		logging.debug('Difference:  ' + str(before_file_size - after_file_size))
 		os.remove(sourceFilePath + '.old')
 	except Exception as e:
-		logging.error("ERROR07: " + str(e))
+		logging.error("ERROR05: " + str(e))
 		exit()
 	logging.info('Conversions complete: ' + str(counter))
 	logging.debug('Total Diff:  ' + str(total_difference))
@@ -120,14 +103,11 @@ try:
 					probe_output = ffmpeg.probe(current_path + '/' + file_name)
 					for stream in probe_output['streams']:
 						if (stream['codec_type'] == 'video'):
-							if (stream['codec_name'] == 'hevc'):
-								continue
-							else:
+							if (stream['codec_name'] != 'hevc'):
 								print(file_name)
 								movie_list.append(current_path + '/' + file_name)
 				except ffmpeg.Error as e:
-					with open(opsLog, "a") as openFile:
-						openFile.write(current_path + '/' + file_name + "\n")
+					logging.error("ERROR06: " + (current_path + '/' + file_name))
 					print(e.stderr)
 	movie_set = set(movie_list)
 	logging.info('Total Non-h265 Movies: ' + str(len(movie_set)))
@@ -136,7 +116,7 @@ try:
 			openFile.write("%s\n" % movie)
 	logging.info('Non-h265 movie manifest created.')
 except Exception as e:
-	logging.error("ERROR04: " + str(e))
+	logging.error("ERROR06: " + str(e))
 	exit()
 softExit()
 
@@ -147,7 +127,7 @@ lines = manifest_file.readlines()
 total_before_filesize = []
 total_after_filesize = []
 for line in lines:
-	counter = counter + 1
+	counter += 1
 	ConvertToH265(line)
 	softExit()
 logging.info('EXECUTION STOP')
