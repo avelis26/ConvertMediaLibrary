@@ -1,99 +1,60 @@
 import os
-import shutil
-import subprocess
-import argparse
-import logging
-import concurrent.futures
-
-# Global variables to track conversion progress
-total_saved_space = 0
-completed_conversions = 0
-
-
-def probe_video_encoding(file_path):
-    # Execute FFmpeg command to probe video encoding
-    command = ['ffmpeg', '-i', file_path]
-    result = subprocess.run(command, capture_output=True, text=True)
-
-    # Check if the output contains H.265/HEVC
-    return 'hevc' in result.stdout.lower()
-
-
-def convert_media_file(file_path, destination_dir):
-    global total_saved_space, completed_conversions
-
-    # Extract the file name and extension
-    file_name = os.path.basename(file_path)
-    file_base_name, file_ext = os.path.splitext(file_name)
-
-    # Create the destination file path with H.265/HEVC encoding
-    destination_file_path = os.path.join(destination_dir, f'{file_base_name}_hevc{file_ext}')
-
-    # Execute FFmpeg command to convert the media file to H.265/HEVC
-    command = ['ffmpeg', '-i', file_path, '-c:v', 'libx265', '-crf', '28', '-c:a', 'copy', destination_file_path]
-    subprocess.run(command, check=True)
-
-    # Calculate the saved space by comparing file sizes
-    original_size = os.path.getsize(file_path)
-    converted_size = os.path.getsize(destination_file_path)
-    saved_space = original_size - converted_size
-
-    # Update the global variables
-    total_saved_space += saved_space
-    completed_conversions += 1
-
-    return destination_file_path
-
-
-def convert_media_library(source_dir, destination_dir, log_file):
-    global total_saved_space, completed_conversions
-
-    # Create the destination directory if it doesn't exist
-    os.makedirs(destination_dir, exist_ok=True)
-
-    # Open the log file in append mode
-    with open(log_file, 'a') as log:
-        # Write initial progress to the log file
-        log.write('Conversion Progress:\n')
-
-        # Walk through the source directory and convert video files
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            futures = []
-            for root, _, files in os.walk(source_dir):
-                for file_name in files:
-                    file_path = os.path.join(root, file_name)
-                    if os.path.isfile(file_path) and file_name.lower().endswith(('.mp4', '.mkv', '.avi', '.mov')):
-                        if not probe_video_encoding(file_path):
-                            future = executor.submit(convert_media_file, file_path, destination_dir)
-                            futures.append(future)
-
-            # Process the completed conversions and log progress
-            for future in concurrent.futures.as_completed(futures):
-                converted_file_path = future.result()
-                if converted_file_path:
-                    log.write(f'Converted: {converted_file_path}\n')
-
-            # Log the total saved space and number of conversions
-            log.write(f'Total Saved Space: {total_saved_space / (1024 * 1024)} MB\n')
-            log.write(f'Completed Conversions: {completed_conversions}\n')
-
+import ffmpeg
+from pathlib import Path
 
 def main():
-    parser = argparse.ArgumentParser(description='Media Library Conversion Tool')
-    parser.add_argument('-s', '--source', help='Source directory', required=True)
-    parser.add_argument('-d', '--destination', help='Destination directory', required=True)
-    parser.add_argument('-l', '--log-file', help='Log file path', default='conversion.log')
+    source_directory = input("Enter source directory: ")
+    destination_directory = input("Enter destination directory: ")
+    log_file = input("Enter log file path (optional): ")
 
-    args = parser.parse_args()
-
-    # Validate source directory
-    if not os.path.isdir(args.source):
-        logging.error('Source directory does not exist.')
+    if not os.path.isdir(source_directory) or not os.path.isdir(destination_directory):
+        print("Invalid source or destination directory.")
         return
 
-    # Convert the media library
-    convert_media_library(args.source, args.destination, args.log_file)
+    if log_file:
+        log_file = open(log_file, "w")
 
+    log_progress(log_file, "Conversion Progress:\n")
 
-if __name__ == '__main__':
+    for root, _, files in os.walk(source_directory):
+        for file in files:
+            source_path = os.path.join(root, file)
+            if is_video_file(source_path) and not is_encoded_with_h265(source_path):
+                destination_path = os.path.join(destination_directory, get_hevc_filename(file))
+                convert_media_file(source_path, destination_path)
+                log_progress(log_file, f"Converted: {source_path}\n")
+
+    total_saved_space = ffmpeg.probe(destination_directory)["format"]["size"]
+    log_progress(log_file, f"Total Saved Space: {total_saved_space / (1024 * 1024)} MB\n")
+    log_progress(log_file, f"Completed Conversions: {completed_conversions}\n")
+
+    if log_file:
+        log_file.close()
+
+def is_video_file(file_path):
+    _, file_extension = os.path.splitext(file_path)
+    return file_extension.lower() in [".mp4", ".mkv", ".avi", ".mov"]
+
+def is_encoded_with_h265(file_path):
+    try:
+        probe = ffmpeg.probe(file_path)
+        video_streams = [stream for stream in probe["streams"] if stream["codec_type"] == "video"]
+        return any(stream["codec_name"].lower() == "hevc" for stream in video_streams)
+    except ffmpeg.Error:
+        return False
+
+def convert_media_file(source_path, destination_path):
+    ffmpeg.input(source_path).output(destination_path, vcodec="libx265", crf=28, acodec="copy").run()
+    completed_conversions += 1
+
+def get_hevc_filename(filename):
+    file_name, file_extension = os.path.splitext(filename)
+    return f"{file_name}_hevc{file_extension}"
+
+def log_progress(log_file, message):
+    if log_file:
+        log_file.write(message)
+    print(message, end="")
+
+if __name__ == "__main__":
     main()
