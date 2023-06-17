@@ -39,10 +39,10 @@ mkdir '/mnt/data/Media/Movies_temp/Joker_(2019)/'
 sleep 0.2
 ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Joker_(2019)/Joker_(2019).mp4' -t 64 -map 0 -c copy '/mnt/data/Media/Movies_temp/Joker_(2019)/Joker_(2019).mp4'
 
-echo "Converting Sin_City_(645)..."
-mkdir '/mnt/data/Media/Movies_temp/Sin_City_(645)/'
+echo "Converting Sin_City_(2005)..."
+mkdir '/mnt/data/Media/Movies_temp/Sin_City_(2005)/'
 sleep 0.2
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Sin_City_(645)/Sin_City_(645).mp4' -t 64 -map 0 -c copy '/mnt/data/Media/Movies_temp/Sin_City_(645)/Sin_City_(645).mp4'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Sin_City_(2005)/Sin_City_(2005).mp4' -t 64 -map 0 -c copy '/mnt/data/Media/Movies_temp/Sin_City_(2005)/Sin_City_(2005).mp4'
 
 echo "Converting James_And_The_Giant_Peach_(1996)..."
 mkdir '/mnt/data/Media/Movies_temp/James_And_The_Giant_Peach_(1996)/'
@@ -59,10 +59,10 @@ mkdir '/mnt/data/Media/Movies_temp/Storks_(2016)/'
 sleep 0.2
 ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Storks_(2016)/Storks_(2016).mkv' -t 64 -map 0 -c copy '/mnt/data/Media/Movies_temp/Storks_(2016)/Storks_(2016).mkv'
 
-echo "Converting Constantine_(645)..."
-mkdir '/mnt/data/Media/Movies_temp/Constantine_(645)/'
+echo "Converting Constantine_(2005)..."
+mkdir '/mnt/data/Media/Movies_temp/Constantine_(2005)/'
 sleep 0.2
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Constantine_(645)/Constantine_(645).avi' -t 64 -map 0 -c copy '/mnt/data/Media/Movies_temp/Constantine_(645)/Constantine_(645).avi'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Constantine_(2005)/Constantine_(2005).avi' -t 64 -map 0 -c copy '/mnt/data/Media/Movies_temp/Constantine_(2005)/Constantine_(2005).avi'
 
 echo "Converting Moana_(2016)..."
 mkdir '/mnt/data/Media/Movies_temp/Moana_(2016)/'
