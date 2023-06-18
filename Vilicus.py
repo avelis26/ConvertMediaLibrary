@@ -30,13 +30,13 @@ def setup_logging(ops_log):
         logging.error(f"Failed to set up logging: {e}")
         sys.exit(1)
 
-def create_movies_manifest(parameters):
+def create_videos_manifest(parameters):
     try:
         input_path = parameters['videos_parent_path']
-        movies_manifest_path = os.path.join(parameters['log_parent_path'], parameters['manifest_filename'])
-        if os.path.exists(movies_manifest_path):
-            os.remove(movies_manifest_path)
-        movie_list = []
+        videos_manifest_path = os.path.join(parameters['log_parent_path'], parameters['manifest_filename'])
+        if os.path.exists(videos_manifest_path):
+            os.remove(videos_manifest_path)
+        video_list = []
         for current_path, _, file_names in os.walk(input_path):
             for file_name in file_names:
                 print(file_name)
@@ -47,17 +47,17 @@ def create_movies_manifest(parameters):
                         probe_output = ffmpeg.probe(file_path)
                         for stream in probe_output['streams']:
                             if stream['codec_type'] == 'video' and stream['codec_name'] != 'hevc':
-                                movie_list.append(file_path)
+                                video_list.append(file_path)
                     except ffmpeg.Error as e:
                         logging.error(f"Failed to probe file: {file_path}")
-        # Converting list to set because some movie files contain multiple video streams, set = unique list
-        movie_set = set(movie_list)
-        logging.info('Total Non-h265 Videos: ' + str(len(movie_set)))
-        with open(movies_manifest_path, 'w') as f:
-            for movie in movie_set:
-                f.write(movie + '\n')
+        # Converting list to set because some video files contain multiple video streams, set = unique list
+        video_set = set(video_list)
+        logging.info('Total Non-h265 Videos: ' + str(len(video_set)))
+        with open(videos_manifest_path, 'w') as f:
+            for video in video_set:
+                f.write(video + '\n')
         logging.info('Non-h265 videos manifest created.')
-        return movies_manifest_path
+        return videos_manifest_path
     except Exception as e:
         logging.error(f"Failed to create videos manifest: {e}")
         sys.exit(1)
@@ -118,10 +118,10 @@ def main():
     logging.debug(f'opsLog:               {ops_log}')
     logging.debug(f'exitFile:             {exit_file_path}')
     logging.info('Creating non-h265 videos manifest...')
-    movies_manifest_path = create_movies_manifest(parameters)
+    videos_manifest_path = create_videos_manifest(parameters)
     soft_exit(exit_file_path)
     logging.info('Beginning ffmpeg conversions...')
-    with open(movies_manifest_path, 'r') as f:
+    with open(videos_manifest_path, 'r') as f:
         lines = f.readlines()
         for line in lines:
             conversion_counter += 1
