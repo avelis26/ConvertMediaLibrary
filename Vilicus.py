@@ -14,7 +14,7 @@ def load_parameters(param_file):
         return parameters
     except Exception as e:
         logging.error(f"Failed to load parameters: {e}")
-        raise SystemExit(1)
+        sys.exit(1)
 
 def setup_logging(ops_log):
     try:
@@ -28,7 +28,7 @@ def setup_logging(ops_log):
         )
     except Exception as e:
         logging.error(f"Failed to set up logging: {e}")
-        raise SystemExit(1)
+        sys.exit(1)
 
 def create_videos_manifest(parameters):
     try:
@@ -58,7 +58,7 @@ def create_videos_manifest(parameters):
         return videos_manifest_path
     except Exception as e:
         logging.error(f"Failed to create videos manifest: {e}")
-        raise SystemExit(1)
+        sys.exit(1)
 
 def soft_exit(exit_file_path):
     if os.path.exists(exit_file_path):
