@@ -50,7 +50,6 @@ def create_movies_manifest(parameters):
                                 movie_list.append(file_path)
                     except ffmpeg.Error as e:
                         logging.error(f"Failed to probe file: {file_path}")
-                        logging.error(e.stderr)
         # Converting list to set because some movie files contain multiple video streams, set = unique list
         movie_set = set(movie_list)
         logging.info('Total Non-h265 Movies: ' + str(len(movie_set)))
