@@ -9,18 +9,18 @@ import ffmpeg
 
 def load_parameters(param_file):
     try:
-        with open(param_file) as f:
-            parameters = json.load(f)
+        with open(param_file) as file:
+            parameters = json.load(file)
         return parameters
     except Exception as e:
         logging.error(f"Failed to load parameters: {e}")
-        sys.exit(1)
+        raise SystemExit(1)
 
 def setup_logging(ops_log):
     try:
         logging.basicConfig(
             level=logging.DEBUG,
-            format="%(asctime)s	[%(levelname)s]	%(message)s",
+            format="%(asctime)s [%(levelname)s] %(message)s",
             handlers=[
                 logging.FileHandler(ops_log),
                 logging.StreamHandler(sys.stdout)
@@ -28,7 +28,7 @@ def setup_logging(ops_log):
         )
     except Exception as e:
         logging.error(f"Failed to set up logging: {e}")
-        sys.exit(1)
+        raise SystemExit(1)
 
 def create_videos_manifest(parameters):
     try:
@@ -39,7 +39,6 @@ def create_videos_manifest(parameters):
         video_list = []
         for current_path, _, file_names in os.walk(input_path):
             for file_name in file_names:
-                print(file_name)
                 file_path = os.path.join(current_path, file_name)
                 file_size = os.path.getsize(file_path)
                 if file_size > parameters['min_file_size']:
@@ -50,17 +49,16 @@ def create_videos_manifest(parameters):
                                 video_list.append(file_path)
                     except ffmpeg.Error as e:
                         logging.error(f"Failed to probe file: {file_path}")
-        # Converting list to set because some video files contain multiple video streams, set = unique list
         video_set = set(video_list)
         logging.info('Total Non-h265 Videos: ' + str(len(video_set)))
-        with open(videos_manifest_path, 'w') as f:
+        with open(videos_manifest_path, 'w') as file:
             for video in video_set:
-                f.write(video + '\n')
+                file.write(video + '\n')
         logging.info('Non-h265 videos manifest created.')
         return videos_manifest_path
     except Exception as e:
         logging.error(f"Failed to create videos manifest: {e}")
-        sys.exit(1)
+        raise SystemExit(1)
 
 def soft_exit(exit_file_path):
     if os.path.exists(exit_file_path):
@@ -104,25 +102,22 @@ def main():
     parser.add_argument('-p', '--paramfile', type=str, help='Path to the input parameters file', required=True)
     args = parser.parse_args()
     parameters = load_parameters(args.paramfile)
-    if not os.path.exists(parameters['log_parent_path']):
-        os.makedirs(parameters['log_parent_path'])
-    videos_parent_path = parameters['videos_parent_path']
-    log_parent_path = parameters['log_parent_path']
+    os.makedirs(parameters['log_parent_path'], exist_ok=True)
     ops_log = os.path.join(parameters['log_parent_path'], parameters['log_filename'])
     exit_file_path = os.path.join(parameters['log_parent_path'], parameters['exit_filename'])
     setup_logging(ops_log)
     logging.info('******************************************************')
     logging.info('EXECUTION START')
-    logging.debug(f'input_path:           {videos_parent_path}')
-    logging.debug(f'manifest_path:        {log_parent_path}')
+    logging.debug(f'input_path:           {parameters["videos_parent_path"]}')
+    logging.debug(f'manifest_path:        {parameters["log_parent_path"]}')
     logging.debug(f'opsLog:               {ops_log}')
     logging.debug(f'exitFile:             {exit_file_path}')
     logging.info('Creating non-h265 videos manifest...')
     videos_manifest_path = create_videos_manifest(parameters)
     soft_exit(exit_file_path)
     logging.info('Beginning ffmpeg conversions...')
-    with open(videos_manifest_path, 'r') as f:
-        lines = f.readlines()
+    with open(videos_manifest_path, 'r') as file:
+        lines = file.readlines()
         for line in lines:
             conversion_counter += 1
             convert_to_h265(line.strip())
