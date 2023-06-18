@@ -1,7 +1,7 @@
 # Summary
 
 * I wrote this Python script to automate converting all non-h265 videos to h265 for space saving on my **Plex** server.
-* I tried using the Nvida GPU-accelerated version of **ffmpeg**, and while the conversion was 10x to 20x faster, the file sizes where ofter much larger.
+* I tried using the Nvida GPU-accelerated version of **ffmpeg**, and while the conversion was 10x to 20x faster, the file sizes where often much larger.
 * This script can be executed from the terminal as a background job, or from cron.
 * The `parameters_<name>.json` file in the repository is used to configure the script.
 * I use `__min_file_size__` as a fast filter to prevent using **ffmpeg** probe on non-video files.
