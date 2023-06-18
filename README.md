@@ -3,19 +3,22 @@
 * I wrote this Python script to automate converting all non-h265 videos to h265 for space saving on my **Plex** server.
 * I tried using the Nvida GPU-accelerated version of **ffmpeg**, and while the conversion was 10x to 20x faster, the file sizes where ofter much larger.
 * This script can be executed from the terminal as a background job, or from cron.
-* The `parameters.json` file in the repository is used to configure the script.
-* I use `min_file_size` as a fast filter to prevent using **ffmpeg** probe on non-video files.
+* The `parameters_<name>.json` file in the repository is used to configure the script.
+* I use `__min_file_size__` as a fast filter to prevent using **ffmpeg** probe on non-video files.
 * **Replease `/home/avelis/` with your home directory.**
 * **Replace `/home/avelis/source/` with the location where you cloned the repository.**
 
 ## Order Of Operations:
 * From the cron:
     - `crontab -e`
-    - Append: `@reboot cd /home/avelis/source/ConvertMediaLibrary && ./Vilicus.py --paramfile 'parameters_movies_temp.json' > /home/avelis/movies_temp_output.log 2>&1`
+    - Append:
+        - `@reboot cd /home/avelis/source/ConvertMediaLibrary && ./Vilicus.py --paramfile 'parameters_movies.json' > /home/avelis/movies_output.log 2>&1`
+        - `@reboot cd /home/avelis/source/ConvertMediaLibrary && ./Vilicus.py --paramfile 'parameters_shows.json' > /home/avelis/shows_output.log 2>&1`
 * From the terminal:
-    - `cd /home/avelis/source/ConvertMediaLibrary && nohup ./Vilicus.py --paramfile 'parameters_movies_temp.json' > /home/avelis/movies_temp_output.log 2>&1 &`
+    - `cd /home/avelis/source/ConvertMediaLibrary && nohup ./Vilicus.py --paramfile 'parameters_movies.json' > /home/avelis/movies_output.log 2>&1 &`
+    - `cd /home/avelis/source/ConvertMediaLibrary && nohup ./Vilicus.py --paramfile 'parameters_shows.json' > /home/avelis/shows_output.log 2>&1 &`
 * `Vilicus.py`:
-    - loads `parameters.json`.
+    - loads `parameters_<name>.json`.
     - creates (if not exist) working directory `__log_parent_path__` and deletes manifest (if exists).
     - scans files larger than `__min_file_size__` recursivley starting at `__movies_parent_path__`.
     - adds non-h265 files found to manifest `__movies_manifest_filename__`.
