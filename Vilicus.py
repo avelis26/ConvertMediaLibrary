@@ -4,7 +4,6 @@ import json
 import logging
 import os
 import sys
-import time
 import ffmpeg
 
 def load_parameters(param_file):
@@ -78,7 +77,6 @@ def convert_to_h265(source_file_path):
         logging.debug(output_file)
         os.rename(source_file_path, source_file_path + '.old')
         ffmpeg.input(source_file_path + '.old').output(output_file, vcodec="libx265", crf=28, acodec="copy").run()
-        time.sleep(2)
         ffmpeg.input(output_file).output("null", f="null").run()
         logging.info("Video validation succeeded.")
         before_file_size = os.path.getsize(source_file_path + '.old')
