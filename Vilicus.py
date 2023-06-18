@@ -52,11 +52,11 @@ def create_movies_manifest(parameters):
                         logging.error(f"Failed to probe file: {file_path}")
         # Converting list to set because some movie files contain multiple video streams, set = unique list
         movie_set = set(movie_list)
-        logging.info('Total Non-h265 Movies: ' + str(len(movie_set)))
+        logging.info('Total Non-h265 Videos: ' + str(len(movie_set)))
         with open(movies_manifest_path, 'w') as f:
             for movie in movie_set:
                 f.write(movie + '\n')
-        logging.info('Non-h265 video manifest created.')
+        logging.info('Non-h265 videos manifest created.')
         return movies_manifest_path
     except Exception as e:
         logging.error(f"Failed to create videos manifest: {e}")
