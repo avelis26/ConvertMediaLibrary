@@ -124,7 +124,6 @@ def main():
             conversion_counter += 1
             convert_to_h265(line.strip())
             soft_exit(exit_file_path)
-
     logging.info('EXECUTION STOP')
     logging.info('******************************************************')
 
