@@ -5,7 +5,7 @@
 * This script can be executed from the terminal as a background job, or from cron.
 * The `parameters_<name>.json` file in the repository is used to configure the script.
 * I use `__min_file_size__` as a fast filter to prevent using **ffmpeg** probe on non-video files.
-* **Replease `/home/avelis/` with your home directory.**
+* **Replace `/home/avelis/` with your home directory.**
 * **Replace `/home/avelis/source/` with the location where you cloned the repository.**
 
 ## Order Of Operations:
