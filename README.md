@@ -28,4 +28,4 @@
 
 ### Author
 - [Graham Pinkston](https://github.com/avelis26)
-- [Ai Used To Improve This Code](https://chat.openai.com/)
+- [ChatGPT4](https://chat.openai.com/)
