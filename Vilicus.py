@@ -5,6 +5,7 @@ import logging
 import os
 import sys
 import ffmpeg
+import argparse
 
 def load_parameters(param_file):
     try:
@@ -100,7 +101,10 @@ def convert_to_h265(source_file_path):
 
 def main():
     global conversion_counter
-    parameters = load_parameters('parameters.json')
+    parser = argparse.ArgumentParser(description='Find and convert all non-h265 video files to h265 with ffmpeg.')
+    parser.add_argument('-p', '--paramfile', type=str, help='Path to the input parameters file', required=True)
+    args = parser.parse_args()
+    parameters = load_parameters(args.paramfile)
     if not os.path.exists(parameters['log_parent_path']):
         os.makedirs(parameters['log_parent_path'])
     movies_parent_path = parameters['movies_parent_path']

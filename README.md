@@ -11,9 +11,9 @@
 ## Order Of Operations:
 * From the cron:
     - `crontab -e`
-    - Append: `@reboot cd /home/avelis/source/ConvertMediaLibrary && ./Vilicus.py > /home/avelis/vilicus_output.log 2>&1`
+    - Append: `@reboot cd /home/avelis/source/ConvertMediaLibrary && ./Vilicus.py --paramfile 'parameters_movies_temp.json' > /home/avelis/movies_temp_output.log 2>&1`
 * From the terminal:
-    - `cd /home/avelis/source/ConvertMediaLibrary && nohup ./Vilicus.py > /home/avelis/vilicus_output.log 2>&1 &`
+    - `cd /home/avelis/source/ConvertMediaLibrary && nohup ./Vilicus.py --paramfile 'parameters_movies_temp.json' > /home/avelis/movies_temp_output.log 2>&1 &`
 * `Vilicus.py`:
     - loads `parameters.json`.
     - creates (if not exist) working directory `__log_parent_path__` and deletes manifest (if exists).
