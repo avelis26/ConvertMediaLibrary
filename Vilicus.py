@@ -20,7 +20,7 @@ def setup_logging(ops_log):
     try:
         logging.basicConfig(
             level=logging.DEBUG,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format="%(asctime)s	[%(levelname)s]	%(message)s",
             handlers=[
                 logging.FileHandler(ops_log),
                 logging.StreamHandler(sys.stdout)
