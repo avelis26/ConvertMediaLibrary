@@ -20,8 +20,8 @@
 * `Vilicus.py`:
     - loads `parameters_<name>.json`.
     - creates (if not exist) working directory `__log_parent_path__` and deletes manifest (if exists).
-    - scans files larger than `__min_file_size__` recursivley starting at `__movies_parent_path__`.
-    - adds non-h265 files found to manifest `__movies_manifest_filename__`.
+    - scans files larger than `__min_file_size__` recursivley starting at `__videos_parent_path__`.
+    - adds non-h265 files found to manifest `__manifest_filename__`.
     - reads each line in the manifest and calls **ffmpeg** to convert the file to h265.
 	- logs progress and metrics to `__log_filename__`.
 * To request that the script exit after the current conversion:
