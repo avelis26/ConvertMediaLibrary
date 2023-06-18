@@ -1,6 +1,6 @@
 {
-	"movies_parent_path": "/mnt/data/Media/Movies/",
-	"movies_manifest_filename": "movies_manifest.txt",
+	"videos_parent_path": "/mnt/data/Media/Movies/",
+	"manifest_filename": "movies_manifest.txt",
 	"log_parent_path": "/home/avelis/vilicus/",
 	"log_filename": "vilicus_movies.log",
 	"exit_filename": "exit.txt",
