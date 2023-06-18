@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
+import argparse
 import decimal
 import json
 import logging
 import os
 import sys
 import ffmpeg
-import argparse
 
 def load_parameters(param_file):
     try:
@@ -32,8 +32,8 @@ def setup_logging(ops_log):
 
 def create_movies_manifest(parameters):
     try:
-        input_path = parameters['movies_parent_path']
-        movies_manifest_path = os.path.join(parameters['log_parent_path'], parameters['movies_manifest_filename'])
+        input_path = parameters['videos_parent_path']
+        movies_manifest_path = os.path.join(parameters['log_parent_path'], parameters['manifest_filename'])
         if os.path.exists(movies_manifest_path):
             os.remove(movies_manifest_path)
         movie_list = []
@@ -52,14 +52,14 @@ def create_movies_manifest(parameters):
                         logging.error(f"Failed to probe file: {file_path}")
         # Converting list to set because some movie files contain multiple video streams, set = unique list
         movie_set = set(movie_list)
-        logging.info('Total Non-h265 Movies: ' + str(len(movie_set)))
+        logging.info('Total Non-h265 Videos: ' + str(len(movie_set)))
         with open(movies_manifest_path, 'w') as f:
             for movie in movie_set:
                 f.write(movie + '\n')
-        logging.info('Non-h265 movie manifest created.')
+        logging.info('Non-h265 videos manifest created.')
         return movies_manifest_path
     except Exception as e:
-        logging.error(f"Failed to create movies manifest: {e}")
+        logging.error(f"Failed to create videos manifest: {e}")
         sys.exit(1)
 
 def soft_exit(exit_file_path):
@@ -106,18 +106,18 @@ def main():
     parameters = load_parameters(args.paramfile)
     if not os.path.exists(parameters['log_parent_path']):
         os.makedirs(parameters['log_parent_path'])
-    movies_parent_path = parameters['movies_parent_path']
+    videos_parent_path = parameters['videos_parent_path']
     log_parent_path = parameters['log_parent_path']
     ops_log = os.path.join(parameters['log_parent_path'], parameters['log_filename'])
     exit_file_path = os.path.join(parameters['log_parent_path'], parameters['exit_filename'])
     setup_logging(ops_log)
     logging.info('******************************************************')
     logging.info('EXECUTION START')
-    logging.debug(f'input_path:           {movies_parent_path}')
-    logging.debug(f'movies_manifest_path: {log_parent_path}')
+    logging.debug(f'input_path:           {videos_parent_path}')
+    logging.debug(f'manifest_path:        {log_parent_path}')
     logging.debug(f'opsLog:               {ops_log}')
     logging.debug(f'exitFile:             {exit_file_path}')
-    logging.info('Creating non-h265 movie manifest...')
+    logging.info('Creating non-h265 videos manifest...')
     movies_manifest_path = create_movies_manifest(parameters)
     soft_exit(exit_file_path)
     logging.info('Beginning ffmpeg conversions...')
