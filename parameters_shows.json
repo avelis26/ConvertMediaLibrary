@@ -4,5 +4,6 @@
 	"log_parent_path": "/home/avelis/vilicus/",
 	"log_filename": "vilicus_shows.log",
 	"exit_filename": "exit.txt",
+	"fail_filename": "vilicus_shows_fail.log",
 	"min_file_size": 20000000
 }
