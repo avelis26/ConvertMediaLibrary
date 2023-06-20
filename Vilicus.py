@@ -33,7 +33,7 @@ def setup_logging(ops_log):
 def create_videos_manifest(parameters):
     try:
         input_path = parameters['videos_parent_path']
-        videos_manifest_path = os.path.join(parameters['log_parent_path'], parameters['manifest_filename'])
+        videos_manifest_path = os.path.join(parameters['videos_parent_path'], parameters['manifest_filename'])
         if os.path.exists(videos_manifest_path):
             os.remove(videos_manifest_path)
         video_list = []
