@@ -66,7 +66,7 @@ def soft_exit(exit_file_path):
         logging.info('******************************************************')
         sys.exit()
 
-def convert_to_h265(source_file_path):
+def convert_to_h265(source_file_path, fail_file_path):
     global total_before_filesize
     global total_after_filesize
     try:
@@ -91,10 +91,10 @@ def convert_to_h265(source_file_path):
         logging.debug(f'Total Diff(B):  {total_difference}')
         logging.info(f'Total Diff(GB): {space_saved} GBs')
         os.remove(source_file_path + '.old')
-    except Exception as e:
+    except Exception:
         logging.error(f"Failed to convert file: {source_file_path}")
-        logging.error(e)
-        sys.exit(1)
+        with open(fail_file_path, 'w') as file:
+            file.write(source_file_path)
 
 def main():
     global conversion_counter
@@ -120,7 +120,7 @@ def main():
         lines = file.readlines()
         for line in lines:
             conversion_counter += 1
-            convert_to_h265(line.strip())
+            convert_to_h265(line.strip(), parameters['log_parent_path'] + parameters['fail_filename'])
             soft_exit(exit_file_path)
     logging.info('EXECUTION STOP')
     logging.info('******************************************************')
