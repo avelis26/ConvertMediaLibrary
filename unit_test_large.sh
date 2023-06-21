@@ -14,61 +14,61 @@ sleep 0.1
 echo "Converting Monsters_University_(2013)..."
 mkdir '/mnt/data/Media/Movies_temp/Monsters_University_(2013)'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Monsters_University_(2013)/Monsters_University_(2013).mp4' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/Monsters_University_(2013)/Monsters_University_(2013).mp4'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Monsters_University_(2013)/Monsters_University_(2013).mp4' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/Monsters_University_(2013)/Monsters_University_(2013).mp4'
 
 
 echo "Converting Superman_II_(1980)..."
 mkdir '/mnt/data/Media/Movies_temp/Superman_II_(1980)/'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Superman_II_(1980)/Superman_II_(1980).mkv' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/Superman_II_(1980)/Superman_II_(1980).mkv'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Superman_II_(1980)/Superman_II_(1980).mkv' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/Superman_II_(1980)/Superman_II_(1980).mkv'
 
 
 echo "Converting Explorers_(1985)..."
 mkdir '/mnt/data/Media/Movies_temp/Explorers_(1985)/'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Explorers_(1985)/Explorers_(1985).avi' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/Explorers_(1985)/Explorers_(1985).avi'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Explorers_(1985)/Explorers_(1985).avi' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/Explorers_(1985)/Explorers_(1985).avi'
 
 
 echo "Converting The_Amazing_Spider-Man_(2012)..."
 mkdir '/mnt/data/Media/Movies_temp/The_Amazing_Spider-Man_(2012)/'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/The_Amazing_Spider-Man_(2012)/The_Amazing_Spider-Man_(2012).mp4' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/The_Amazing_Spider-Man_(2012)/The_Amazing_Spider-Man_(2012).mp4'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/The_Amazing_Spider-Man_(2012)/The_Amazing_Spider-Man_(2012).mp4' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/The_Amazing_Spider-Man_(2012)/The_Amazing_Spider-Man_(2012).mp4'
 
 
 echo "Converting Joker_(2019)..."
 mkdir '/mnt/data/Media/Movies_temp/Joker_(2019)/'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Joker_(2019)/Joker_(2019).mp4' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/Joker_(2019)/Joker_(2019).mp4'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Joker_(2019)/Joker_(2019).mp4' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/Joker_(2019)/Joker_(2019).mp4'
 
 
 echo "Converting Sin_City_(2005)..."
 mkdir '/mnt/data/Media/Movies_temp/Sin_City_(2005)/'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Sin_City_(2005)/Sin_City_(2005).mp4' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/Sin_City_(2005)/Sin_City_(2005).mp4'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Sin_City_(2005)/Sin_City_(2005).mp4' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/Sin_City_(2005)/Sin_City_(2005).mp4'
 
 
 echo "Converting The_Grinch_(2018)..."
 mkdir '/mnt/data/Media/Movies_temp/The_Grinch_(2018)/'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/The_Grinch_(2018)/The_Grinch_(2018).mp4' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/The_Grinch_(2018)/The_Grinch_(2018).mp4'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/The_Grinch_(2018)/The_Grinch_(2018).mp4' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/The_Grinch_(2018)/The_Grinch_(2018).mp4'
 
 
 echo "Converting Storks_(2016)..."
 mkdir '/mnt/data/Media/Movies_temp/Storks_(2016)/'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Storks_(2016)/Storks_(2016).mkv' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/Storks_(2016)/Storks_(2016).mkv'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Storks_(2016)/Storks_(2016).mkv' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/Storks_(2016)/Storks_(2016).mkv'
 
 
 echo "Converting Constantine_(2005)..."
 mkdir '/mnt/data/Media/Movies_temp/Constantine_(2005)/'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Constantine_(2005)/Constantine_(2005).avi' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/Constantine_(2005)/Constantine_(2005).avi'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Constantine_(2005)/Constantine_(2005).avi' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/Constantine_(2005)/Constantine_(2005).avi'
 
 
 echo "Converting Moana_(2016)..."
 mkdir '/mnt/data/Media/Movies_temp/Moana_(2016)/'
 sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Moana_(2016)/Moana_(2016).mp4' -t 1200 -map 0 -c copy '/mnt/data/Media/Movies_temp/Moana_(2016)/Moana_(2016).mp4'
+ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Moana_(2016)/Moana_(2016).mp4' -t 2000 -map 0 -c copy '/mnt/data/Media/Movies_temp/Moana_(2016)/Moana_(2016).mp4'
 
 
 echo "Done"
