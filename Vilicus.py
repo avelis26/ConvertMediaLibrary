@@ -169,11 +169,10 @@ def soft_exit(exit_file_path, status_file_path, hostname, workers):
 
 # TIME
 def get_run_time(start_time):
-    end_time = time.time()
-    total_time = end_time - start_time
-    days, remainder = divmod(total_time, 86400)
-    hours, remainder = divmod(remainder, 3600)
-    minutes, seconds = divmod(remainder, 60)
+    total_time = time.time() - start_time
+    days, remainder = divmod(int(total_time), 86400)
+    hours, remainder = divmod(int(remainder), 3600)
+    minutes, seconds = divmod(int(remainder), 60)
     return (f"Total Run Time: {days} days {hours} hours {minutes} minutes {seconds} seconds")
 
 # CONVERT
