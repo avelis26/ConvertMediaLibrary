@@ -8,6 +8,7 @@ import sys
 import time
 import ffmpeg
 
+start_time = time.time()
 
 # PARAM
 def load_parameters(param_file):
@@ -16,6 +17,7 @@ def load_parameters(param_file):
             parameters = json.load(file)
         return parameters
     except Exception as e:
+        logging.info(get_run_time(start_time))
         logging.error(f"Failed to load parameters: {e}")
         sys.exit(1)
 
@@ -31,6 +33,7 @@ def setup_logging(ops_log):
             ]
         )
     except Exception as e:
+        logging.info(get_run_time(start_time))
         logging.error(f"Failed to set up logging: {e}")
         sys.exit(1)
 
@@ -50,6 +53,7 @@ def create_status_file(status_file_path, server, workers):
             json.dump(data, status_file, indent=4)
             status_file.write('\n')
     except Exception as e:
+        logging.info(get_run_time(start_time))
         logging.error(f"Failed to create status file: {e}")
         sys.exit(1)
 
@@ -66,6 +70,7 @@ def update_status_file(status_file_path, server, key, value, workers):
             json.dump(data, status_file, indent=4)
             status_file.write('\n')
     except Exception as e:
+        logging.info(get_run_time(start_time))
         logging.error(f"Failed to update status file: {e}")
         sys.exit(1)
 
@@ -84,6 +89,7 @@ def add_server_to_status_file(status_file_path, server, workers):
             json.dump(data, status_file, indent=4)
             status_file.write('\n')
     except Exception as e:
+        logging.info(get_run_time(start_time))
         logging.error(f"Failed to add {server} to status file: {e}")
         sys.exit(1)
 
@@ -99,6 +105,7 @@ def verify_server_in_status_file(status_file_path, server, workers):
                 break
         return check
     except Exception as e:
+        logging.info(get_run_time(start_time))
         logging.error(f"Failed to verify status file: {e}")
         sys.exit(1)
 
@@ -109,6 +116,7 @@ def read_status_file(status_file_path):
             data = json.load(status_file)
         return data
     except Exception as e:
+        logging.info(get_run_time(start_time))
         logging.error(f"Failed to read status file: {e}")
         sys.exit(1)
 
@@ -146,6 +154,7 @@ def create_videos_manifest(parameters):
         logging.info('Non-h265 videos manifest created.')
         return videos_manifest_path
     except Exception as e:
+        logging.info(get_run_time(start_time))
         logging.error(f"Failed to create videos manifest: {e}")
         sys.exit(1)
 
@@ -153,9 +162,19 @@ def create_videos_manifest(parameters):
 def soft_exit(exit_file_path, status_file_path, hostname, workers):
     if os.path.exists(exit_file_path):
         update_status_file(status_file_path, hostname, 'status', 'idle', workers)
+        logging.info(get_run_time(start_time))
         logging.info('EXECUTION STOPPED BY USER')
         logging.info('******************************************************')
         sys.exit()
+
+# TIME
+def get_run_time(start_time):
+    end_time = time.time()
+    total_time = end_time - start_time
+    days, remainder = divmod(total_time, 86400)
+    hours, remainder = divmod(remainder, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    return (f"Total Run Time: {days} days {hours} hours {minutes} minutes {seconds} seconds")
 
 # CONVERT
 def convert_to_h265(source_file_path, fail_file_path, status_file_path, hostname, workers):
@@ -252,6 +271,7 @@ def main():
             logging.info('Waiting for manifest...')
     while check == True:
         if expire > 720:
+            logging.info(get_run_time(start_time))
             logging.error("Manifest build timed out!")
             sys.exit(1)
         time.sleep(5)
@@ -289,6 +309,7 @@ def main():
         logging.error("SOMETHING WENT WRONG")
     update_status_file(status_file_path, hostname, 'status', status_idle, workers)
     update_status_file(status_file_path, hostname, 'file', 'none', workers)
+    logging.info(get_run_time(start_time))
     logging.info('EXECUTION STOP')
     logging.info('******************************************************')
 
