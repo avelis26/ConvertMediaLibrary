@@ -1,0 +1,14 @@
+{
+	"workers": [
+		{
+			"name": "plex-server",
+			"status": "idle",
+			"file": "none"
+		},
+		{
+			"name": "avelis-ThinkPad-T495",
+			"status": "idle",
+			"file": "none"
+		}
+	]
+}

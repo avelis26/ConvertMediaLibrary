@@ -69,10 +69,10 @@ mkdir '/mnt/data/Media/Movies_temp/Moana_(2016)/'
 sleep 0.1
 ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Movies/Moana_(2016)/Moana_(2016).mp4' -t 8 -map 0 -c copy '/mnt/data/Media/Movies_temp/Moana_(2016)/Moana_(2016).mp4'
 
-echo "Converting Blue_Planet_II_(2017)..."
-mkdir '/mnt/data/Media/Movies_temp/Blue_Planet_II_(2017)/'
-sleep 0.1
+#echo "Converting Blue_Planet_II_(2017)..."
+#mkdir '/mnt/data/Media/Movies_temp/Blue_Planet_II_(2017)/'
+#sleep 0.1
 #ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Shows/Blue_Planet_II_(2017)/Blue_Planet_II_Season_1/Blue_Planet_II_-_S01E06_-_Coasts.ts' -t 8 -map 0 -c copy '/mnt/data/Media/Movies_temp/Blue_Planet_II_(2017)/Blue_Planet_II_-_S01E06_-_Coasts.ts'
-cp '/mnt/data/Media/Shows/Blue_Planet_II_(2017)/Blue_Planet_II_Season_1/Blue_Planet_II_-_S01E06_-_Coasts.ts' '/mnt/data/Media/Movies_temp/Blue_Planet_II_(2017)/Blue_Planet_II_-_S01E06_-_Coasts.ts'
+#cp '/mnt/data/Media/Shows/Blue_Planet_II_(2017)/Blue_Planet_II_Season_1/Blue_Planet_II_-_S01E06_-_Coasts.ts' '/mnt/data/Media/Movies_temp/Blue_Planet_II_(2017)/Blue_Planet_II_-_S01E06_-_Coasts.ts'
 
 echo "Done"

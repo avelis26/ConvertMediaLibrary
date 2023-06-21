@@ -5,5 +5,6 @@
 	"log_filename": "vilicus_movies.log",
 	"exit_filename": "exit.txt",
 	"fail_filename": "vilicus_movies_fail.log",
+	"status_filename": "vilicus_status.json",
 	"min_file_size": 268000000
 }
