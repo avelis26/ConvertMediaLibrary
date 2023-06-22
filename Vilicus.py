@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import sys
+import fcntl
 import ffmpeg
 
 def load_parameters(param_file):
@@ -20,7 +21,7 @@ def setup_logging(ops_log):
     try:
         logging.basicConfig(
             level=logging.DEBUG,
-            format="%(asctime)s	[%(levelname)s]	%(message)s",
+            format="%(asctime)s    [%(levelname)s]    %(message)s",
             handlers=[
                 logging.FileHandler(ops_log),
                 logging.StreamHandler(sys.stdout)
@@ -120,8 +121,18 @@ def main():
         lines = file.readlines()
         for line in lines:
             conversion_counter += 1
-            convert_to_h265(line.strip(), parameters['log_parent_path'] + parameters['fail_filename'])
-            soft_exit(exit_file_path)
+            source_file_path = line.strip()
+            lock_file_path = source_file_path + '.lock'
+            lock_fd = open(lock_file_path, 'w')
+            try:
+                fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                convert_to_h265(source_file_path, parameters['log_parent_path'] + parameters['fail_filename'])
+                soft_exit(exit_file_path)
+            except BlockingIOError:
+                logging.warning(f"Skipping locked file: {source_file_path}")
+            finally:
+                lock_fd.close()
+                os.remove(lock_file_path)
     logging.info('EXECUTION STOP')
     logging.info('******************************************************')
 
