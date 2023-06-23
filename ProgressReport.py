@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
+import argparse
 import decimal
-import re
 import json
+import re
 
-parameters = json.load(open('parameters.json'))
+parser = argparse.ArgumentParser(description='Analyze log and report metrics.')
+parser.add_argument('-p', '--paramfile', type=str, help='Path to the input parameters file', required=True)
+args = parser.parse_args()
+parameters = json.load(open(args.paramfile))
 opsLog = parameters['log_parent_path'] + parameters['log_filename']
 
 # Extract number from string and add to array.
