@@ -1,0 +1,9 @@
+{
+	"videos_parent_path": "",
+	"manifest_filename": "",
+	"log_parent_path": "/home/avelis/vilicus/",
+	"log_filename": "vilicus.log",
+	"exit_filename": "exit.txt",
+	"fail_filename": "",
+	"min_file_size": 20000000
+}
