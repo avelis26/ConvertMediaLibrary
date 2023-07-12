@@ -64,7 +64,13 @@ def soft_exit(exit_file_path):
     if os.path.exists(exit_file_path):
         logging.info('EXECUTION STOPPED BY USER')
         logging.info('******************************************************')
-        sys.exit()
+        with open(exit_file_path, 'r') as file:
+            contents = file.read()
+        os.remove(exit_file_path)
+        if contents.strip() == "reboot":
+            os.system("sudo reboot")
+        else:
+            sys.exit()
 
 def convert_to_h265(source_file_path, fail_file_path):
     global total_before_filesize
