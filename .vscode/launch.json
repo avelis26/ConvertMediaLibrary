@@ -13,7 +13,7 @@
             "justMyCode": true
         },
         {
-            "name": "Python: movies",
+            "name": "Python: PROD movies",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -25,7 +25,7 @@
             ]
         },
         {
-            "name": "Python: shows",
+            "name": "Python: PROD shows",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -37,7 +37,7 @@
             ]
         },
         {
-            "name": "Python: temp",
+            "name": "Python: mTemp",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -46,6 +46,18 @@
             "args": [
                 "-p",
                 "parameters_movies_temp.json"
+            ]
+        },
+        {
+            "name": "Python: sTemp",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "-p",
+                "parameters_shows_temp.json"
             ]
         },
         {
