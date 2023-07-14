@@ -118,15 +118,18 @@ def write_status(status_file_path, hostname, status):
 
 def check_active_status(status_file_path):
     try:
-        with open(status_file_path, "r") as file:
-            data = json.load(file)
+        with open(status_file_path, "r") as status_file:
+            fcntl.flock(status_file.fileno(), fcntl.LOCK_EX)
+            status_data = json.load(status_file)
+            for host in status_data["hosts"]:
+                if host["status"] == "ACTIVE":
+                    fcntl.flock(status_file.fileno(), fcntl.LOCK_UN)
+                    return True
+            fcntl.flock(status_file.fileno(), fcntl.LOCK_UN)
+            return False
     except Exception as e:
         logging.error(f"Failed to load status file: {e}")
         sys.exit(1)
-    for entry in data:
-        if entry.get("status") == "ACTIVE":
-            return True
-    return False
 
 def convert_to_h265(source_file_path, fail_file_path):
     global total_before_filesize
