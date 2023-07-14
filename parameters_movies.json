@@ -3,7 +3,9 @@
 	"manifest_filename": "movies_manifest.txt",
 	"log_parent_path": "/home/avelis/vilicus/",
 	"log_filename": "vilicus_movies.log",
-	"exit_filename": "exit.txt",
+	"exit_filename": "exit_movies.txt",
 	"fail_filename": "vilicus_movies_fail.log",
-	"min_file_size": 268000000
+	"min_file_size": 268000000,
+	"status_filename": "vilicus_status.json",
+	"status_parent_path": "/mnt/data/Media/"
 }

@@ -37,6 +37,18 @@
             ]
         },
         {
+            "name": "Python: temp",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "-p",
+                "parameters_movies_temp.json"
+            ]
+        },
+        {
             "name": "Python: old",
             "type": "python",
             "request": "launch",
@@ -49,7 +61,7 @@
             ]
         },
         {
-            "name": "Python: multi",
+            "name": "Python: report",
             "type": "python",
             "request": "launch",
             "program": "${file}",

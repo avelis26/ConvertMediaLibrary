@@ -6,6 +6,9 @@ import logging
 import os
 import sys
 import ffmpeg
+import socket
+import fcntl
+import time
 
 def load_parameters(param_file):
     try:
@@ -30,7 +33,8 @@ def setup_logging(ops_log):
         logging.error(f"Failed to set up logging: {e}")
         sys.exit(1)
 
-def create_videos_manifest(parameters):
+def create_videos_manifest(parameters, status_file_path, id):
+    logging.info('Creating non-h265 videos manifest...')
     try:
         input_path = parameters['videos_parent_path']
         videos_manifest_path = os.path.join(parameters['log_parent_path'], parameters['manifest_filename'])
@@ -57,20 +61,67 @@ def create_videos_manifest(parameters):
         logging.info('Non-h265 videos manifest created.')
         return videos_manifest_path
     except Exception as e:
+        write_status(status_file_path, id, "inactive")
         logging.error(f"Failed to create videos manifest: {e}")
         sys.exit(1)
 
-def soft_exit(exit_file_path):
+def soft_exit(exit_file_path, status_file_path, id):
     if os.path.exists(exit_file_path):
+        write_status(status_file_path, id, "inactive")
         logging.info('EXECUTION STOPPED BY USER')
         logging.info('******************************************************')
         with open(exit_file_path, 'r') as file:
             contents = file.read()
         os.remove(exit_file_path)
         if contents.strip() == "reboot":
+            i = 0
+            while check_active_status(status_file_path) == True:
+                time.sleep(10)
+                i += 1
+                if i == 1080:
+                    logging.error("check_active_status timed out after 3 hours!")
+                    sys.exit(1)
             os.system("sudo reboot")
         else:
             sys.exit()
+
+def write_status(status_file_path, id, status):
+    try:
+        if not os.path.exists(status_file_path):
+            with open(status_file_path, "w") as status_file:
+                status_data = {"id": id, "status": status}
+                json.dump(status_data, status_file, indent=4)
+                status_file.write("\n")
+                logging.debug("Status file created.")
+        else:
+            with open(status_file_path, "r+") as status_file:
+                fcntl.flock(status_file.fileno(), fcntl.LOCK_EX)
+                status_data = json.load(status_file)
+                if str(id) in status_data:
+                    status_data[str(id)]["status"] = status
+                else:
+                    status_data = {"id": str(id), "status": status}  # Update the entire status_data dictionary
+                status_file.seek(0)
+                json.dump(status_data, status_file, indent=4)
+                status_file.write("\n")
+                status_file.truncate()
+                fcntl.flock(status_file.fileno(), fcntl.LOCK_UN)
+                logging.debug("Status file updated.")
+    except Exception as e:
+        logging.error(f"An error occurred while writing status: {str(e)}")
+
+
+def check_active_status(status_file_path):
+    try:
+        with open(status_file_path, "r") as file:
+            data = json.load(file)
+    except Exception as e:
+        logging.error(f"Failed to load status file: {e}")
+        sys.exit(1)
+    for entry in data:
+        if entry.get("status") == "ACTIVE":
+            return True
+    return False
 
 def convert_to_h265(source_file_path, fail_file_path):
     global total_before_filesize
@@ -110,7 +161,9 @@ def main():
     parameters = load_parameters(args.paramfile)
     os.makedirs(parameters['log_parent_path'], exist_ok=True)
     ops_log = os.path.join(parameters['log_parent_path'], parameters['log_filename'])
+    status_file_path = os.path.join(parameters['status_parent_path'], parameters['status_filename'])
     exit_file_path = os.path.join(parameters['log_parent_path'], parameters['exit_filename'])
+    id = socket.gethostname() + parameters['manifest_filename']
     setup_logging(ops_log)
     logging.info('******************************************************')
     logging.info('EXECUTION START')
@@ -118,16 +171,17 @@ def main():
     logging.debug(f'manifest_path:        {parameters["log_parent_path"]}')
     logging.debug(f'opsLog:               {ops_log}')
     logging.debug(f'exitFile:             {exit_file_path}')
-    logging.info('Creating non-h265 videos manifest...')
-    videos_manifest_path = create_videos_manifest(parameters)
-    soft_exit(exit_file_path)
+    write_status(status_file_path, id, "ACTIVE")
+    videos_manifest_path = create_videos_manifest(parameters, status_file_path, id)
+    soft_exit(exit_file_path, status_file_path, id)
     logging.info('Beginning ffmpeg conversions...')
     with open(videos_manifest_path, 'r') as file:
         lines = file.readlines()
         for line in lines:
             conversion_counter += 1
             convert_to_h265(line.strip(), parameters['log_parent_path'] + parameters['fail_filename'])
-            soft_exit(exit_file_path)
+            soft_exit(exit_file_path, status_file_path, id)
+    write_status(status_file_path, id, "inactive")
     logging.info('EXECUTION STOP')
     logging.info('******************************************************')
 
