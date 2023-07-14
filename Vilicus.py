@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# NEED TO REVIEW MANIFEST CREATION IN RELATION TO MULTI_SYSTEM OPERATIONS
 import argparse
 import decimal
 import fcntl
