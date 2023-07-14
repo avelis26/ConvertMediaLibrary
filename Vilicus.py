@@ -89,27 +89,28 @@ def write_status(status_file_path, id, status):
     try:
         if not os.path.exists(status_file_path):
             with open(status_file_path, "w") as status_file:
-                status_data = {"id": id, "status": status}
+                status_data = [{"id": id, "status": status}]  # Create a list with the initial entry
                 json.dump(status_data, status_file, indent=4)
-                status_file.write("\n")
                 logging.debug("Status file created.")
         else:
             with open(status_file_path, "r+") as status_file:
                 fcntl.flock(status_file.fileno(), fcntl.LOCK_EX)
                 status_data = json.load(status_file)
-                if str(id) in status_data:
-                    status_data[str(id)]["status"] = status
-                else:
-                    status_data = {"id": str(id), "status": status}  # Update the entire status_data dictionary
+                found = False
+                for item in status_data:
+                    if item["id"] == id:
+                        item["status"] = status
+                        found = True
+                        break
+                if not found:
+                    status_data.append({"id": id, "status": status})  # Append new entry to the list
                 status_file.seek(0)
                 json.dump(status_data, status_file, indent=4)
-                status_file.write("\n")
                 status_file.truncate()
                 fcntl.flock(status_file.fileno(), fcntl.LOCK_UN)
                 logging.debug("Status file updated.")
     except Exception as e:
         logging.error(f"An error occurred while writing status: {str(e)}")
-
 
 def check_active_status(status_file_path):
     try:
