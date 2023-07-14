@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 import argparse
 import decimal
+import fcntl
 import json
 import logging
 import os
-import sys
-import ffmpeg
 import socket
-import fcntl
+import sys
 import time
+import ffmpeg
 
 def load_parameters(param_file):
     try:
