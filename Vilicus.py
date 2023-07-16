@@ -162,6 +162,7 @@ def convert_to_h265(source_file_path, fail_file_path):
         with open(fail_file_path, 'w') as file:
             file.write(source_file_path)
 
+
 def main():
     global conversion_counter
     parser = argparse.ArgumentParser(description='Find and convert all non-h265 video files to h265 with ffmpeg.')
