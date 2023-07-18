@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-# NEED TO REVIEW MANIFEST CREATION IN RELATION TO MULTI_SYSTEM OPERATIONS
+# Need to update logic for creating manifest file so multiple systems don't contend.
+# Needs better error handling to ensure status file reverts to inactive.
+# Consider adding parameter to select witch encoder library to use (libx265 vs hevc_nvenc).
 import argparse
 import decimal
 import fcntl
@@ -93,7 +95,7 @@ def write_status(status_file_path, hostname, status):
                 status_data = {"hosts": [{"hostname": hostname, "status": status}]}
                 json.dump(status_data, status_file, indent=4)
                 status_file.write("\n")
-                logging.debug("Status file created.")
+                logging.info("Status file created.")
         else:
             with open(status_file_path, "r+") as status_file:
                 fcntl.flock(status_file.fileno(), fcntl.LOCK_EX)
@@ -112,7 +114,7 @@ def write_status(status_file_path, hostname, status):
                 status_file.write("\n")
                 status_file.truncate()
                 fcntl.flock(status_file.fileno(), fcntl.LOCK_UN)
-                logging.debug("Status file updated.")
+                logging.info("Status file updated.")
     except Exception as e:
         logging.error(f"An error occurred while writing status: {str(e)}")
         sys.exit(1)
@@ -136,11 +138,12 @@ def convert_to_h265(source_file_path, fail_file_path):
     global total_before_filesize
     global total_after_filesize
     try:
+        start_time = time.time()
         base = os.path.splitext(source_file_path)[0]
         output_file = base + '.mkv'
-        logging.debug(output_file)
+        logging.info(output_file)
         os.rename(source_file_path, source_file_path + '.old')
-        ffmpeg.input(source_file_path + '.old').output(output_file, vcodec="libx265", crf=28, acodec="copy", **{'threads:v': '1', 'x265-params': 'aq-mode=3'}).run()
+        ffmpeg.input(source_file_path + '.old').output(output_file, vcodec='hevc_nvenc', preset='slow', qp=23).run()
         ffmpeg.input(output_file).output("null", f="null").run()
         logging.info("Video validation succeeded.")
         before_file_size = os.path.getsize(source_file_path + '.old')
@@ -150,15 +153,29 @@ def convert_to_h265(source_file_path, fail_file_path):
         total_after_filesize.append(after_file_size)
         total_difference = sum(total_before_filesize) - sum(total_after_filesize)
         space_saved = round((decimal.Decimal(total_difference) / decimal.Decimal(1073741824)), 2)
-        logging.debug(f'Before Size:    {before_file_size}')
-        logging.debug(f'After Size:     {after_file_size}')
-        logging.debug(f'Difference:     {difference}')
+        end_time = time.time()
+        execution_time = end_time - start_time
+        execution_time_formatted = time.strftime("%H:%M:%S", time.gmtime(execution_time))
         logging.info(f'Conversions:    {conversion_counter}')
-        logging.debug(f'Total Diff(B):  {total_difference}')
+        logging.info(f'Before Size:    {before_file_size}')
+        logging.info(f'After Size:     {after_file_size}')
+        logging.info(f'Difference:     {difference}')
+        logging.info(f"Execution Time: {execution_time_formatted}")
+        logging.info(f'Total Diff(B):  {total_difference}')
         logging.info(f'Total Diff(GB): {space_saved} GBs')
         os.remove(source_file_path + '.old')
-    except Exception:
+    except Exception as e:
         logging.error(f"Failed to convert file: {source_file_path}")
+        logging.error(f"{str(e)}")
+        mkv_file = os.path.splitext(source_file_path)[0] + '.mkv'
+        if os.path.exists(mkv_file):
+            os.remove(mkv_file)
+            logging.info(f"Deleted {mkv_file}")
+        old_file = source_file_path + '.old'
+        if os.path.exists(old_file):
+            os.rename(old_file, source_file_path)
+            logging.info(f"Rename OLD: {old_file}")
+            logging.info(f"Rename NEW: {source_file_path}")
         with open(fail_file_path, 'w') as file:
             file.write(source_file_path)
 
@@ -176,10 +193,10 @@ def main():
     setup_logging(ops_log)
     logging.info('******************************************************')
     logging.info('EXECUTION START')
-    logging.debug(f'input_path:           {parameters["videos_parent_path"]}')
-    logging.debug(f'manifest_path:        {parameters["log_parent_path"]}')
-    logging.debug(f'opsLog:               {ops_log}')
-    logging.debug(f'exitFile:             {exit_file_path}')
+    logging.info(f'input_path:           {parameters["videos_parent_path"]}')
+    logging.info(f'manifest_path:        {parameters["log_parent_path"]}')
+    logging.info(f'opsLog:               {ops_log}')
+    logging.info(f'exitFile:             {exit_file_path}')
     write_status(status_file_path, id, "ACTIVE")
     videos_manifest_path = create_videos_manifest(parameters, status_file_path, id)
     soft_exit(exit_file_path, status_file_path, id)

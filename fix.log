@@ -1,0 +1,550 @@
+2023-07-16 04:05:50,696 [INFO]  ******************************************************
+2023-07-16 04:05:50,697 [INFO]  EXECUTION START
+2023-07-16 04:05:50,697 [DEBUG] input_path:           /mnt/data/Media/Movies/
+2023-07-16 04:05:50,697 [DEBUG] manifest_path:        /home/avelis/vilicus/
+2023-07-16 04:05:50,697 [DEBUG] opsLog:               /home/avelis/vilicus/vilicus_movies.log
+2023-07-16 04:05:50,697 [DEBUG] exitFile:             /home/avelis/vilicus/exit_movies.txt
+2023-07-16 04:05:50,754 [DEBUG] Status file updated.
+2023-07-16 04:05:50,754 [INFO]  Creating non-h265 videos manifest...
+2023-07-16 04:08:34,778 [INFO]  Total Non-h265 Videos: 425
+2023-07-16 04:08:34,778 [INFO]  Non-h265 videos manifest created.
+2023-07-16 04:08:34,778 [INFO]  Beginning ffmpeg conversions...
+2023-07-16 04:08:34,778 [DEBUG] /mnt/data/Media/Movies/The_Aeronauts_(2019)/The_Aeronauts_(2019).mkv
+2023-07-16 04:08:36,291 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Aeronauts_(2019)/The_Aeronauts_(2019).mp4
+2023-07-16 04:08:36,292 [DEBUG] /mnt/data/Media/Movies/Blade_(1998)/Blade_(1998).mkv
+2023-07-16 04:08:36,423 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Blade_(1998)/Blade_(1998).mp4
+2023-07-16 04:08:36,423 [DEBUG] /mnt/data/Media/Movies/Glass_(2019)/Glass_(2019).mkv
+2023-07-16 04:08:36,538 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Glass_(2019)/Glass_(2019).mp4
+2023-07-16 04:08:36,538 [DEBUG] /mnt/data/Media/Movies/Iron_Man_3_(2013)/Iron_Man_3_(2013).mkv
+2023-07-16 04:08:36,630 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Iron_Man_3_(2013)/Iron_Man_3_(2013).mp4
+2023-07-16 04:08:36,631 [DEBUG] /mnt/data/Media/Movies/Iron_Man_2_(2010)/Iron_Man_2_(2010).mkv
+2023-07-16 04:08:36,721 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Iron_Man_2_(2010)/Iron_Man_2_(2010).mp4
+2023-07-16 04:08:36,722 [DEBUG] /mnt/data/Media/Movies/The_Chronicles_Of_Narnia_-_The_Voyage_Of_The_Dawn_Treader_(2010)/The_Chronicles_Of_Narnia_-_The_Voyage_Of_The_Dawn_Treader_(2010).mkv
+2023-07-16 04:08:36,803 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Chronicles_Of_Narnia_-_The_Voyage_Of_The_Dawn_Treader_(2010)/The_Chronicles_Of_Narnia_-_The_Voyage_Of_The_Dawn_Treader_(2010).mp4
+2023-07-16 04:08:36,804 [DEBUG] /mnt/data/Media/Movies/Anchorman_-_The_Legend_Of_Ron_Burgundy_(2004)/Anchorman_-_The_Legend_Of_Ron_Burgundy_(2004).mkv
+2023-07-16 04:08:36,892 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Anchorman_-_The_Legend_Of_Ron_Burgundy_(2004)/Anchorman_-_The_Legend_Of_Ron_Burgundy_(2004).avi
+2023-07-16 04:08:36,892 [DEBUG] /mnt/data/Media/Movies/Abigail_(2019)/Abigail_(2019).mkv
+2023-07-16 04:08:36,998 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Abigail_(2019)/Abigail_(2019).mp4
+2023-07-16 04:08:36,999 [DEBUG] /mnt/data/Media/Movies/The_Little_Rascals_(1994)/The_Little_Rascals_(1994).mkv
+2023-07-16 04:08:37,074 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Little_Rascals_(1994)/The_Little_Rascals_(1994).mp4
+2023-07-16 04:08:37,075 [DEBUG] /mnt/data/Media/Movies/The_Andromeda_Strain_(1971)/The_Andromeda_Strain_(1971).mkv
+2023-07-16 04:08:37,126 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Andromeda_Strain_(1971)/The_Andromeda_Strain_(1971).mkv
+2023-07-16 04:08:37,126 [DEBUG] /mnt/data/Media/Movies/Inside_Out_(2015)/Inside_Out_(2015).mkv
+2023-07-16 04:08:37,206 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Inside_Out_(2015)/Inside_Out_(2015).mp4
+2023-07-16 04:08:37,207 [DEBUG] /mnt/data/Media/Movies/Everything_Everywhere_All_At_Once_(2022)/Everything_Everywhere_All_At_Once_(2022).mkv
+2023-07-16 04:08:37,321 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Everything_Everywhere_All_At_Once_(2022)/Everything_Everywhere_All_At_Once_(2022).mp4
+2023-07-16 04:08:37,321 [DEBUG] /mnt/data/Media/Movies/A_Night_At_The_Roxbury_(1998)/A_Night_At_The_Roxbury_(1998).mkv
+2023-07-16 04:08:37,404 [ERROR] Failed to convert file: /mnt/data/Media/Movies/A_Night_At_The_Roxbury_(1998)/A_Night_At_The_Roxbury_(1998).avi
+2023-07-16 04:08:37,404 [DEBUG] /mnt/data/Media/Movies/Bruce_Almighty_(2003)/Bruce_Almighty_(2003).mkv
+2023-07-16 04:08:37,483 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Bruce_Almighty_(2003)/Bruce_Almighty_(2003).mp4
+2023-07-16 04:08:37,483 [DEBUG] /mnt/data/Media/Movies/Independence_Day_(1996)/Independence_Day_(1996).mkv
+2023-07-16 04:08:37,578 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Independence_Day_(1996)/Independence_Day_(1996).mp4
+2023-07-16 04:08:37,579 [DEBUG] /mnt/data/Media/Movies/The_Emoji_Movie_(2017)/The_Emoji_Movie_(2017).mkv
+2023-07-16 04:08:37,673 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Emoji_Movie_(2017)/The_Emoji_Movie_(2017).mp4
+2023-07-16 04:08:37,674 [DEBUG] /mnt/data/Media/Movies/Trolls_World_Tour_(2020)/Trolls_World_Tour_(2020).mkv
+2023-07-16 04:08:37,759 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Trolls_World_Tour_(2020)/Trolls_World_Tour_(2020).mp4
+2023-07-16 04:08:37,759 [DEBUG] /mnt/data/Media/Movies/Flags_Of_Our_Fathers_(2006)/Flags_Of_Our_Fathers_(2006).mkv
+2023-07-16 04:08:37,840 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Flags_Of_Our_Fathers_(2006)/Flags_Of_Our_Fathers_(2006).mp4
+2023-07-16 04:08:37,841 [DEBUG] /mnt/data/Media/Movies/The_Kid_Who_Would_Be_King_(2019)/The_Kid_Who_Would_Be_King_(2019).mkv
+2023-07-16 04:08:37,942 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Kid_Who_Would_Be_King_(2019)/The_Kid_Who_Would_Be_King_(2019).mp4
+2023-07-16 04:08:37,942 [DEBUG] /mnt/data/Media/Movies/Alien_Xmas_(2020)/Alien_Xmas_(2020).mkv
+2023-07-16 04:08:38,025 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Alien_Xmas_(2020)/Alien_Xmas_(2020).mp4
+2023-07-16 04:08:38,026 [DEBUG] /mnt/data/Media/Movies/Jeepers_Creepers_2_(2003)/Jeepers_Creepers_2_(2003).mkv
+2023-07-16 04:08:38,121 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Jeepers_Creepers_2_(2003)/Jeepers_Creepers_2_(2003).mp4
+2023-07-16 04:08:38,121 [DEBUG] /mnt/data/Media/Movies/Mr._&_Mrs._Smith_(2005)/Mr._&_Mrs._Smith_(2005).mkv
+2023-07-16 04:08:38,234 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Mr._&_Mrs._Smith_(2005)/Mr._&_Mrs._Smith_(2005).avi
+2023-07-16 04:08:38,234 [DEBUG] /mnt/data/Media/Movies/Charlotte's_Web_(2006)/Charlotte's_Web_(2006).mkv
+2023-07-16 04:08:38,324 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Charlotte's_Web_(2006)/Charlotte's_Web_(2006).mp4
+2023-07-16 04:08:38,324 [DEBUG] /mnt/data/Media/Movies/Contagion_(2011)/Contagion_(2011).mkv
+2023-07-16 04:08:38,377 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Contagion_(2011)/Contagion_(2011).mkv
+2023-07-16 04:08:38,378 [DEBUG] /mnt/data/Media/Movies/Z-O-M-B-I-E-S_3_(2022)/Z-O-M-B-I-E-S_3_(2022).mkv
+2023-07-16 04:08:38,464 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Z-O-M-B-I-E-S_3_(2022)/Z-O-M-B-I-E-S_3_(2022).mp4
+2023-07-16 04:08:38,464 [DEBUG] /mnt/data/Media/Movies/X2_(2003)/X2_(2003).mkv
+2023-07-16 04:08:38,585 [ERROR] Failed to convert file: /mnt/data/Media/Movies/X2_(2003)/X2_(2003).avi
+2023-07-16 04:08:38,585 [DEBUG] /mnt/data/Media/Movies/Jack_Ryan_-_Shadow_Recruit_(2014)/Jack_Ryan_-_Shadow_Recruit_(2014).mkv
+2023-07-16 04:08:38,656 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Jack_Ryan_-_Shadow_Recruit_(2014)/Jack_Ryan_-_Shadow_Recruit_(2014).mp4
+2023-07-16 04:08:38,656 [DEBUG] /mnt/data/Media/Movies/The_Fifth_Element_(1997)/The_Fifth_Element_(1997).mkv
+2023-07-16 04:08:38,730 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Fifth_Element_(1997)/The_Fifth_Element_(1997).avi
+2023-07-16 04:08:38,730 [DEBUG] /mnt/data/Media/Movies/Underworld_-_Extended_Edition_(2003)/Underworld_-_Extended_Edition_(2003).mkv
+2023-07-16 04:08:38,812 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Underworld_-_Extended_Edition_(2003)/Underworld_-_Extended_Edition_(2003).mp4
+2023-07-16 04:08:38,813 [DEBUG] /mnt/data/Media/Movies/Men_In_Black_II_(2002)/Men_In_Black_II_(2002).mkv
+2023-07-16 04:08:38,909 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Men_In_Black_II_(2002)/Men_In_Black_II_(2002).avi
+2023-07-16 04:08:38,909 [DEBUG] /mnt/data/Media/Movies/Penguins_(2019)/Penguins_(2019).mkv
+2023-07-16 04:08:39,012 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Penguins_(2019)/Penguins_(2019).mp4
+2023-07-16 04:08:39,012 [DEBUG] /mnt/data/Media/Movies/Hotel_Transylvania_-_Transformania_(2022)/Hotel_Transylvania_-_Transformania_(2022).mkv
+2023-07-16 04:08:39,101 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Hotel_Transylvania_-_Transformania_(2022)/Hotel_Transylvania_-_Transformania_(2022).mp4
+2023-07-16 04:08:39,101 [DEBUG] /mnt/data/Media/Movies/Arachnophobia_(1990)/Arachnophobia_(1990).mkv
+2023-07-16 04:08:40,615 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Arachnophobia_(1990)/Arachnophobia_(1990).avi
+2023-07-16 04:08:40,616 [DEBUG] /mnt/data/Media/Movies/TRON_-_Legacy_(2010)/TRON_-_Legacy_(2010).mkv
+2023-07-16 04:08:40,696 [ERROR] Failed to convert file: /mnt/data/Media/Movies/TRON_-_Legacy_(2010)/TRON_-_Legacy_(2010).avi
+2023-07-16 04:08:40,697 [DEBUG] /mnt/data/Media/Movies/Green_Lantern_(2011)/Green_Lantern_(2011).mkv
+2023-07-16 04:08:40,771 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Green_Lantern_(2011)/Green_Lantern_(2011).avi
+2023-07-16 04:08:40,771 [DEBUG] /mnt/data/Media/Movies/The_One_And_Only_Ivan_(2020)/The_One_And_Only_Ivan_(2020).mkv
+2023-07-16 04:08:40,859 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_One_And_Only_Ivan_(2020)/The_One_And_Only_Ivan_(2020).mp4
+2023-07-16 04:08:40,859 [DEBUG] /mnt/data/Media/Movies/Ernest_Scared_Stupid_(1991)/Ernest_Scared_Stupid_(1991).mkv
+2023-07-16 04:08:40,965 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Ernest_Scared_Stupid_(1991)/Ernest_Scared_Stupid_(1991).mp4
+2023-07-16 04:08:40,966 [DEBUG] /mnt/data/Media/Movies/Vesper_(2022)/Vesper_(2022).mkv
+2023-07-16 04:08:41,059 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Vesper_(2022)/Vesper_(2022).mp4
+2023-07-16 04:08:41,059 [DEBUG] /mnt/data/Media/Movies/Raiders_Of_The_Lost_Ark_(1981)/Raiders_Of_The_Lost_Ark_(1981).mkv
+2023-07-16 04:08:41,160 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Raiders_Of_The_Lost_Ark_(1981)/Raiders_Of_The_Lost_Ark_(1981).mp4
+2023-07-16 04:08:41,160 [DEBUG] /mnt/data/Media/Movies/Teenage_Mutant_Ninja_Turtles_II_-_The_Secret_Of_The_Ooze_(1991)/Teenage_Mutant_Ninja_Turtles_II_-_The_Secret_Of_The_Ooze_(1991).mkv
+2023-07-16 04:08:41,256 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Teenage_Mutant_Ninja_Turtles_II_-_The_Secret_Of_The_Ooze_(1991)/Teenage_Mutant_Ninja_Turtles_II_-_The_Secret_Of_The_Ooze_(1991).avi
+2023-07-16 04:08:41,257 [DEBUG] /mnt/data/Media/Movies/Stand_By_Me_(1986)/Stand_By_Me_(1986).mkv
+2023-07-16 04:08:41,335 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Stand_By_Me_(1986)/Stand_By_Me_(1986).mp4
+2023-07-16 04:08:41,335 [DEBUG] /mnt/data/Media/Movies/Horton_Hears_A_Who!_(2008)/Horton_Hears_A_Who!_(2008).mkv
+2023-07-16 04:08:41,417 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Horton_Hears_A_Who!_(2008)/Horton_Hears_A_Who!_(2008).mp4
+2023-07-16 04:08:41,417 [DEBUG] /mnt/data/Media/Movies/Hubble's_Cosmic_Journey_(2015)/Hubble's_Cosmic_Journey_(2015).mkv
+2023-07-16 04:08:41,500 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Hubble's_Cosmic_Journey_(2015)/Hubble's_Cosmic_Journey_(2015).mp4
+2023-07-16 04:08:41,501 [DEBUG] /mnt/data/Media/Movies/Sex_Drive_(2008)/Sex_Drive_(2008).mkv
+2023-07-16 04:08:41,630 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Sex_Drive_(2008)/Sex_Drive_(2008).avi
+2023-07-16 04:08:41,630 [DEBUG] /mnt/data/Media/Movies/Early_Man_(2018)/Early_Man_(2018).mkv
+2023-07-16 04:08:41,758 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Early_Man_(2018)/Early_Man_(2018).mp4
+2023-07-16 04:08:41,758 [DEBUG] /mnt/data/Media/Movies/Love_&_Other_Drugs_(2010)/Love_&_Other_Drugs_(2010).mkv
+2023-07-16 04:08:41,905 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Love_&_Other_Drugs_(2010)/Love_&_Other_Drugs_(2010).avi
+2023-07-16 04:08:41,905 [DEBUG] /mnt/data/Media/Movies/The_Hangover_Part_II_(2011)/The_Hangover_Part_II_(2011).mkv
+2023-07-16 04:08:42,073 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Hangover_Part_II_(2011)/The_Hangover_Part_II_(2011).avi
+2023-07-16 04:08:42,074 [DEBUG] /mnt/data/Media/Movies/Horrible_Bosses_2_(2014)/Horrible_Bosses_2_(2014).mkv
+2023-07-16 04:08:42,204 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Horrible_Bosses_2_(2014)/Horrible_Bosses_2_(2014).avi
+2023-07-16 04:08:42,204 [DEBUG] /mnt/data/Media/Movies/UglyDolls_(2019)/UglyDolls_(2019).mkv
+2023-07-16 04:08:42,302 [ERROR] Failed to convert file: /mnt/data/Media/Movies/UglyDolls_(2019)/UglyDolls_(2019).mp4
+2023-07-16 04:08:42,302 [DEBUG] /mnt/data/Media/Movies/The_Land_Before_Time_VII_-_The_Stone_Of_Cold_Fire_(2000)/The_Land_Before_Time_VII_-_The_Stone_Of_Cold_Fire_(2000).mkv
+2023-07-16 04:08:42,433 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Land_Before_Time_VII_-_The_Stone_Of_Cold_Fire_(2000)/The_Land_Before_Time_VII_-_The_Stone_Of_Cold_Fire_(2000).mp4
+2023-07-16 04:08:42,433 [DEBUG] /mnt/data/Media/Movies/Invasion_Of_The_Body_Snatchers_(1978)/Invasion_Of_The_Body_Snatchers_(1978).mkv
+2023-07-16 04:08:42,605 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Invasion_Of_The_Body_Snatchers_(1978)/Invasion_Of_The_Body_Snatchers_(1978).avi
+2023-07-16 04:08:42,606 [DEBUG] /mnt/data/Media/Movies/Ferris_Bueller's_Day_Off_(1986)/Ferris_Bueller's_Day_Off_(1986).mkv
+2023-07-16 04:08:42,694 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Ferris_Bueller's_Day_Off_(1986)/Ferris_Bueller's_Day_Off_(1986).mp4
+2023-07-16 04:08:42,694 [DEBUG] /mnt/data/Media/Movies/Bolt_(2008)/Bolt_(2008).mkv
+2023-07-16 04:08:42,826 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Bolt_(2008)/Bolt_(2008).avi
+2023-07-16 04:08:42,826 [DEBUG] /mnt/data/Media/Movies/Dragnet_(1987)/Dragnet_(1987).mkv
+2023-07-16 04:08:42,937 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Dragnet_(1987)/Dragnet_(1987).avi
+2023-07-16 04:08:42,937 [DEBUG] /mnt/data/Media/Movies/Ice_Age_-_The_Meltdown_(2006)/Ice_Age_-_The_Meltdown_(2006).mkv
+2023-07-16 04:08:43,051 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Ice_Age_-_The_Meltdown_(2006)/Ice_Age_-_The_Meltdown_(2006).mp4
+2023-07-16 04:08:43,051 [DEBUG] /mnt/data/Media/Movies/The_Mummy_(1999)/The_Mummy_(1999).mkv
+2023-07-16 04:08:43,155 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Mummy_(1999)/The_Mummy_(1999).mp4
+2023-07-16 04:08:43,155 [DEBUG] /mnt/data/Media/Movies/Saving_Private_Ryan_(1998)/Saving_Private_Ryan_(1998).mkv
+2023-07-16 04:08:43,254 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Saving_Private_Ryan_(1998)/Saving_Private_Ryan_(1998).mp4
+2023-07-16 04:08:43,254 [DEBUG] /mnt/data/Media/Movies/LEGO_DC_Comics_Super_Heroes_-_Justice_League_-_Gotham_City_Breakout_(2016)/LEGO_DC_Comics_Super_Heroes_-_Justice_League_-_Gotham_City_Breakout_(2016).mkv
+2023-07-16 04:08:43,371 [ERROR] Failed to convert file: /mnt/data/Media/Movies/LEGO_DC_Comics_Super_Heroes_-_Justice_League_-_Gotham_City_Breakout_(2016)/LEGO_DC_Comics_Super_Heroes_-_Justice_League_-_Gotham_City_Breakout_(2016).mp4
+2023-07-16 04:08:43,371 [DEBUG] /mnt/data/Media/Movies/High_Life_(2018)/High_Life_(2018).mkv
+2023-07-16 04:08:44,854 [ERROR] Failed to convert file: /mnt/data/Media/Movies/High_Life_(2018)/High_Life_(2018).mp4
+2023-07-16 04:08:44,855 [DEBUG] /mnt/data/Media/Movies/Cloudy_With_A_Chance_Of_Meatballs_2_(2013)/Cloudy_With_A_Chance_Of_Meatballs_2_(2013).mkv
+2023-07-16 04:08:44,966 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Cloudy_With_A_Chance_Of_Meatballs_2_(2013)/Cloudy_With_A_Chance_Of_Meatballs_2_(2013).mp4
+2023-07-16 04:08:44,966 [DEBUG] /mnt/data/Media/Movies/Ted_2_(2015)/Ted_2_(2015).mkv
+2023-07-16 04:08:45,095 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Ted_2_(2015)/Ted_2_(2015).mp4
+2023-07-16 04:08:45,095 [DEBUG] /mnt/data/Media/Movies/Shaun_Of_The_Dead_(2004)/Shaun_Of_The_Dead_(2004).mkv
+2023-07-16 04:08:45,175 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Shaun_Of_The_Dead_(2004)/Shaun_Of_The_Dead_(2004).mp4
+2023-07-16 04:08:45,175 [DEBUG] /mnt/data/Media/Movies/National_Geographic_-_Journey_To_The_Edge_Of_The_Universe_(2008)/National_Geographic_-_Journey_To_The_Edge_Of_The_Universe_(2008).mkv
+2023-07-16 04:08:45,280 [ERROR] Failed to convert file: /mnt/data/Media/Movies/National_Geographic_-_Journey_To_The_Edge_Of_The_Universe_(2008)/National_Geographic_-_Journey_To_The_Edge_Of_The_Universe_(2008).mp4
+2023-07-16 04:08:45,281 [DEBUG] /mnt/data/Media/Movies/Army_Of_Darkness_(1992)/Army_Of_Darkness_(1992).mkv
+2023-07-16 04:08:45,404 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Army_Of_Darkness_(1992)/Army_Of_Darkness_(1992).mp4
+2023-07-16 04:08:45,405 [DEBUG] /mnt/data/Media/Movies/Star_Trek_Into_Darkness_(2013)/Star_Trek_Into_Darkness_(2013).mkv
+2023-07-16 04:08:45,499 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Star_Trek_Into_Darkness_(2013)/Star_Trek_Into_Darkness_(2013).mp4
+2023-07-16 04:08:45,499 [DEBUG] /mnt/data/Media/Movies/I_Am_Number_Four_(2011)/I_Am_Number_Four_(2011).mkv
+2023-07-16 04:08:45,623 [ERROR] Failed to convert file: /mnt/data/Media/Movies/I_Am_Number_Four_(2011)/I_Am_Number_Four_(2011).avi
+2023-07-16 04:08:45,623 [DEBUG] /mnt/data/Media/Movies/V_For_Vendetta_(2006)/V_For_Vendetta_(2006).mkv
+2023-07-16 04:08:45,735 [ERROR] Failed to convert file: /mnt/data/Media/Movies/V_For_Vendetta_(2006)/V_For_Vendetta_(2006).mp4
+2023-07-16 04:08:45,735 [DEBUG] /mnt/data/Media/Movies/Home_Alone_2_-_Lost_In_New_York_(1992)/Home_Alone_2_-_Lost_In_New_York_(1992).mkv
+2023-07-16 04:08:45,834 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Home_Alone_2_-_Lost_In_New_York_(1992)/Home_Alone_2_-_Lost_In_New_York_(1992).mp4
+2023-07-16 04:08:45,835 [DEBUG] /mnt/data/Media/Movies/Hancock_(2008)/Hancock_(2008).mkv
+2023-07-16 04:08:45,938 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Hancock_(2008)/Hancock_(2008).avi
+2023-07-16 04:08:45,939 [DEBUG] /mnt/data/Media/Movies/Hop_(2011)/Hop_(2011).mkv
+2023-07-16 04:08:46,020 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Hop_(2011)/Hop_(2011).mp4
+2023-07-16 04:08:46,020 [DEBUG] /mnt/data/Media/Movies/The Portable Door (2023) [1080p] [WEBRip] [5.1] [YTS.MX]/The.Portable.Door.2023.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mkv
+2023-07-16 04:08:46,167 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The Portable Door (2023) [1080p] [WEBRip] [5.1] [YTS.MX]/The.Portable.Door.2023.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4
+2023-07-16 04:08:46,167 [DEBUG] /mnt/data/Media/Movies/Paul_(2011)/Paul_(2011).mkv
+2023-07-16 04:08:46,294 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Paul_(2011)/Paul_(2011).avi
+2023-07-16 04:08:46,295 [DEBUG] /mnt/data/Media/Movies/Super_Troopers_(2001)/Super_Troopers_(2001).mkv
+2023-07-16 04:08:46,406 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Super_Troopers_(2001)/Super_Troopers_(2001).mp4
+2023-07-16 04:08:46,406 [DEBUG] /mnt/data/Media/Movies/The_Chronicles_Of_Narnia_-_The_Lion,_The_Witch_And_The_Wardrobe_(2005)/The_Chronicles_Of_Narnia_-_The_Lion,_The_Witch_And_The_Wardrobe_(2005).mkv
+2023-07-16 04:08:46,532 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Chronicles_Of_Narnia_-_The_Lion,_The_Witch_And_The_Wardrobe_(2005)/The_Chronicles_Of_Narnia_-_The_Lion,_The_Witch_And_The_Wardrobe_(2005).mp4
+2023-07-16 04:08:46,533 [DEBUG] /mnt/data/Media/Movies/The_Simpsons_Movie_(2007)/The_Simpsons_Movie_(2007).mkv
+2023-07-16 04:08:46,584 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Simpsons_Movie_(2007)/The_Simpsons_Movie_(2007).mkv
+2023-07-16 04:08:46,584 [DEBUG] /mnt/data/Media/Movies/The_Spy_Who_Loved_Me_(1977)/The_Spy_Who_Loved_Me_(1977).mkv
+2023-07-16 04:08:46,636 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Spy_Who_Loved_Me_(1977)/The_Spy_Who_Loved_Me_(1977).mkv
+2023-07-16 04:08:46,636 [DEBUG] /mnt/data/Media/Movies/Storks_(2016)/Storks_(2016).mkv
+2023-07-16 04:08:46,714 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Storks_(2016)/Storks_(2016).mkv
+2023-07-16 04:08:46,715 [DEBUG] /mnt/data/Media/Movies/Life_After_The_Navigator_(2020)/Life_After_The_Navigator_(2020).mkv
+2023-07-16 04:08:46,844 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Life_After_The_Navigator_(2020)/Life_After_The_Navigator_(2020).mp4
+2023-07-16 04:08:46,845 [DEBUG] /mnt/data/Media/Movies/The_Goonies_(1985)/The_Goonies_(1985).mkv
+2023-07-16 04:08:46,946 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Goonies_(1985)/The_Goonies_(1985).mp4
+2023-07-16 04:08:46,946 [DEBUG] /mnt/data/Media/Movies/Mr._Nobody_(2009)/Mr._Nobody_(2009).mkv
+2023-07-16 04:08:47,039 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Mr._Nobody_(2009)/Mr._Nobody_(2009).mkv
+2023-07-16 04:08:47,039 [DEBUG] /mnt/data/Media/Movies/Albion The Enchanted Stallion (2016) [1080p] [YTS.AG]/Albion.The.Enchanted.Stallion.2016.1080p.BluRay.x264-[YTS.AG].mkv
+2023-07-16 04:08:47,153 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Albion The Enchanted Stallion (2016) [1080p] [YTS.AG]/Albion.The.Enchanted.Stallion.2016.1080p.BluRay.x264-[YTS.AG].mp4
+2023-07-16 04:08:47,153 [DEBUG] /mnt/data/Media/Movies/Robin_Robin_(2021)/Robin_Robin_(2021).mkv
+2023-07-16 04:08:47,255 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Robin_Robin_(2021)/Robin_Robin_(2021).mp4
+2023-07-16 04:08:47,255 [DEBUG] /mnt/data/Media/Movies/Madagascar_3_-_Europe's_Most_Wanted_(2012)/Madagascar_3_-_Europe's_Most_Wanted_(2012).mkv
+2023-07-16 04:08:47,355 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Madagascar_3_-_Europe's_Most_Wanted_(2012)/Madagascar_3_-_Europe's_Most_Wanted_(2012).mp4
+2023-07-16 04:08:47,355 [DEBUG] /mnt/data/Media/Movies/Pixels_(2015)/Pixels_(2015).mkv
+2023-07-16 04:08:47,448 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Pixels_(2015)/Pixels_(2015).mp4
+2023-07-16 04:08:47,448 [DEBUG] /mnt/data/Media/Movies/Pokémon_the_Movie_-_Volcanion_and_the_Mechanical_Marvel_(2016)/Pokémon_the_Movie_-_Volcanion_and_the_Mechanical_Marvel_(2016).mkv
+2023-07-16 04:08:47,567 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Pokémon_the_Movie_-_Volcanion_and_the_Mechanical_Marvel_(2016)/Pokémon_the_Movie_-_Volcanion_and_the_Mechanical_Marvel_(2016).mp4
+2023-07-16 04:08:47,568 [DEBUG] /mnt/data/Media/Movies/Harry_Potter_And_The_Order_Of_The_Phoenix_(2007)/Harry_Potter_And_The_Order_Of_The_Phoenix_(2007).mkv
+2023-07-16 04:08:47,646 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Harry_Potter_And_The_Order_Of_The_Phoenix_(2007)/Harry_Potter_And_The_Order_Of_The_Phoenix_(2007).mkv
+2023-07-16 04:08:47,647 [DEBUG] /mnt/data/Media/Movies/Armstrong_(2019)/Armstrong_(2019).mkv
+2023-07-16 04:08:49,110 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Armstrong_(2019)/Armstrong_(2019).mp4
+2023-07-16 04:08:49,110 [DEBUG] /mnt/data/Media/Movies/Lethal_Weapon_3_(1992)/Lethal_Weapon_3_(1992).mkv
+2023-07-16 04:08:49,221 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Lethal_Weapon_3_(1992)/Lethal_Weapon_3_(1992).mp4
+2023-07-16 04:08:49,221 [DEBUG] /mnt/data/Media/Movies/The Old Way (2023) [1080p] [BluRay] [5.1] [YTS.MX]/The.Old.Way.2023.1080p.BluRay.x264.AAC5.1-[YTS.MX].mkv
+2023-07-16 04:08:49,337 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The Old Way (2023) [1080p] [BluRay] [5.1] [YTS.MX]/The.Old.Way.2023.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4
+2023-07-16 04:08:49,337 [DEBUG] /mnt/data/Media/Movies/Clear_And_Present_Danger_(1994)/Clear_And_Present_Danger_(1994).mkv
+2023-07-16 04:08:49,434 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Clear_And_Present_Danger_(1994)/Clear_And_Present_Danger_(1994).mp4
+2023-07-16 04:08:49,435 [DEBUG] /mnt/data/Media/Movies/The_A-Team_(2010)/The_A-Team_(2010).mkv
+2023-07-16 04:08:49,554 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_A-Team_(2010)/The_A-Team_(2010).avi
+2023-07-16 04:08:49,554 [DEBUG] /mnt/data/Media/Movies/Kill_Bill_-_Vol._2_(2004)/Kill_Bill_-_Vol._2_(2004).mkv
+2023-07-16 04:08:49,662 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Kill_Bill_-_Vol._2_(2004)/Kill_Bill_-_Vol._2_(2004).mp4
+2023-07-16 04:08:49,662 [DEBUG] /mnt/data/Media/Movies/Free_Birds_(2013)/Free_Birds_(2013).mkv
+2023-07-16 04:08:49,750 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Free_Birds_(2013)/Free_Birds_(2013).mp4
+2023-07-16 04:08:49,750 [DEBUG] /mnt/data/Media/Movies/Secret_Of_The_Wings_(2012)/Secret_Of_The_Wings_(2012).mkv
+2023-07-16 04:08:49,833 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Secret_Of_The_Wings_(2012)/Secret_Of_The_Wings_(2012).mp4
+2023-07-16 04:08:49,834 [DEBUG] /mnt/data/Media/Movies/Wild_Wild_West_(1999)/Wild_Wild_West_(1999).mkv
+2023-07-16 04:08:49,959 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Wild_Wild_West_(1999)/Wild_Wild_West_(1999).avi
+2023-07-16 04:08:49,960 [DEBUG] /mnt/data/Media/Movies/Incredibles_2_(2018)/Incredibles_2_(2018).mkv
+2023-07-16 04:08:50,058 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Incredibles_2_(2018)/Incredibles_2_(2018).mp4
+2023-07-16 04:08:50,059 [DEBUG] /mnt/data/Media/Movies/The_Lion_King_II_-_Simba's_Pride_(1998)/The_Lion_King_II_-_Simba's_Pride_(1998).mkv
+2023-07-16 04:08:50,143 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Lion_King_II_-_Simba's_Pride_(1998)/The_Lion_King_II_-_Simba's_Pride_(1998).mp4
+2023-07-16 04:08:50,145 [DEBUG] /mnt/data/Media/Movies/Event_Horizon_(1997)/Event_Horizon_(1997).mkv
+2023-07-16 04:08:50,255 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Event_Horizon_(1997)/Event_Horizon_(1997).avi
+2023-07-16 04:08:50,255 [DEBUG] /mnt/data/Media/Movies/Short_Circuit_(1986)/Short_Circuit_(1986).mkv
+2023-07-16 04:08:50,354 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Short_Circuit_(1986)/Short_Circuit_(1986).mp4
+2023-07-16 04:08:50,355 [DEBUG] /mnt/data/Media/Movies/Bee_Movie_(2007)/Bee_Movie_(2007).mkv
+2023-07-16 04:08:50,423 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Bee_Movie_(2007)/Bee_Movie_(2007).mkv
+2023-07-16 04:08:50,424 [DEBUG] /mnt/data/Media/Movies/The_Twilight_Saga_-_Breaking_Dawn_-_Part_2_(2012)/The_Twilight_Saga_-_Breaking_Dawn_-_Part_2_(2012).mkv
+2023-07-16 04:08:50,534 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Twilight_Saga_-_Breaking_Dawn_-_Part_2_(2012)/The_Twilight_Saga_-_Breaking_Dawn_-_Part_2_(2012).mp4
+2023-07-16 04:08:50,535 [DEBUG] /mnt/data/Media/Movies/Who_Framed_Roger_Rabbit_(1988)/Who_Framed_Roger_Rabbit_(1988).mkv
+2023-07-16 04:08:50,636 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Who_Framed_Roger_Rabbit_(1988)/Who_Framed_Roger_Rabbit_(1988).mp4
+2023-07-16 04:08:50,636 [DEBUG] /mnt/data/Media/Movies/Kung_Fu_Panda_2_(2011)/Kung_Fu_Panda_2_(2011).mkv
+2023-07-16 04:08:50,729 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Kung_Fu_Panda_2_(2011)/Kung_Fu_Panda_2_(2011).mp4
+2023-07-16 04:08:50,729 [DEBUG] /mnt/data/Media/Movies/Apollo_11_(2019)/Apollo_11_(2019).mkv
+2023-07-16 04:08:50,838 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Apollo_11_(2019)/Apollo_11_(2019).mp4
+2023-07-16 04:08:50,838 [DEBUG] /mnt/data/Media/Movies/Ice_Age_(2002)/Ice_Age_(2002).mkv
+2023-07-16 04:08:50,952 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Ice_Age_(2002)/Ice_Age_(2002).mp4
+2023-07-16 04:08:50,952 [DEBUG] /mnt/data/Media/Movies/Neighbors_(2014)/Neighbors_(2014).mkv
+2023-07-16 04:08:51,031 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Neighbors_(2014)/Neighbors_(2014).mp4
+2023-07-16 04:08:51,031 [DEBUG] /mnt/data/Media/Movies/Harry_Potter_And_The_Deathly_Hallows_-_Part_1_(2010)/Harry_Potter_And_The_Deathly_Hallows_-_Part_1_(2010).mkv
+2023-07-16 04:08:51,110 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Harry_Potter_And_The_Deathly_Hallows_-_Part_1_(2010)/Harry_Potter_And_The_Deathly_Hallows_-_Part_1_(2010).mkv
+2023-07-16 04:08:51,111 [DEBUG] /mnt/data/Media/Movies/Black_Panther_(2018)/Black_Panther_(2018).mkv
+2023-07-16 04:08:51,243 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Black_Panther_(2018)/Black_Panther_(2018).mp4
+2023-07-16 04:08:51,243 [DEBUG] /mnt/data/Media/Movies/Moon_(2009)/Moon_(2009).mkv
+2023-07-16 04:08:51,326 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Moon_(2009)/Moon_(2009).mp4
+2023-07-16 04:08:51,326 [DEBUG] /mnt/data/Media/Movies/Gremlins_(1984)/Gremlins_(1984).mkv
+2023-07-16 04:08:51,444 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Gremlins_(1984)/Gremlins_(1984).mp4
+2023-07-16 04:08:51,444 [DEBUG] /mnt/data/Media/Movies/Signs_(2002)/Signs_(2002).mkv
+2023-07-16 04:08:51,548 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Signs_(2002)/Signs_(2002).mp4
+2023-07-16 04:08:51,548 [DEBUG] /mnt/data/Media/Movies/The_Bourne_Legacy_(2012)/The_Bourne_Legacy_(2012).mkv
+2023-07-16 04:08:51,653 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Bourne_Legacy_(2012)/The_Bourne_Legacy_(2012).mp4
+2023-07-16 04:08:51,654 [DEBUG] /mnt/data/Media/Movies/Tears_Of_The_Sun_(2003)/Tears_Of_The_Sun_(2003).mkv
+2023-07-16 04:08:51,742 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Tears_Of_The_Sun_(2003)/Tears_Of_The_Sun_(2003).mkv
+2023-07-16 04:08:51,743 [DEBUG] /mnt/data/Media/Movies/Jason_Bourne_(2016)/Jason_Bourne_(2016).mkv
+2023-07-16 04:08:51,853 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Jason_Bourne_(2016)/Jason_Bourne_(2016).mp4
+2023-07-16 04:08:51,854 [DEBUG] /mnt/data/Media/Movies/Flushed_Away_(2006)/Flushed_Away_(2006).mkv
+2023-07-16 04:08:53,333 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Flushed_Away_(2006)/Flushed_Away_(2006).mp4
+2023-07-16 04:08:53,333 [DEBUG] /mnt/data/Media/Movies/Night_at_the_Museum_(2006)/Night_at_the_Museum_(2006).mkv
+2023-07-16 04:08:53,473 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Night_at_the_Museum_(2006)/Night_at_the_Museum_(2006).mp4
+2023-07-16 04:08:53,474 [DEBUG] /mnt/data/Media/Movies/Rubikon_(2022)/Rubikon_(2022).mkv
+2023-07-16 04:08:53,570 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Rubikon_(2022)/Rubikon_(2022).mp4
+2023-07-16 04:08:53,570 [DEBUG] /mnt/data/Media/Movies/FernGully_-_The_Last_Rainforest_(1992)/FernGully_-_The_Last_Rainforest_(1992).mkv
+2023-07-16 04:08:53,687 [ERROR] Failed to convert file: /mnt/data/Media/Movies/FernGully_-_The_Last_Rainforest_(1992)/FernGully_-_The_Last_Rainforest_(1992).mp4
+2023-07-16 04:08:53,688 [DEBUG] /mnt/data/Media/Movies/The_Wolf_And_The_Lion_(2021)/The_Wolf_And_The_Lion_(2021).mkv
+2023-07-16 04:08:53,785 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Wolf_And_The_Lion_(2021)/The_Wolf_And_The_Lion_(2021).mp4
+2023-07-16 04:08:53,786 [DEBUG] /mnt/data/Media/Movies/Rio_2_(2014)/Rio_2_(2014).mkv
+2023-07-16 04:08:53,878 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Rio_2_(2014)/Rio_2_(2014).mp4
+2023-07-16 04:08:53,878 [DEBUG] /mnt/data/Media/Movies/Octonauts_and_the_Great_Barrier_Reef_(2020)/Octonauts_and_the_Great_Barrier_Reef_(2020).mkv
+2023-07-16 04:08:53,979 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Octonauts_and_the_Great_Barrier_Reef_(2020)/Octonauts_and_the_Great_Barrier_Reef_(2020).mp4
+2023-07-16 04:08:53,979 [DEBUG] /mnt/data/Media/Movies/The_Hunger_Games_(2012)/The_Hunger_Games_(2012).mkv
+2023-07-16 04:08:54,146 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Hunger_Games_(2012)/The_Hunger_Games_(2012).avi
+2023-07-16 04:08:54,146 [DEBUG] /mnt/data/Media/Movies/Warcraft (2016) [1080p] [YTS.AG]/Warcraft.2016.1080p.BluRay.x264-[YTS.AG].mkv
+2023-07-16 04:08:54,253 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Warcraft (2016) [1080p] [YTS.AG]/Warcraft.2016.1080p.BluRay.x264-[YTS.AG].mp4
+2023-07-16 04:08:54,254 [DEBUG] /mnt/data/Media/Movies/The_Water_Horse_(2007)/The_Water_Horse_(2007).mkv
+2023-07-16 04:08:54,383 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Water_Horse_(2007)/The_Water_Horse_(2007).mp4
+2023-07-16 04:08:54,383 [DEBUG] /mnt/data/Media/Movies/It_Chapter_Two_(2019)/It_Chapter_Two_(2019).mkv
+2023-07-16 04:08:54,496 [ERROR] Failed to convert file: /mnt/data/Media/Movies/It_Chapter_Two_(2019)/It_Chapter_Two_(2019).mp4
+2023-07-16 04:08:54,497 [DEBUG] /mnt/data/Media/Movies/Tombstone_(1993)/Tombstone_(1993).mkv
+2023-07-16 04:08:54,581 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Tombstone_(1993)/Tombstone_(1993).mp4
+2023-07-16 04:08:54,581 [DEBUG] /mnt/data/Media/Movies/The_Guardians_of_the_Galaxy_Holiday_Special_(2022)/The_Guardians_of_the_Galaxy_Holiday_Special_(2022).mkv
+2023-07-16 04:08:54,693 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Guardians_of_the_Galaxy_Holiday_Special_(2022)/The_Guardians_of_the_Galaxy_Holiday_Special_(2022).mp4
+2023-07-16 04:08:54,693 [DEBUG] /mnt/data/Media/Movies/Zootopia_(2016)/Zootopia_(2016).mkv
+2023-07-16 04:08:54,811 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Zootopia_(2016)/Zootopia_(2016).mp4
+2023-07-16 04:08:54,811 [DEBUG] /mnt/data/Media/Movies/The Great Wall (2016) [1080p] [YTS.AG]/The.Great.Wall.2016.1080p.BluRay.x264-[YTS.AG].mkv
+2023-07-16 04:08:54,907 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The Great Wall (2016) [1080p] [YTS.AG]/The.Great.Wall.2016.1080p.BluRay.x264-[YTS.AG].mp4
+2023-07-16 04:08:54,907 [DEBUG] /mnt/data/Media/Movies/Percy_Jackson_&_the_Olympians_-_The_Lightning_Thief_(2010)/Percy_Jackson_&_the_Olympians_-_The_Lightning_Thief_(2010).mkv
+2023-07-16 04:08:55,003 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Percy_Jackson_&_the_Olympians_-_The_Lightning_Thief_(2010)/Percy_Jackson_&_the_Olympians_-_The_Lightning_Thief_(2010).mp4
+2023-07-16 04:08:55,003 [DEBUG] /mnt/data/Media/Movies/Europa_Report_(2013)/Europa_Report_(2013).mkv
+2023-07-16 04:08:55,107 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Europa_Report_(2013)/Europa_Report_(2013).mp4
+2023-07-16 04:08:55,108 [DEBUG] /mnt/data/Media/Movies/Halloween_(1978)/Halloween_(1978).mkv
+2023-07-16 04:08:55,203 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Halloween_(1978)/Halloween_(1978).mp4
+2023-07-16 04:08:55,203 [DEBUG] /mnt/data/Media/Movies/How_To_Train_Your_Dragon_-_The_Hidden_World_(2019)/How_To_Train_Your_Dragon_-_The_Hidden_World_(2019).mkv
+2023-07-16 04:08:55,323 [ERROR] Failed to convert file: /mnt/data/Media/Movies/How_To_Train_Your_Dragon_-_The_Hidden_World_(2019)/How_To_Train_Your_Dragon_-_The_Hidden_World_(2019).mp4
+2023-07-16 04:08:55,323 [DEBUG] /mnt/data/Media/Movies/We_Can_Be_Heroes_(2020)/We_Can_Be_Heroes_(2020).mkv
+2023-07-16 04:08:55,443 [ERROR] Failed to convert file: /mnt/data/Media/Movies/We_Can_Be_Heroes_(2020)/We_Can_Be_Heroes_(2020).mp4
+2023-07-16 04:08:55,443 [DEBUG] /mnt/data/Media/Movies/The_Revenant_(2015)/The_Revenant_(2015).mkv
+2023-07-16 04:08:55,552 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Revenant_(2015)/The_Revenant_(2015).mp4
+2023-07-16 04:08:55,553 [DEBUG] /mnt/data/Media/Movies/Frankenweenie_(2012)/Frankenweenie_(2012).mkv
+2023-07-16 04:08:55,690 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Frankenweenie_(2012)/Frankenweenie_(2012).mp4
+2023-07-16 04:08:55,691 [DEBUG] /mnt/data/Media/Movies/Dumb_And_Dumber_(1994)/Dumb_And_Dumber_(1994).mkv
+2023-07-16 04:08:55,826 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Dumb_And_Dumber_(1994)/Dumb_And_Dumber_(1994).avi
+2023-07-16 04:08:55,826 [DEBUG] /mnt/data/Media/Movies/The_Princess_And_The_Frog_(2009)/The_Princess_And_The_Frog_(2009).mkv
+2023-07-16 04:08:55,940 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Princess_And_The_Frog_(2009)/The_Princess_And_The_Frog_(2009).mp4
+2023-07-16 04:08:55,940 [DEBUG] /mnt/data/Media/Movies/The_Three_Musketeers_(1993)/The_Three_Musketeers_(1993).mkv
+2023-07-16 04:08:56,059 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Three_Musketeers_(1993)/The_Three_Musketeers_(1993).mp4
+2023-07-16 04:08:56,059 [DEBUG] /mnt/data/Media/Movies/Hostage_(2005)/Hostage_(2005).mkv
+2023-07-16 04:08:56,116 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Hostage_(2005)/Hostage_(2005).mkv
+2023-07-16 04:08:56,117 [DEBUG] /mnt/data/Media/Movies/Return_Of_The_Jedi_(1983)/Return_Of_The_Jedi_(1983).mkv
+2023-07-16 04:08:57,589 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Return_Of_The_Jedi_(1983)/Return_Of_The_Jedi_(1983).avi
+2023-07-16 04:08:57,590 [DEBUG] /mnt/data/Media/Movies/The_Perfect_Game_(2009)/The_Perfect_Game_(2009).mkv
+2023-07-16 04:08:57,735 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Perfect_Game_(2009)/The_Perfect_Game_(2009).mp4
+2023-07-16 04:08:57,735 [DEBUG] /mnt/data/Media/Movies/Child's_Play_2_(1990)/Child's_Play_2_(1990).mkv
+2023-07-16 04:08:57,861 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Child's_Play_2_(1990)/Child's_Play_2_(1990).mp4
+2023-07-16 04:08:57,861 [DEBUG] /mnt/data/Media/Movies/Fantastic_Beasts_And_Where_To_Find_Them_(2016)/Fantastic_Beasts_And_Where_To_Find_Them_(2016).mkv
+2023-07-16 04:08:57,993 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Fantastic_Beasts_And_Where_To_Find_Them_(2016)/Fantastic_Beasts_And_Where_To_Find_Them_(2016).mp4
+2023-07-16 04:08:57,993 [DEBUG] /mnt/data/Media/Movies/Role_Models_(2008)/Role_Models_(2008).mkv
+2023-07-16 04:08:58,120 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Role_Models_(2008)/Role_Models_(2008).avi
+2023-07-16 04:08:58,121 [DEBUG] /mnt/data/Media/Movies/Mulan_(1998)/Mulan_(1998).mkv
+2023-07-16 04:08:58,199 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Mulan_(1998)/Mulan_(1998).mp4
+2023-07-16 04:08:58,199 [DEBUG] /mnt/data/Media/Movies/Star_Trek_-_The_Motion_Picture_(1979)/Star_Trek_-_The_Motion_Picture_(1979).mkv
+2023-07-16 04:08:58,296 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Star_Trek_-_The_Motion_Picture_(1979)/Star_Trek_-_The_Motion_Picture_(1979).mp4
+2023-07-16 04:08:58,296 [DEBUG] /mnt/data/Media/Movies/Strange_Magic_(2015)/Strange_Magic_(2015).mkv
+2023-07-16 04:08:58,401 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Strange_Magic_(2015)/Strange_Magic_(2015).mp4
+2023-07-16 04:08:58,402 [DEBUG] /mnt/data/Media/Movies/The_Santa_Clause_2_(2002)/The_Santa_Clause_2_(2002).mkv
+2023-07-16 04:08:58,492 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Santa_Clause_2_(2002)/The_Santa_Clause_2_(2002).mp4
+2023-07-16 04:08:58,492 [DEBUG] /mnt/data/Media/Movies/Hocus_Pocus_(1993)/Hocus_Pocus_(1993).mkv
+2023-07-16 04:08:58,599 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Hocus_Pocus_(1993)/Hocus_Pocus_(1993).mp4
+2023-07-16 04:08:58,599 [DEBUG] /mnt/data/Media/Movies/Inception_(2010)/Inception_(2010).mkv
+2023-07-16 04:08:58,696 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Inception_(2010)/Inception_(2010).mp4
+2023-07-16 04:08:58,696 [DEBUG] /mnt/data/Media/Movies/The_Last_Witch_Hunter_(2015)/The_Last_Witch_Hunter_(2015).mkv
+2023-07-16 04:08:58,802 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Last_Witch_Hunter_(2015)/The_Last_Witch_Hunter_(2015).mp4
+2023-07-16 04:08:58,803 [DEBUG] /mnt/data/Media/Movies/Star_Wars_-_The_Rise_Of_Skywalker_(2019)/Star_Wars_-_The_Rise_Of_Skywalker_(2019).mkv
+2023-07-16 04:08:58,939 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Star_Wars_-_The_Rise_Of_Skywalker_(2019)/Star_Wars_-_The_Rise_Of_Skywalker_(2019).mp4
+2023-07-16 04:08:58,939 [DEBUG] /mnt/data/Media/Movies/The_Brave_Little_Toaster_To_The_Rescue_(1997)/The_Brave_Little_Toaster_To_The_Rescue_(1997).mkv
+2023-07-16 04:08:59,059 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Brave_Little_Toaster_To_The_Rescue_(1997)/The_Brave_Little_Toaster_To_The_Rescue_(1997).avi
+2023-07-16 04:08:59,059 [DEBUG] /mnt/data/Media/Movies/Vice_(2018)/Vice_(2018).mkv
+2023-07-16 04:08:59,191 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Vice_(2018)/Vice_(2018).mp4
+2023-07-16 04:08:59,191 [DEBUG] /mnt/data/Media/Movies/Rudolph_The_Red-Nosed_Reindeer_(1964)/Rudolph_The_Red-Nosed_Reindeer_(1964).mkv
+2023-07-16 04:08:59,304 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Rudolph_The_Red-Nosed_Reindeer_(1964)/Rudolph_The_Red-Nosed_Reindeer_(1964).avi
+2023-07-16 04:08:59,305 [DEBUG] /mnt/data/Media/Movies/The Nice Guys (2016) [1080p] [YTS.AG]/The.Nice.Guys.2016.1080p.BluRay.x264-[YTS.AG].mkv
+2023-07-16 04:08:59,415 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The Nice Guys (2016) [1080p] [YTS.AG]/The.Nice.Guys.2016.1080p.BluRay.x264-[YTS.AG].mp4
+2023-07-16 04:08:59,416 [DEBUG] /mnt/data/Media/Movies/Toy_Story_2_(1999)/Toy_Story_2_(1999).mkv
+2023-07-16 04:08:59,519 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Toy_Story_2_(1999)/Toy_Story_2_(1999).mp4
+2023-07-16 04:08:59,519 [DEBUG] /mnt/data/Media/Movies/The_Christmas_Chronicles_(2018)/The_Christmas_Chronicles_(2018).mkv
+2023-07-16 04:08:59,626 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Christmas_Chronicles_(2018)/The_Christmas_Chronicles_(2018).mp4
+2023-07-16 04:08:59,627 [DEBUG] /mnt/data/Media/Movies/Daddy's_Home_(2015)/Daddy's_Home_(2015).mkv
+2023-07-16 04:08:59,698 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Daddy's_Home_(2015)/Daddy's_Home_(2015).mkv
+2023-07-16 04:08:59,698 [DEBUG] /mnt/data/Media/Movies/The_Bourne_Ultimatum_(2007)/The_Bourne_Ultimatum_(2007).mkv
+2023-07-16 04:08:59,779 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Bourne_Ultimatum_(2007)/The_Bourne_Ultimatum_(2007).mp4
+2023-07-16 04:08:59,779 [DEBUG] /mnt/data/Media/Movies/Men_Of_Honor_(2000)/Men_Of_Honor_(2000).mkv
+2023-07-16 04:08:59,874 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Men_Of_Honor_(2000)/Men_Of_Honor_(2000).mp4
+2023-07-16 04:08:59,875 [DEBUG] /mnt/data/Media/Movies/Tinker_Bell_And_The_Legend_Of_The_NeverBeast_(2014)/Tinker_Bell_And_The_Legend_Of_The_NeverBeast_(2014).mkv
+2023-07-16 04:08:59,969 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Tinker_Bell_And_The_Legend_Of_The_NeverBeast_(2014)/Tinker_Bell_And_The_Legend_Of_The_NeverBeast_(2014).mp4
+2023-07-16 04:08:59,969 [DEBUG] /mnt/data/Media/Movies/King_Arthur_(2004)/King_Arthur_(2004).mkv
+2023-07-16 04:09:00,117 [ERROR] Failed to convert file: /mnt/data/Media/Movies/King_Arthur_(2004)/King_Arthur_(2004).mp4
+2023-07-16 04:09:00,117 [DEBUG] /mnt/data/Media/Movies/Mrs._Doubtfire_(1993)/Mrs._Doubtfire_(1993).mkv
+2023-07-16 04:09:00,218 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Mrs._Doubtfire_(1993)/Mrs._Doubtfire_(1993).mp4
+2023-07-16 04:09:00,218 [DEBUG] /mnt/data/Media/Movies/The_Land_Before_Time_III_-_The_Time_Of_The_Great_Giving_(1995)/The_Land_Before_Time_III_-_The_Time_Of_The_Great_Giving_(1995).mkv
+2023-07-16 04:09:00,310 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Land_Before_Time_III_-_The_Time_Of_The_Great_Giving_(1995)/The_Land_Before_Time_III_-_The_Time_Of_The_Great_Giving_(1995).mp4
+2023-07-16 04:09:00,310 [DEBUG] /mnt/data/Media/Movies/Superman_(1978)/Superman_(1978).mkv
+2023-07-16 04:09:00,402 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Superman_(1978)/Superman_(1978).mp4
+2023-07-16 04:09:00,403 [DEBUG] /mnt/data/Media/Movies/21_Jump_Street_(2012)/21_Jump_Street_(2012).mkv
+2023-07-16 04:09:01,886 [ERROR] Failed to convert file: /mnt/data/Media/Movies/21_Jump_Street_(2012)/21_Jump_Street_(2012).mp4
+2023-07-16 04:09:01,887 [DEBUG] /mnt/data/Media/Movies/Harry_Potter_And_The_Half-Blood_Prince_(2009)/Harry_Potter_And_The_Half-Blood_Prince_(2009).mkv
+2023-07-16 04:09:01,984 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Harry_Potter_And_The_Half-Blood_Prince_(2009)/Harry_Potter_And_The_Half-Blood_Prince_(2009).mkv
+2023-07-16 04:09:01,985 [DEBUG] /mnt/data/Media/Movies/Minions_-_The_Rise_Of_Gru_(2022)/Minions_-_The_Rise_Of_Gru_(2022).mkv
+2023-07-16 04:09:02,072 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Minions_-_The_Rise_Of_Gru_(2022)/Minions_-_The_Rise_Of_Gru_(2022).mp4
+2023-07-16 04:09:02,073 [DEBUG] /mnt/data/Media/Movies/Maya_The_Bee_-_The_Honey_Games_(2018)/Maya_The_Bee_-_The_Honey_Games_(2018).mkv
+2023-07-16 04:09:02,183 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Maya_The_Bee_-_The_Honey_Games_(2018)/Maya_The_Bee_-_The_Honey_Games_(2018).mp4
+2023-07-16 04:09:02,183 [DEBUG] /mnt/data/Media/Movies/New_Year's_Eve_(2011)/New_Year's_Eve_(2011).mkv
+2023-07-16 04:09:02,283 [ERROR] Failed to convert file: /mnt/data/Media/Movies/New_Year's_Eve_(2011)/New_Year's_Eve_(2011).mp4
+2023-07-16 04:09:02,283 [DEBUG] /mnt/data/Media/Movies/Equilibrium_(2002)/Equilibrium_(2002).mkv
+2023-07-16 04:09:02,339 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Equilibrium_(2002)/Equilibrium_(2002).mkv
+2023-07-16 04:09:02,339 [DEBUG] /mnt/data/Media/Movies/Dumbo_(1941)/Dumbo_(1941).mkv
+2023-07-16 04:09:02,444 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Dumbo_(1941)/Dumbo_(1941).mp4
+2023-07-16 04:09:02,445 [DEBUG] /mnt/data/Media/Movies/Gamer_(2009)/Gamer_(2009).mkv
+2023-07-16 04:09:02,535 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Gamer_(2009)/Gamer_(2009).mp4
+2023-07-16 04:09:02,536 [DEBUG] /mnt/data/Media/Movies/Step_Brothers_(2008)/Step_Brothers_(2008).mkv
+2023-07-16 04:09:02,596 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Step_Brothers_(2008)/Step_Brothers_(2008).mkv
+2023-07-16 04:09:02,596 [DEBUG] /mnt/data/Media/Movies/Flora_&_Ulysses_(2021)/Flora_&_Ulysses_(2021).mkv
+2023-07-16 04:09:02,692 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Flora_&_Ulysses_(2021)/Flora_&_Ulysses_(2021).mp4
+2023-07-16 04:09:02,693 [DEBUG] /mnt/data/Media/Movies/Zathura_-_A_Space_Adventure_(2005)/Zathura_-_A_Space_Adventure_(2005).mkv
+2023-07-16 04:09:02,783 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Zathura_-_A_Space_Adventure_(2005)/Zathura_-_A_Space_Adventure_(2005).mp4
+2023-07-16 04:09:02,783 [DEBUG] /mnt/data/Media/Movies/The_NeverEnding_Story_II_-_The_Next_Chapter_(1990)/The_NeverEnding_Story_II_-_The_Next_Chapter_(1990).mkv
+2023-07-16 04:09:02,878 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_NeverEnding_Story_II_-_The_Next_Chapter_(1990)/The_NeverEnding_Story_II_-_The_Next_Chapter_(1990).mp4
+2023-07-16 04:09:02,878 [DEBUG] /mnt/data/Media/Movies/Antz_(1998)/Antz_(1998).mkv
+2023-07-16 04:09:02,973 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Antz_(1998)/Antz_(1998).mp4
+2023-07-16 04:09:02,973 [DEBUG] /mnt/data/Media/Movies/The_Santa_Clause_3_-_The_Escape_Clause_(2006)/The_Santa_Clause_3_-_The_Escape_Clause_(2006).mkv
+2023-07-16 04:09:03,116 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Santa_Clause_3_-_The_Escape_Clause_(2006)/The_Santa_Clause_3_-_The_Escape_Clause_(2006).mp4
+2023-07-16 04:09:03,117 [DEBUG] /mnt/data/Media/Movies/Swordfish_(2001)/Swordfish_(2001).mkv
+2023-07-16 04:09:03,226 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Swordfish_(2001)/Swordfish_(2001).avi
+2023-07-16 04:09:03,226 [DEBUG] /mnt/data/Media/Movies/Rogue_One_-_A_Star_Wars_Story_(2016)/Rogue_One_-_A_Star_Wars_Story_(2016).mkv
+2023-07-16 04:09:03,303 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Rogue_One_-_A_Star_Wars_Story_(2016)/Rogue_One_-_A_Star_Wars_Story_(2016).mkv
+2023-07-16 04:09:03,303 [DEBUG] /mnt/data/Media/Movies/How_The_Grinch_Stole_Christmas!_(1966)/How_The_Grinch_Stole_Christmas!_(1966).mkv
+2023-07-16 04:09:03,389 [ERROR] Failed to convert file: /mnt/data/Media/Movies/How_The_Grinch_Stole_Christmas!_(1966)/How_The_Grinch_Stole_Christmas!_(1966).mkv
+2023-07-16 04:09:03,389 [DEBUG] /mnt/data/Media/Movies/National_Lampoon's_Christmas_Vacation_(1989)/National_Lampoon's_Christmas_Vacation_(1989).mkv
+2023-07-16 04:09:03,486 [ERROR] Failed to convert file: /mnt/data/Media/Movies/National_Lampoon's_Christmas_Vacation_(1989)/National_Lampoon's_Christmas_Vacation_(1989).mp4
+2023-07-16 04:09:03,486 [DEBUG] /mnt/data/Media/Movies/Moneyball_(2011)/Moneyball_(2011).mkv
+2023-07-16 04:09:03,677 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Moneyball_(2011)/Moneyball_(2011).avi
+2023-07-16 04:09:03,677 [DEBUG] /mnt/data/Media/Movies/The_Valet_(2022)/The_Valet_(2022).mkv
+2023-07-16 04:09:03,779 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Valet_(2022)/The_Valet_(2022).mp4
+2023-07-16 04:09:03,779 [DEBUG] /mnt/data/Media/Movies/South_Park_-_The_Streaming_Wars_(2022)/South_Park_-_The_Streaming_Wars_(2022).mkv
+2023-07-16 04:09:03,879 [ERROR] Failed to convert file: /mnt/data/Media/Movies/South_Park_-_The_Streaming_Wars_(2022)/South_Park_-_The_Streaming_Wars_(2022).mp4
+2023-07-16 04:09:03,879 [DEBUG] /mnt/data/Media/Movies/Lethal_Weapon_2_(1989)/Lethal_Weapon_2_(1989).mkv
+2023-07-16 04:09:03,976 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Lethal_Weapon_2_(1989)/Lethal_Weapon_2_(1989).mp4
+2023-07-16 04:09:03,976 [DEBUG] /mnt/data/Media/Movies/The_Boxtrolls_(2014)/The_Boxtrolls_(2014).mkv
+2023-07-16 04:09:04,080 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Boxtrolls_(2014)/The_Boxtrolls_(2014).mp4
+2023-07-16 04:09:04,080 [DEBUG] /mnt/data/Media/Movies/The_Princess_Bride_(1987)/The_Princess_Bride_(1987).mkv
+2023-07-16 04:09:04,158 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Princess_Bride_(1987)/The_Princess_Bride_(1987).mkv
+2023-07-16 04:09:04,159 [DEBUG] /mnt/data/Media/Movies/Minority_Report_(2002)/Minority_Report_(2002).mkv
+2023-07-16 04:09:04,244 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Minority_Report_(2002)/Minority_Report_(2002).mp4
+2023-07-16 04:09:04,244 [DEBUG] /mnt/data/Media/Movies/Dirty_Dancing_(1987)/Dirty_Dancing_(1987).mkv
+2023-07-16 04:09:04,340 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Dirty_Dancing_(1987)/Dirty_Dancing_(1987).avi
+2023-07-16 04:09:04,341 [DEBUG] /mnt/data/Media/Movies/Hitch_(2005)/Hitch_(2005).mkv
+2023-07-16 04:09:04,452 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Hitch_(2005)/Hitch_(2005).avi
+2023-07-16 04:09:04,452 [DEBUG] /mnt/data/Media/Movies/The_Lego_Ninjago_Movie_(2017)/The_Lego_Ninjago_Movie_(2017).mkv
+2023-07-16 04:09:04,575 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Lego_Ninjago_Movie_(2017)/The_Lego_Ninjago_Movie_(2017).mp4
+2023-07-16 04:09:04,575 [DEBUG] /mnt/data/Media/Movies/Home_Alone_(1990)/Home_Alone_(1990).mkv
+2023-07-16 04:09:04,665 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Home_Alone_(1990)/Home_Alone_(1990).mp4
+2023-07-16 04:09:04,665 [DEBUG] /mnt/data/Media/Movies/Just_Go_With_It_(2011)/Just_Go_With_It_(2011).mkv
+2023-07-16 04:09:06,165 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Just_Go_With_It_(2011)/Just_Go_With_It_(2011).avi
+2023-07-16 04:09:06,166 [DEBUG] /mnt/data/Media/Movies/Pinocchio_(2022)/Pinocchio_(2022).mkv
+2023-07-16 04:09:06,304 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Pinocchio_(2022)/Pinocchio_(2022).mp4
+2023-07-16 04:09:06,304 [DEBUG] /mnt/data/Media/Movies/Small_Soldiers_(1998)/Small_Soldiers_(1998).mkv
+2023-07-16 04:09:06,412 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Small_Soldiers_(1998)/Small_Soldiers_(1998).mp4
+2023-07-16 04:09:06,412 [DEBUG] /mnt/data/Media/Movies/U-571_(2000)/U-571_(2000).mkv
+2023-07-16 04:09:06,511 [ERROR] Failed to convert file: /mnt/data/Media/Movies/U-571_(2000)/U-571_(2000).mp4
+2023-07-16 04:09:06,512 [DEBUG] /mnt/data/Media/Movies/Hot_Shots!_(1991)/Hot_Shots!_(1991).mkv
+2023-07-16 04:09:06,598 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Hot_Shots!_(1991)/Hot_Shots!_(1991).mkv
+2023-07-16 04:09:06,599 [DEBUG] /mnt/data/Media/Movies/A_Bug's_Life_(1998)/A_Bug's_Life_(1998).mkv
+2023-07-16 04:09:06,681 [ERROR] Failed to convert file: /mnt/data/Media/Movies/A_Bug's_Life_(1998)/A_Bug's_Life_(1998).mp4
+2023-07-16 04:09:06,681 [DEBUG] /mnt/data/Media/Movies/Chip_'n_Dale_-_Rescue_Rangers_(2022)/Chip_'n_Dale_-_Rescue_Rangers_(2022).mkv
+2023-07-16 04:09:06,773 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Chip_'n_Dale_-_Rescue_Rangers_(2022)/Chip_'n_Dale_-_Rescue_Rangers_(2022).mp4
+2023-07-16 04:09:06,774 [DEBUG] /mnt/data/Media/Movies/Star_Trek_IV_-_The_Voyage_Home_(1986)/Star_Trek_IV_-_The_Voyage_Home_(1986).mkv
+2023-07-16 04:09:06,872 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Star_Trek_IV_-_The_Voyage_Home_(1986)/Star_Trek_IV_-_The_Voyage_Home_(1986).mp4
+2023-07-16 04:09:06,873 [DEBUG] /mnt/data/Media/Movies/Platoon_(1986)/Platoon_(1986).mkv
+2023-07-16 04:09:06,958 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Platoon_(1986)/Platoon_(1986).mp4
+2023-07-16 04:09:06,959 [DEBUG] /mnt/data/Media/Movies/Spies_Like_Us_(1985)/Spies_Like_Us_(1985).mkv
+2023-07-16 04:09:07,087 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Spies_Like_Us_(1985)/Spies_Like_Us_(1985).mp4
+2023-07-16 04:09:07,087 [DEBUG] /mnt/data/Media/Movies/Paranormal_Activity_-_The_Ghost_Dimension_(2015)/Paranormal_Activity_-_The_Ghost_Dimension_(2015).mkv
+2023-07-16 04:09:07,214 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Paranormal_Activity_-_The_Ghost_Dimension_(2015)/Paranormal_Activity_-_The_Ghost_Dimension_(2015).mp4
+2023-07-16 04:09:07,214 [DEBUG] /mnt/data/Media/Movies/You_Only_Live_Twice_(1967)/You_Only_Live_Twice_(1967).mkv
+2023-07-16 04:09:07,264 [ERROR] Failed to convert file: /mnt/data/Media/Movies/You_Only_Live_Twice_(1967)/You_Only_Live_Twice_(1967).mkv
+2023-07-16 04:09:07,264 [DEBUG] /mnt/data/Media/Movies/Beetlejuice_(1988)/Beetlejuice_(1988).mkv
+2023-07-16 04:09:07,364 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Beetlejuice_(1988)/Beetlejuice_(1988).avi
+2023-07-16 04:09:07,365 [DEBUG] /mnt/data/Media/Movies/Teenage Mutant Ninja Turtles (2014) [1080p]/Teenage.Mutant.Ninja.Turtles.2014.1080p.BluRay.x264.YIFY.mkv
+2023-07-16 04:09:07,467 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Teenage Mutant Ninja Turtles (2014) [1080p]/Teenage.Mutant.Ninja.Turtles.2014.1080p.BluRay.x264.YIFY.mp4
+2023-07-16 04:09:07,468 [DEBUG] /mnt/data/Media/Movies/Star_Wars_-_The_Clone_Wars_(2008)/Star_Wars_-_The_Clone_Wars_(2008).mkv
+2023-07-16 04:09:07,568 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Star_Wars_-_The_Clone_Wars_(2008)/Star_Wars_-_The_Clone_Wars_(2008).mp4
+2023-07-16 04:09:07,568 [DEBUG] /mnt/data/Media/Movies/Dragons_-_Rescue_Riders_-_Huttsgalor_Holiday_(2020)/Dragons_-_Rescue_Riders_-_Huttsgalor_Holiday_(2020).mkv
+2023-07-16 04:09:07,662 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Dragons_-_Rescue_Riders_-_Huttsgalor_Holiday_(2020)/Dragons_-_Rescue_Riders_-_Huttsgalor_Holiday_(2020).mp4
+2023-07-16 04:09:07,662 [DEBUG] /mnt/data/Media/Movies/Uncle_Buck_(1989)/Uncle_Buck_(1989).mkv
+2023-07-16 04:09:07,774 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Uncle_Buck_(1989)/Uncle_Buck_(1989).mp4
+2023-07-16 04:09:07,774 [DEBUG] /mnt/data/Media/Movies/Harry_Potter_And_The_Chamber_Of_Secrets_(2002)/Harry_Potter_And_The_Chamber_Of_Secrets_(2002).mkv
+2023-07-16 04:09:07,835 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Harry_Potter_And_The_Chamber_Of_Secrets_(2002)/Harry_Potter_And_The_Chamber_Of_Secrets_(2002).mkv
+2023-07-16 04:09:07,835 [DEBUG] /mnt/data/Media/Movies/The_Internship_(2013)/The_Internship_(2013).mkv
+2023-07-16 04:09:07,925 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Internship_(2013)/The_Internship_(2013).mp4
+2023-07-16 04:09:07,926 [DEBUG] /mnt/data/Media/Movies/The_Land_Before_Time_X_-_The_Great_Longneck_Migration_(2003)/The_Land_Before_Time_X_-_The_Great_Longneck_Migration_(2003).mkv
+2023-07-16 04:09:08,028 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Land_Before_Time_X_-_The_Great_Longneck_Migration_(2003)/The_Land_Before_Time_X_-_The_Great_Longneck_Migration_(2003).mp4
+2023-07-16 04:09:08,028 [DEBUG] /mnt/data/Media/Movies/Predator_(1987)/Predator_(1987).mkv
+2023-07-16 04:09:08,124 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Predator_(1987)/Predator_(1987).mp4
+2023-07-16 04:09:08,124 [DEBUG] /mnt/data/Media/Movies/King_Arthur_-_Legend_Of_The_Sword_(2017)/King_Arthur_-_Legend_Of_The_Sword_(2017).mkv
+2023-07-16 04:09:08,256 [ERROR] Failed to convert file: /mnt/data/Media/Movies/King_Arthur_-_Legend_Of_The_Sword_(2017)/King_Arthur_-_Legend_Of_The_Sword_(2017).mp4
+2023-07-16 04:09:08,256 [DEBUG] /mnt/data/Media/Movies/Batman_Returns_(1992)/Batman_Returns_(1992).mkv
+2023-07-16 04:09:08,378 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Batman_Returns_(1992)/Batman_Returns_(1992).avi
+2023-07-16 04:09:08,378 [DEBUG] /mnt/data/Media/Movies/The_Shawshank_Redemption_(1994)/The_Shawshank_Redemption_(1994).mkv
+2023-07-16 04:09:08,494 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Shawshank_Redemption_(1994)/The_Shawshank_Redemption_(1994).avi
+2023-07-16 04:09:08,495 [DEBUG] /mnt/data/Media/Movies/The_Rescuers_(1977)/The_Rescuers_(1977).mkv
+2023-07-16 04:09:08,594 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Rescuers_(1977)/The_Rescuers_(1977).mp4
+2023-07-16 04:09:08,595 [DEBUG] /mnt/data/Media/Movies/Flubber_(1997)/Flubber_(1997).mkv
+2023-07-16 04:09:08,691 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Flubber_(1997)/Flubber_(1997).mp4
+2023-07-16 04:09:08,692 [DEBUG] /mnt/data/Media/Movies/Fantasia_2000_(1999)/Fantasia_2000_(1999).mkv
+2023-07-16 04:09:08,815 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Fantasia_2000_(1999)/Fantasia_2000_(1999).mp4
+2023-07-16 04:09:08,815 [DEBUG] /mnt/data/Media/Movies/The_Hunt_For_Red_October_(1990)/The_Hunt_For_Red_October_(1990).mkv
+2023-07-16 04:09:08,903 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Hunt_For_Red_October_(1990)/The_Hunt_For_Red_October_(1990).mp4
+2023-07-16 04:09:08,903 [DEBUG] /mnt/data/Media/Movies/LEGO_Scooby-Doo!_Blowout_Beach_Bash_(2017)/LEGO_Scooby-Doo!_Blowout_Beach_Bash_(2017).mkv
+2023-07-16 04:09:09,005 [ERROR] Failed to convert file: /mnt/data/Media/Movies/LEGO_Scooby-Doo!_Blowout_Beach_Bash_(2017)/LEGO_Scooby-Doo!_Blowout_Beach_Bash_(2017).mp4
+2023-07-16 04:09:09,006 [DEBUG] /mnt/data/Media/Movies/The_Longest_Yard_(2005)/The_Longest_Yard_(2005).mkv
+2023-07-16 04:09:10,454 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Longest_Yard_(2005)/The_Longest_Yard_(2005).mp4
+2023-07-16 04:09:10,454 [DEBUG] /mnt/data/Media/Movies/The_Croods_(2013)/The_Croods_(2013).mkv
+2023-07-16 04:09:10,576 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Croods_(2013)/The_Croods_(2013).mp4
+2023-07-16 04:09:10,576 [DEBUG] /mnt/data/Media/Movies/Remember_The_Titans_(2000)/Remember_The_Titans_(2000).mkv
+2023-07-16 04:09:10,683 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Remember_The_Titans_(2000)/Remember_The_Titans_(2000).avi
+2023-07-16 04:09:10,683 [DEBUG] /mnt/data/Media/Movies/Fury_(2014)/Fury_(2014).mkv
+2023-07-16 04:09:10,749 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Fury_(2014)/Fury_(2014).mkv
+2023-07-16 04:09:10,749 [DEBUG] /mnt/data/Media/Movies/The_River_Murders_(2011)/The_River_Murders_(2011).mkv
+2023-07-16 04:09:10,890 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_River_Murders_(2011)/The_River_Murders_(2011).avi
+2023-07-16 04:09:10,890 [DEBUG] /mnt/data/Media/Movies/Ocean's_Eleven_(2001)/Ocean's_Eleven_(2001).mkv
+2023-07-16 04:09:10,945 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Ocean's_Eleven_(2001)/Ocean's_Eleven_(2001).mkv
+2023-07-16 04:09:10,946 [DEBUG] /mnt/data/Media/Movies/Solo_-_A_Star_Wars_Story_(2018)/Solo_-_A_Star_Wars_Story_(2018).mkv
+2023-07-16 04:09:11,065 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Solo_-_A_Star_Wars_Story_(2018)/Solo_-_A_Star_Wars_Story_(2018).mp4
+2023-07-16 04:09:11,066 [DEBUG] /mnt/data/Media/Movies/Zoolander_(2001)/Zoolander_(2001).mkv
+2023-07-16 04:09:11,182 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Zoolander_(2001)/Zoolander_(2001).avi
+2023-07-16 04:09:11,182 [DEBUG] /mnt/data/Media/Movies/The_Donkey_King_(2018)/The_Donkey_King_(2018).mkv
+2023-07-16 04:09:11,282 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Donkey_King_(2018)/The_Donkey_King_(2018).mp4
+2023-07-16 04:09:11,282 [DEBUG] /mnt/data/Media/Movies/A_Babysitter's_Guide_to_Monster_Hunting_(2020)/A_Babysitter's_Guide_to_Monster_Hunting_(2020).mkv
+2023-07-16 04:09:11,388 [ERROR] Failed to convert file: /mnt/data/Media/Movies/A_Babysitter's_Guide_to_Monster_Hunting_(2020)/A_Babysitter's_Guide_to_Monster_Hunting_(2020).mp4
+2023-07-16 04:09:11,389 [DEBUG] /mnt/data/Media/Movies/Nightbooks_(2021)/Nightbooks_(2021).mkv
+2023-07-16 04:09:11,538 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Nightbooks_(2021)/Nightbooks_(2021).mp4
+2023-07-16 04:09:11,538 [DEBUG] /mnt/data/Media/Movies/The_Manhattan_Project_(1986)/The_Manhattan_Project_(1986).mkv
+2023-07-16 04:09:11,626 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Manhattan_Project_(1986)/The_Manhattan_Project_(1986).mp4
+2023-07-16 04:09:11,626 [DEBUG] /mnt/data/Media/Movies/Executive_Decision_(1996)/Executive_Decision_(1996).mkv
+2023-07-16 04:09:11,794 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Executive_Decision_(1996)/Executive_Decision_(1996).avi
+2023-07-16 04:09:11,795 [DEBUG] /mnt/data/Media/Movies/Winnie_The_Pooh_-_A_Very_Merry_Pooh_Year_(2002)/Winnie_The_Pooh_-_A_Very_Merry_Pooh_Year_(2002).mkv
+2023-07-16 04:09:11,883 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Winnie_The_Pooh_-_A_Very_Merry_Pooh_Year_(2002)/Winnie_The_Pooh_-_A_Very_Merry_Pooh_Year_(2002).mp4
+2023-07-16 04:09:11,883 [DEBUG] /mnt/data/Media/Movies/Indiana_Jones_And_The_Last_Crusade_(1989)/Indiana_Jones_And_The_Last_Crusade_(1989).mkv
+2023-07-16 04:09:11,976 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Indiana_Jones_And_The_Last_Crusade_(1989)/Indiana_Jones_And_The_Last_Crusade_(1989).mp4
+2023-07-16 04:09:11,976 [DEBUG] /mnt/data/Media/Movies/Arctic_Dogs_(2019)/Arctic_Dogs_(2019).mkv
+2023-07-16 04:09:12,086 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Arctic_Dogs_(2019)/Arctic_Dogs_(2019).mp4
+2023-07-16 04:09:12,086 [DEBUG] /mnt/data/Media/Movies/The_Last_Samurai_(2003)/The_Last_Samurai_(2003).mkv
+2023-07-16 04:09:12,185 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Last_Samurai_(2003)/The_Last_Samurai_(2003).mp4
+2023-07-16 04:09:12,185 [DEBUG] /mnt/data/Media/Movies/The_Thing_(1982)/The_Thing_(1982).mkv
+2023-07-16 04:09:12,319 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Thing_(1982)/The_Thing_(1982).mp4
+2023-07-16 04:09:12,320 [DEBUG] /mnt/data/Media/Movies/I_Am_Legend_(2007)/I_Am_Legend_(2007).mkv
+2023-07-16 04:09:12,407 [ERROR] Failed to convert file: /mnt/data/Media/Movies/I_Am_Legend_(2007)/I_Am_Legend_(2007).mkv
+2023-07-16 04:09:12,407 [DEBUG] /mnt/data/Media/Movies/A_Goofy_Movie_(1995)/A_Goofy_Movie_(1995).mkv
+2023-07-16 04:09:12,499 [ERROR] Failed to convert file: /mnt/data/Media/Movies/A_Goofy_Movie_(1995)/A_Goofy_Movie_(1995).mp4
+2023-07-16 04:09:12,499 [DEBUG] /mnt/data/Media/Movies/Galaxy_Quest_(1999)/Galaxy_Quest_(1999).mkv
+2023-07-16 04:09:12,599 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Galaxy_Quest_(1999)/Galaxy_Quest_(1999).mp4
+2023-07-16 04:09:12,599 [DEBUG] /mnt/data/Media/Movies/True Grit (2010) [REPACK] [1080p] [BluRay] [5.1] [YTS.MX]/True.Grit.2010.REPACK.1080p.BluRay.x264.AAC5.1-[YTS.MX].mkv
+2023-07-16 04:09:12,718 [ERROR] Failed to convert file: /mnt/data/Media/Movies/True Grit (2010) [REPACK] [1080p] [BluRay] [5.1] [YTS.MX]/True.Grit.2010.REPACK.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4
+2023-07-16 04:09:12,718 [DEBUG] /mnt/data/Media/Movies/Blade_II_(2002)/Blade_II_(2002).mkv
+2023-07-16 04:09:12,823 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Blade_II_(2002)/Blade_II_(2002).mp4
+2023-07-16 04:09:12,823 [DEBUG] /mnt/data/Media/Movies/Dinosaur_(2000)/Dinosaur_(2000).mkv
+2023-07-16 04:09:12,915 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Dinosaur_(2000)/Dinosaur_(2000).mp4
+2023-07-16 04:09:12,915 [DEBUG] /mnt/data/Media/Movies/Lilo_&_Stitch_2_-_Stitch_Has_A_Glitch_(2005)/Lilo_&_Stitch_2_-_Stitch_Has_A_Glitch_(2005).mkv
+2023-07-16 04:09:13,023 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Lilo_&_Stitch_2_-_Stitch_Has_A_Glitch_(2005)/Lilo_&_Stitch_2_-_Stitch_Has_A_Glitch_(2005).mp4
+2023-07-16 04:09:13,023 [DEBUG] /mnt/data/Media/Movies/John_Wick_-_Chapter_3_-_Parabellum_(2019)/John_Wick_-_Chapter_3_-_Parabellum_(2019).mkv
+2023-07-16 04:09:13,135 [ERROR] Failed to convert file: /mnt/data/Media/Movies/John_Wick_-_Chapter_3_-_Parabellum_(2019)/John_Wick_-_Chapter_3_-_Parabellum_(2019).mp4
+2023-07-16 04:09:13,136 [DEBUG] /mnt/data/Media/Movies/Olaf's_Frozen_Adventure_(2017)/Olaf's_Frozen_Adventure_(2017).mkv
+2023-07-16 04:09:13,242 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Olaf's_Frozen_Adventure_(2017)/Olaf's_Frozen_Adventure_(2017).mkv
+2023-07-16 04:09:13,242 [DEBUG] /mnt/data/Media/Movies/Starship_Troopers_(1997)/Starship_Troopers_(1997).mkv
+2023-07-16 04:09:14,710 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Starship_Troopers_(1997)/Starship_Troopers_(1997).mp4
+2023-07-16 04:09:14,711 [DEBUG] /mnt/data/Media/Movies/Safe_House_(2012)/Safe_House_(2012).mkv
+2023-07-16 04:09:14,857 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Safe_House_(2012)/Safe_House_(2012).avi
+2023-07-16 04:09:14,858 [DEBUG] /mnt/data/Media/Movies/The_Incredible_Hulk_(2008)/The_Incredible_Hulk_(2008).mkv
+2023-07-16 04:09:14,941 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Incredible_Hulk_(2008)/The_Incredible_Hulk_(2008).mp4
+2023-07-16 04:09:14,941 [DEBUG] /mnt/data/Media/Movies/Fly_Away_Home_(1996)/Fly_Away_Home_(1996).mkv
+2023-07-16 04:09:15,043 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Fly_Away_Home_(1996)/Fly_Away_Home_(1996).mp4
+2023-07-16 04:09:15,043 [DEBUG] /mnt/data/Media/Movies/Independence_Day_-_Resurgence_(2016)/Independence_Day_-_Resurgence_(2016).mkv
+2023-07-16 04:09:15,149 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Independence_Day_-_Resurgence_(2016)/Independence_Day_-_Resurgence_(2016).mp4
+2023-07-16 04:09:15,149 [DEBUG] /mnt/data/Media/Movies/Spirit_-_Stallion_Of_The_Cimarron_(2002)/Spirit_-_Stallion_Of_The_Cimarron_(2002).mkv
+2023-07-16 04:09:15,237 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Spirit_-_Stallion_Of_The_Cimarron_(2002)/Spirit_-_Stallion_Of_The_Cimarron_(2002).mp4
+2023-07-16 04:09:15,238 [DEBUG] /mnt/data/Media/Movies/The_Bad_Guys_(2022)/The_Bad_Guys_(2022).mkv
+2023-07-16 04:09:15,330 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Bad_Guys_(2022)/The_Bad_Guys_(2022).mp4
+2023-07-16 04:09:15,330 [DEBUG] /mnt/data/Media/Movies/Full_Metal_Jacket_(1987)/Full_Metal_Jacket_(1987).mkv
+2023-07-16 04:09:15,404 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Full_Metal_Jacket_(1987)/Full_Metal_Jacket_(1987).mp4
+2023-07-16 04:09:15,405 [DEBUG] /mnt/data/Media/Movies/Oz_The_Great_And_Powerful_(2013)/Oz_The_Great_And_Powerful_(2013).mkv
+2023-07-16 04:09:15,502 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Oz_The_Great_And_Powerful_(2013)/Oz_The_Great_And_Powerful_(2013).mp4
+2023-07-16 04:09:15,502 [DEBUG] /mnt/data/Media/Movies/Battle_For_SkyArk_(2015)/Battle_For_SkyArk_(2015).mkv
+2023-07-16 04:09:15,605 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Battle_For_SkyArk_(2015)/Battle_For_SkyArk_(2015).mp4
+2023-07-16 04:09:15,605 [DEBUG] /mnt/data/Media/Movies/Ender's Game (2013) [1080p]/Ender's.Game.2013.1080p.BluRay.x264.YIFY.mkv
+2023-07-16 04:09:15,697 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Ender's Game (2013) [1080p]/Ender's.Game.2013.1080p.BluRay.x264.YIFY.mp4
+2023-07-16 04:09:15,697 [DEBUG] /mnt/data/Media/Movies/Despicable_Me_(2010)/Despicable_Me_(2010).mkv
+2023-07-16 04:09:15,801 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Despicable_Me_(2010)/Despicable_Me_(2010).mp4
+2023-07-16 04:09:15,801 [DEBUG] /mnt/data/Media/Movies/Captain_Ron_(1992)/Captain_Ron_(1992).mkv
+2023-07-16 04:09:15,917 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Captain_Ron_(1992)/Captain_Ron_(1992).avi
+2023-07-16 04:09:15,918 [DEBUG] /mnt/data/Media/Movies/The_Nutcracker_And_The_Four_Realms_(2018)/The_Nutcracker_And_The_Four_Realms_(2018).mkv
+2023-07-16 04:09:16,051 [ERROR] Failed to convert file: /mnt/data/Media/Movies/The_Nutcracker_And_The_Four_Realms_(2018)/The_Nutcracker_And_The_Four_Realms_(2018).mp4
+2023-07-16 04:09:16,052 [DEBUG] /mnt/data/Media/Movies/Ghostbusters_(2016)/Ghostbusters_(2016).mkv
+2023-07-16 04:09:16,176 [ERROR] Failed to convert file: /mnt/data/Media/Movies/Ghostbusters_(2016)/Ghostbusters_(2016).mp4
+2023-07-16 04:09:16,176 [DEBUG] /mnt/data/Media/Movies/X-Men_-_First_Class_(2011)/X-Men_-_First_Class_(2011).mkv
+2023-07-16 04:09:16,310 [ERROR] Failed to convert file: /mnt/data/Media/Movies/X-Men_-_First_Class_(2011)/X-Men_-_First_Class_(2011).avi
+2023-07-16 04:09:16,311 [DEBUG] Status file updated.
+2023-07-16 04:09:16,311 [INFO]  EXECUTION STOPPED BY USER
+2023-07-16 04:09:16,311 [INFO]  ******************************************************

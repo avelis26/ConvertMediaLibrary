@@ -61,6 +61,18 @@
             ]
         },
         {
+            "name": "Python: small scale",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "-p",
+                "parameters_movies_small_scale.json"
+            ]
+        },
+        {
             "name": "Python: old",
             "type": "python",
             "request": "launch",
