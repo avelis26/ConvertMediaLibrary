@@ -143,7 +143,7 @@ def convert_to_h265(source_file_path, fail_file_path):
         output_file = base + '.mkv'
         logging.info(output_file)
         os.rename(source_file_path, source_file_path + '.old')
-        ffmpeg.input(source_file_path + '.old').output(output_file, vcodec='hevc_nvenc', preset='slow', qp=23).run()
+        ffmpeg.input(source_file_path + '.old').output(output_file, vcodec='hevc_nvenc', preset='veryslow', qp=24).run()
         ffmpeg.input(output_file).output("null", f="null").run()
         logging.info("Video validation succeeded.")
         before_file_size = os.path.getsize(source_file_path + '.old')
@@ -160,6 +160,7 @@ def convert_to_h265(source_file_path, fail_file_path):
         logging.info(f'Before Size:    {before_file_size}')
         logging.info(f'After Size:     {after_file_size}')
         logging.info(f'Difference:     {difference}')
+        logging.info(f'Difference MBs: {round((difference / (1024**2)), 2)}')
         logging.info(f"Execution Time: {execution_time_formatted}")
         logging.info(f'Total Diff(B):  {total_difference}')
         logging.info(f'Total Diff(GB): {space_saved} GBs')
