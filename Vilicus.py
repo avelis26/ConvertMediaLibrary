@@ -165,6 +165,20 @@ def convert_to_h265(source_file_path, fail_file_path):
         logging.info(f'Total Diff(B):  {total_difference}')
         logging.info(f'Total Diff(GB): {space_saved} GBs')
         os.remove(source_file_path + '.old')
+    except ffmpeg.Error as e:
+        logging.error(f"FFMPEG ERROR!!! {e}")
+        mkv_file = os.path.splitext(source_file_path)[0] + '.mkv'
+        if os.path.exists(mkv_file):
+            os.remove(mkv_file)
+            logging.info(f"Deleted {mkv_file}")
+        old_file = source_file_path + '.old'
+        if os.path.exists(old_file):
+            os.rename(old_file, source_file_path)
+            logging.info(f"Rename OLD: {old_file}")
+            logging.info(f"Rename NEW: {source_file_path}")
+        with open(fail_file_path, 'w') as file:
+            file.write(source_file_path)
+        sys.exit(1)
     except Exception as e:
         logging.error(f"Failed to convert file: {source_file_path}")
         logging.error(f"{str(e)}")
