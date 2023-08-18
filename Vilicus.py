@@ -157,12 +157,12 @@ def convert_to_h265(source_file_path, fail_file_path):
         execution_time = end_time - start_time
         execution_time_formatted = time.strftime("%H:%M:%S", time.gmtime(execution_time))
         logging.info(f'Conversions:    {conversion_counter}')
-        logging.info(f'Before Size:    {before_file_size}')
-        logging.info(f'After Size:     {after_file_size}')
-        logging.info(f'Difference:     {difference}')
+        logging.debug(f'Before Size:    {before_file_size}')
+        logging.debug(f'After Size:     {after_file_size}')
+        logging.debug(f'Difference:     {difference}')
         logging.info(f'Difference MBs: {round((difference / (1024**2)), 2)}')
         logging.info(f"Execution Time: {execution_time_formatted}")
-        logging.info(f'Total Diff(B):  {total_difference}')
+        logging.debug(f'Total Diff(B):  {total_difference}')
         logging.info(f'Total Diff(GB): {space_saved} GBs')
         os.remove(source_file_path + '.old')
     except ffmpeg.Error as e:
