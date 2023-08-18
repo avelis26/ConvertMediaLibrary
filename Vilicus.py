@@ -55,7 +55,7 @@ def create_videos_manifest(parameters, status_file_path, id):
                             if stream['codec_type'] == 'video' and stream['codec_name'] != 'hevc':
                                 video_list.append(file_path)
                     except ffmpeg.Error as e:
-                        logging.error(f"Failed to probe file: {file_path}")
+                        logging.warn(f"Failed to probe file: {file_path}")
         video_set = set(video_list)
         logging.info('Total Non-h265 Videos: ' + str(len(video_set)))
         with open(videos_manifest_path, 'w') as file:
