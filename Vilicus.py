@@ -134,7 +134,7 @@ def check_active_status(status_file_path):
         logging.error(f"Failed to load status file: {e}")
         sys.exit(1)
 
-def convert_to_h265(source_file_path, fail_file_path):
+def convert_to_h265(source_file_path, fail_file_path, status_file_path):
     global total_before_filesize
     global total_after_filesize
     try:
@@ -178,6 +178,9 @@ def convert_to_h265(source_file_path, fail_file_path):
             logging.info(f"Rename NEW: {source_file_path}")
         with open(fail_file_path, 'w') as file:
             file.write(source_file_path)
+        write_status(status_file_path, id, "inactive")
+        logging.info('EXECUTION STOPPED BY ERROR')
+        logging.info('******************************************************')
         sys.exit(1)
     except Exception as e:
         logging.error(f"Failed to convert file: {source_file_path}")
@@ -220,7 +223,7 @@ def main():
         lines = file.readlines()
         for line in lines:
             conversion_counter += 1
-            convert_to_h265(line.strip(), parameters['log_parent_path'] + parameters['fail_filename'])
+            convert_to_h265(line.strip(), parameters['log_parent_path'] + parameters['fail_filename'], status_file_path)
             soft_exit(exit_file_path, status_file_path, id)
     write_status(status_file_path, id, "inactive")
     logging.info('EXECUTION STOP')
