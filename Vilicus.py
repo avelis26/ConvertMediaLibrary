@@ -24,13 +24,19 @@ def load_parameters(param_file):
 
 def setup_logging(ops_log):
     try:
+        class CustomFormatter(logging.Formatter):
+            def format(self, record):
+                if record.levelname == 'WARNING':
+                    record.levelname = 'WARN'
+                return super().format(record)
+        formatter = CustomFormatter("%(asctime)s	[%(levelname)s]	%(message)s")
+        file_handler = logging.FileHandler(ops_log)
+        stream_handler = logging.StreamHandler(sys.stdout)
+        file_handler.setFormatter(formatter)
+        stream_handler.setFormatter(formatter)
         logging.basicConfig(
             level=logging.DEBUG,
-            format="%(asctime)s	[%(levelname)s]	%(message)s",
-            handlers=[
-                logging.FileHandler(ops_log),
-                logging.StreamHandler(sys.stdout)
-            ]
+            handlers=[file_handler, stream_handler]
         )
     except Exception as e:
         logging.error(f"Failed to set up logging: {e}")
@@ -55,7 +61,7 @@ def create_videos_manifest(parameters, status_file_path, id):
                             if stream['codec_type'] == 'video' and stream['codec_name'] != 'hevc':
                                 video_list.append(file_path)
                     except ffmpeg.Error as e:
-                        logging.error(f"Failed to probe file: {file_path}")
+                        logging.warn(f"Failed to probe file: {file_path}")
         video_set = set(video_list)
         logging.info('Total Non-h265 Videos: ' + str(len(video_set)))
         with open(videos_manifest_path, 'w') as file:
@@ -157,12 +163,12 @@ def convert_to_h265(source_file_path, fail_file_path, status_file_path):
         execution_time = end_time - start_time
         execution_time_formatted = time.strftime("%H:%M:%S", time.gmtime(execution_time))
         logging.info(f'Conversions:    {conversion_counter}')
-        logging.info(f'Before Size:    {before_file_size}')
-        logging.info(f'After Size:     {after_file_size}')
-        logging.info(f'Difference:     {difference}')
+        logging.debug(f'Before Size:    {before_file_size}')
+        logging.debug(f'After Size:     {after_file_size}')
+        logging.debug(f'Difference:     {difference}')
         logging.info(f'Difference MBs: {round((difference / (1024**2)), 2)}')
         logging.info(f"Execution Time: {execution_time_formatted}")
-        logging.info(f'Total Diff(B):  {total_difference}')
+        logging.debug(f'Total Diff(B):  {total_difference}')
         logging.info(f'Total Diff(GB): {space_saved} GBs')
         os.remove(source_file_path + '.old')
     except ffmpeg.Error as e:
@@ -211,10 +217,10 @@ def main():
     setup_logging(ops_log)
     logging.info('******************************************************')
     logging.info('EXECUTION START')
-    logging.info(f'input_path:           {parameters["videos_parent_path"]}')
-    logging.info(f'manifest_path:        {parameters["log_parent_path"]}')
-    logging.info(f'opsLog:               {ops_log}')
-    logging.info(f'exitFile:             {exit_file_path}')
+    logging.debug(f'input_path:           {parameters["videos_parent_path"]}')
+    logging.debug(f'manifest_path:        {parameters["log_parent_path"]}')
+    logging.debug(f'opsLog:               {ops_log}')
+    logging.debug(f'exitFile:             {exit_file_path}')
     write_status(status_file_path, id, "ACTIVE")
     videos_manifest_path = create_videos_manifest(parameters, status_file_path, id)
     soft_exit(exit_file_path, status_file_path, id)
