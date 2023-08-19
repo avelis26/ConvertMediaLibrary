@@ -29,13 +29,14 @@ def setup_logging(ops_log):
                 if record.levelname == 'WARNING':
                     record.levelname = 'WARN'
                 return super().format(record)
+        formatter = CustomFormatter("%(asctime)s	[%(levelname)s]	%(message)s")
+        file_handler = logging.FileHandler(ops_log)
+        stream_handler = logging.StreamHandler(sys.stdout)
+        file_handler.setFormatter(formatter)
+        stream_handler.setFormatter(formatter)
         logging.basicConfig(
             level=logging.DEBUG,
-            format="%(asctime)s	[%(levelname)s]		%(message)s",
-            handlers=[
-                logging.FileHandler(ops_log),
-                logging.StreamHandler(sys.stdout)
-            ]
+            handlers=[file_handler, stream_handler]
         )
     except Exception as e:
         logging.error(f"Failed to set up logging: {e}")
