@@ -24,6 +24,11 @@ def load_parameters(param_file):
 
 def setup_logging(ops_log):
     try:
+        class CustomFormatter(logging.Formatter):
+            def format(self, record):
+                if record.levelname == 'WARNING':
+                    record.levelname = 'WARN'
+                return super().format(record)
         logging.basicConfig(
             level=logging.DEBUG,
             format="%(asctime)s	[%(levelname)s]		%(message)s",
@@ -143,7 +148,7 @@ def convert_to_h265(source_file_path, fail_file_path):
         output_file = base + '.mkv'
         logging.info(output_file)
         os.rename(source_file_path, source_file_path + '.old')
-        ffmpeg.input(source_file_path + '.old').output(output_file, vcodec='hevc_nvenc', preset='slow', qp=24).run()
+        ffmpeg.input(source_file_path + '.old').output(output_file, vcodec='hevc_nvenc', preset='p7', qp=24).run()
         ffmpeg.input(output_file).output("null", f="null").run()
         logging.info("Video validation succeeded.")
         before_file_size = os.path.getsize(source_file_path + '.old')
