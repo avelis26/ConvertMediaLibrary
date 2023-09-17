@@ -1,30 +1,51 @@
 clear
 
-echo "Removing Shows_temp..."
+shows_temp="Shows_temp"
+echo "Removing $shows_temp..."
 cd /mnt/data/Media
-rm -rf ./Shows_temp/
-sleep 0.1
+rm -rf "./$shows_temp/"
+echo "Making $shows_temp..."
+mkdir $shows_temp
+echo "*********************************************************"
 
-echo "Making Shows_temp..."
-mkdir Shows_temp
-mkdir '/mnt/data/Media/Shows_temp/Battlefield_Friends_(2012)'
-mkdir '/mnt/data/Media/Shows_temp/Battlefield_Friends_(2012)/Battlefield_Friends_Season_4'
-sleep 0.1
+folder_name="Archer_(2009)/Archer_Season_5"
+show_name="Archer_-_S05E07_-_Smugglers'_Blues.mp4"
+echo "Making $shows_temp/$folder_name..."
+mkdir -p "$shows_temp/$folder_name"
+echo "Converting $show_name..."
+ffmpeg -ss 5 -i "/mnt/data/Media/Shows/$folder_name/$show_name" -t 25 -map 0 -c copy "/mnt/data/Media/$shows_temp/$folder_name/$show_name"
+echo "*********************************************************"
 
-echo "Battlefield_Friends_-_S04E03_-_Kill_Cam.mp4..."
-sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Shows/Battlefield_Friends_(2012)/Battlefield_Friends_Season_4/Battlefield_Friends_-_S04E03_-_Kill_Cam.mp4' -t 5 -map 0 -c copy '/mnt/data/Media/Shows_temp/Battlefield_Friends_(2012)/Battlefield_Friends_Season_4/Battlefield_Friends_-_S04E03_-_Kill_Cam.mp4'
+folder_name="Dark_Matter_(2015)/Dark_Matter_Season_3"
+show_name="Dark_Matter_-_S03E13_-_Nowhere_to_Go.mp4"
+echo "Making $shows_temp/$folder_name..."
+mkdir -p "$shows_temp/$folder_name"
+echo "Converting $show_name..."
+ffmpeg -ss 5 -i "/mnt/data/Media/Shows/$folder_name/$show_name" -t 25 -map 0 -c copy "/mnt/data/Media/$shows_temp/$folder_name/$show_name"
+echo "*********************************************************"
 
-echo "Battlefield_Friends_-_S04E04_-_Recon_C4.mp4..."
-sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Shows/Battlefield_Friends_(2012)/Battlefield_Friends_Season_4/Battlefield_Friends_-_S04E04_-_Recon_C4.mp4' -t 5 -map 0 -c copy '/mnt/data/Media/Shows_temp/Battlefield_Friends_(2012)/Battlefield_Friends_Season_4/Battlefield_Friends_-_S04E04_-_Recon_C4.mp4'
+folder_name="Dark_Matter_(2015)/Dark_Matter_Season_3"
+show_name="Dark_Matter_-_S03E06_-_One_Last_Card_to_Play.mp4"
+echo "Making $shows_temp/$folder_name..."
+mkdir -p "$shows_temp/$folder_name"
+echo "Converting $show_name..."
+ffmpeg -ss 5 -i "/mnt/data/Media/Shows/$folder_name/$show_name" -t 25 -map 0 -c copy "/mnt/data/Media/$shows_temp/$folder_name/$show_name"
+echo "*********************************************************"
 
-echo "Battlefield_Friends_-_S04E05_-_Youtube_Gamer.mp4..."
-sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Shows/Battlefield_Friends_(2012)/Battlefield_Friends_Season_4/Battlefield_Friends_-_S04E05_-_Youtube_Gamer.mp4' -t 5 -map 0 -c copy '/mnt/data/Media/Shows_temp/Battlefield_Friends_(2012)/Battlefield_Friends_Season_4/Battlefield_Friends_-_S04E05_-_Youtube_Gamer.mp4'
+folder_name="Dark_Matter_(2015)/Dark_Matter_Season_3"
+show_name="Dark_Matter_-_S03E12_-_My_Final_Gift_to_You.mp4"
+echo "Making $shows_temp/$folder_name..."
+mkdir -p "$shows_temp/$folder_name"
+echo "Converting $show_name..."
+ffmpeg -ss 5 -i "/mnt/data/Media/Shows/$folder_name/$show_name" -t 25 -map 0 -c copy "/mnt/data/Media/$shows_temp/$folder_name/$show_name"
+echo "*********************************************************"
 
-echo "Battlefield_Friends_-_S04E09_-_Commander_Online.mp4..."
-sleep 0.1
-ffmpeg -loglevel quiet -ss 5 -i '/mnt/data/Media/Shows/Battlefield_Friends_(2012)/Battlefield_Friends_Season_4/Battlefield_Friends_-_S04E09_-_Commander_Online.mp4' -t 5 -map 0 -c copy '/mnt/data/Media/Shows_temp/Battlefield_Friends_(2012)/Battlefield_Friends_Season_4/Battlefield_Friends_-_S04E09_-_Commander_Online.mp4'
+folder_name="Heroes_Reborn_(2015)/Heroes_Reborn_Season_1"
+show_name="Heroes_Reborn_-_S01E01_S01E02_-_Brave_New_World_-_Odessa.avi"
+echo "Making $shows_temp/$folder_name..."
+mkdir -p "$shows_temp/$folder_name"
+echo "Converting $show_name..."
+ffmpeg -ss 5 -i "/mnt/data/Media/Shows/$folder_name/$show_name" -t 25 -map 0 -c copy "/mnt/data/Media/$shows_temp/$folder_name/$show_name"
+echo "*********************************************************"
 
 echo "Done"
