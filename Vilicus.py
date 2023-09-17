@@ -184,7 +184,6 @@ def convert_to_h265(source_file_path, fail_file_path, status_file_path):
             logging.info(f"Rename NEW: {source_file_path}")
         with open(fail_file_path, 'w') as file:
             file.write(source_file_path)
-        write_status(status_file_path, id, "inactive")
     except Exception as e:
         logging.error(f"Failed to convert file: {source_file_path}")
         logging.error(f"{str(e)}")
