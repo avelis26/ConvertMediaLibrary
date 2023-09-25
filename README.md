@@ -18,6 +18,7 @@
     - `cd /home/avelis/source/ConvertMediaLibrary && nohup ./Vilicus.py -p 'parameters_movies_temp.json' > /home/avelis/movies_temp_output.log 2>&1 &`
     - `cd /home/avelis/source/ConvertMediaLibrary && nohup ./Vilicus.py -p 'parameters_movies.json' > /home/avelis/movies_output.log 2>&1 &`
     - `cd /home/avelis/source/ConvertMediaLibrary && nohup ./Vilicus.py -p 'parameters_shows.json' > /home/avelis/shows_output.log 2>&1 &`
+    - `cd /home/avelis/source/ConvertMediaLibrary && nohup ./Vilicus.py -p 'parameters_sports.json' > /home/avelis/sports_output.log 2>&1 &`
 * `Vilicus.py`:
     - loads `parameters_<name>.json`.
     - creates (if not exist) working directory `__log_parent_path__` and deletes manifest (if exists).
