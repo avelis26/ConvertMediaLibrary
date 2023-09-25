@@ -1,0 +1,11 @@
+{
+	"videos_parent_path": "/mnt/data/Media/Sports/",
+	"manifest_filename": "sports_manifest.txt",
+	"log_parent_path": "/home/avelis/vilicus/",
+	"log_filename": "vilicus_sports.log",
+	"exit_filename": "exit_sports.txt",
+	"fail_filename": "vilicus_sports_fail.log",
+	"min_file_size": 268000,
+	"status_filename": "vilicus_status.json",
+	"status_parent_path": "/mnt/data/Media/"
+}
