@@ -2,6 +2,8 @@
 # Need to update logic for creating manifest file so multiple systems don't contend.
 # Needs better error handling to ensure status file reverts to inactive.
 # Consider adding parameter to select witch encoder library to use (libx265 vs hevc_nvenc).
+# Starting from cron fails, fix implemented but not  tested yet.
+# Consider adding parameter for ffmpeg codec.
 import argparse
 import decimal
 import fcntl
