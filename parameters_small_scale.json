@@ -5,7 +5,7 @@
 	"log_filename": "vilicus_small_scale.log",
 	"exit_filename": "exit_small_scale.txt",
 	"fail_filename": "vilicus_small_scale_fail.log",
-	"min_file_size": 268000000,
+	"min_file_size": 26800000,
 	"status_filename": "vilicus_status.json",
 	"status_parent_path": "/mnt/data/Media/"
 }

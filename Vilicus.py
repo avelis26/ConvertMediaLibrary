@@ -149,7 +149,7 @@ def convert_to_h265(source_file_path, fail_file_path, status_file_path):
         output_file = base + '.mkv'
         logging.info(output_file)
         os.rename(source_file_path, source_file_path + '.old')
-        ffmpeg.input(source_file_path + '.old').output(output_file, vcodec='hevc_nvenc', preset=11, qp=24).run()
+        ffmpeg.input(source_file_path + '.old').output(output_file, vcodec='hevc_nvenc', preset=18, qp=24).run()
         ffmpeg.input(output_file).output("null", f="null").run()
         logging.info("Video validation succeeded.")
         before_file_size = os.path.getsize(source_file_path + '.old')
