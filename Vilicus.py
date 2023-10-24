@@ -209,7 +209,7 @@ def main():
     ops_log = os.path.join(parameters['log_parent_path'], parameters['log_filename'])
     status_file_path = os.path.join(parameters['status_parent_path'], parameters['status_filename'])
     exit_file_path = os.path.join(parameters['log_parent_path'], parameters['exit_filename'])
-    id = socket.gethostname() + parameters['manifest_filename']
+    id = socket.gethostname() + '.' + parameters['manifest_filename']
     setup_logging(ops_log)
     logging.info('******************************************************')
     logging.info('EXECUTION START')
