@@ -231,7 +231,6 @@ def main():
     logging.debug(f'manifest_path:        {parameters["log_parent_path"]}')
     logging.debug(f'opsLog:               {ops_log}')
     logging.debug(f'exitFile:             {exit_file_path}')
-    write_ffmpeg_info()
     write_status(status_file_path, id, "ACTIVE")
     videos_manifest_path = create_videos_manifest(parameters, status_file_path, id)
     soft_exit(exit_file_path, status_file_path, id)
