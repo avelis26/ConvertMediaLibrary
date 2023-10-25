@@ -200,6 +200,18 @@ def convert_to_h265(source_file_path, fail_file_path, status_file_path):
             logging.info(f"Rename NEW: {source_file_path}")
         with open(fail_file_path, 'w') as file:
             file.write(source_file_path)
+def write_ffmpeg_info():
+    try:
+        ffmpeg_version = ffmpeg.get_ffmpeg_version()
+        ffmpeg_path = ffmpeg_version.get('ffmpeg_command', 'ffmpeg')
+        logging.debug(f'FFmpeg Path: {ffmpeg_path}')
+        cuda_info = ffmpeg_version.get('configuration', '').find('--enable-cuda') != -1
+        if cuda_info:
+            logging.debug('CUDA is enabled in FFmpeg configuration.')
+        else:
+            logging.debug('CUDA is not enabled in FFmpeg configuration.')
+    except ffmpeg.Error as e:
+        print(f'Error: {e}')
 
 def main():
     global conversion_counter
@@ -219,6 +231,7 @@ def main():
     logging.debug(f'manifest_path:        {parameters["log_parent_path"]}')
     logging.debug(f'opsLog:               {ops_log}')
     logging.debug(f'exitFile:             {exit_file_path}')
+    write_ffmpeg_info()
     write_status(status_file_path, id, "ACTIVE")
     videos_manifest_path = create_videos_manifest(parameters, status_file_path, id)
     soft_exit(exit_file_path, status_file_path, id)
