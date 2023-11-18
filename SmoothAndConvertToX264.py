@@ -3,30 +3,10 @@
 import os
 import subprocess
 import time
-from threading import Thread
+from datetime import datetime
 
 
-def clear_screen():
-    os.system('clear')
-
-
-def run_finally_block(log_file, start_time):
-    end_time = time.time()
-    execution_time_seconds = end_time - start_time
-    execution_time_formatted = time.strftime(
-        "%H hours : %M minutes : %S seconds", time.gmtime(execution_time_seconds))
-
-    with open(log_file, 'a') as log:
-        log.write(f"Script end time: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
-        log.write(f"Total execution time: {execution_time_formatted}\n")
-
-
-def monitor_ffmpeg_completion(ffmpeg_process, log_file, start_time):
-    ffmpeg_process.wait()
-    run_finally_block(log_file, start_time)
-
-
-def ff_convert_smooth(input_file, output_file, log_file, codec, preset, bitrate):
+def execute_ffmpeg(input_file, output_file, log_file, codec, preset, bitrate):
     try:
         with open(log_file, 'a') as log:
             ffmpeg_process = subprocess.Popen([
@@ -39,11 +19,41 @@ def ff_convert_smooth(input_file, output_file, log_file, codec, preset, bitrate)
                 '-b:v', bitrate,
                 output_file
             ], stdout=log, stderr=subprocess.STDOUT)
+            log.write(f"FFmpeg process PID: {ffmpeg_process.pid}\n")
 
-        monitor_thread = Thread(target=monitor_ffmpeg_completion, args=(
-            ffmpeg_process, log_file, time.time()))
-        monitor_thread.daemon = True  # Set the thread as daemon
-        monitor_thread.start()
+    except subprocess.CalledProcessError as e:
+        error_message = f"Error: {e}"
+        print(error_message)
+        with open(log_file, 'a') as log:
+            log.write(error_message + '\n')
+
+
+def execute_monitor(log_file, ffmpeg_pid):
+    try:
+        bash_script_template = """
+log_file="{log_file}"
+while kill -0 {ffmpeg_pid} 2>/dev/null; do
+    sleep 1
+done
+echo "The FFmpeg process with PID {ffmpeg_pid} has completed." >> "$log_file"
+start_time_string=$(head -n 1 "$log_file" | cut -d ' ' -f 4-)
+start_time=$(date -d "$start_time_string" "+%s")
+end_time=$(date "+%Y-%m-%d %H:%M:%S")
+end_time_stamp=$(date -d "$end_time" "+%s")
+execution_time=$((end_time_stamp - start_time))
+hours=$((execution_time / 3600))
+minutes=$(( (execution_time % 3600) / 60 ))
+seconds=$((execution_time % 60))
+echo "Script end time: $end_time" >> "$log_file"
+echo "Execution time: $hours hours $minutes minutes $seconds seconds" >> "$log_file"
+"""
+
+        bash_script = bash_script_template.format(
+            log_file=log_file, ffmpeg_pid=ffmpeg_pid)
+        with open(log_file, 'a') as log:
+            process = subprocess.Popen([
+                'bash', '-c', bash_script
+            ], stdout=log, stderr=subprocess.STDOUT)
 
     except subprocess.CalledProcessError as e:
         error_message = f"Error: {e}"
@@ -54,19 +64,32 @@ def ff_convert_smooth(input_file, output_file, log_file, codec, preset, bitrate)
 
 if __name__ == "__main__":
     try:
-        clear_screen()
+        os.system('clear')
         codec = 'h264_nvenc'
         preset = 'p7'
         bitrate = '14.4M'
-        input_file = "/mnt/data/2023-11-13_16-20-20_Mugello_Qual.mkv"
-        output_file = f"/mnt/data/output_{codec}_{preset}_{bitrate}.mp4"
-        log_file = f"/mnt/data/ff_{codec}_{preset}_{bitrate}.log"
+        input_file = "/mnt/data/2023-11-13_18-48-32_Mugello_Race.mkv"
+        file_name = os.path.splitext(os.path.basename(input_file))[0]
+        output_file = f"/mnt/data/{file_name}_{codec}_{preset}_{bitrate}.mp4"
+        log_file = f"/mnt/data/ff_{file_name}_{codec}_{preset}_{bitrate}.log"
+        start_time = time.time()
+        start_datetime = datetime.fromtimestamp(start_time)
         with open(log_file, 'w') as log:
             log.write(
-                f"Script start time: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f"Script start time: {start_datetime.strftime('%Y-%m-%d %H:%M:%S')}\n")
 
-        ff_convert_smooth(input_file, output_file,
-                          log_file, codec, preset, bitrate)
+        execute_ffmpeg(input_file, output_file,
+                       log_file, codec, preset, bitrate)
+
+        with open(log_file, 'r') as log:
+            lines = log.readlines()
+            ffmpeg_pid = None
+            for line in reversed(lines):
+                if "FFmpeg process PID:" in line:
+                    ffmpeg_pid = int(line.split(":")[1].strip())
+                    break
+
+        execute_monitor(log_file, ffmpeg_pid)
 
     except Exception as e:
         error_message = f"Error: {e}"
