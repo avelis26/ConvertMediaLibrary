@@ -32,8 +32,11 @@ def execute_monitor(log_file, ffmpeg_pid):
     try:
         bash_script_template = """
 log_file="{log_file}"
-while kill -0 {ffmpeg_pid} 2>/dev/null; do
+while true; do
     sleep 1
+    if [ ! -e /proc/{ffmpeg_pid} ]; then
+        break
+    fi
 done
 echo "The FFmpeg process with PID {ffmpeg_pid} has completed." >> "$log_file"
 start_time_string=$(head -n 1 "$log_file" | cut -d ' ' -f 4-)
