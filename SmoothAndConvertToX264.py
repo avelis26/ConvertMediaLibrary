@@ -28,8 +28,16 @@ def execute_ffmpeg(input_file, output_file, log_file, codec, preset, bitrate):
             log.write(error_message + '\n')
 
 
-def execute_monitor(log_file, ffmpeg_pid):
+def execute_monitor(log_file):
     try:
+        with open(log_file, 'r') as log:
+            lines = log.readlines()
+            ffmpeg_pid = None
+            for line in reversed(lines):
+                if "FFmpeg process PID:" in line:
+                    ffmpeg_pid = int(line.split(":")[1].strip())
+                    break
+
         bash_script_template = """
 log_file="{log_file}"
 while true; do
@@ -84,15 +92,7 @@ if __name__ == "__main__":
         execute_ffmpeg(input_file, output_file,
                        log_file, codec, preset, bitrate)
 
-        with open(log_file, 'r') as log:
-            lines = log.readlines()
-            ffmpeg_pid = None
-            for line in reversed(lines):
-                if "FFmpeg process PID:" in line:
-                    ffmpeg_pid = int(line.split(":")[1].strip())
-                    break
-
-        execute_monitor(log_file, ffmpeg_pid)
+        execute_monitor(log_file)
 
     except Exception as e:
         error_message = f"Error: {e}"
