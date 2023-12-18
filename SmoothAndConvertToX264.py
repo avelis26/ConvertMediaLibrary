@@ -76,23 +76,25 @@ echo "Execution time: $hours hours $minutes minutes $seconds seconds" >> "$log_f
 if __name__ == "__main__":
     try:
         os.system('clear')
+        movie_list = [
+            "/mnt/data/2023-12-12_16-12-14_3rd_Person.mkv",
+            "/mnt/data/2023-12-12_16-03-14_TV.mkv",
+            "/mnt/data/2023-12-12_15-54-00_1st_Person.mkv"
+        ]
         codec = 'h264_nvenc'
         preset = 'p7'
         bitrate = '14.4M'
-        input_file = "/mnt/data/2023-11-13_18-48-32_Mugello_Race.mkv"
-        file_name = os.path.splitext(os.path.basename(input_file))[0]
-        output_file = f"/mnt/data/{file_name}_{codec}_{preset}_{bitrate}.mp4"
-        log_file = f"/mnt/data/ff_{file_name}_{codec}_{preset}_{bitrate}.log"
-        start_time = time.time()
-        start_datetime = datetime.fromtimestamp(start_time)
-        with open(log_file, 'w') as log:
-            log.write(
-                f"Script start time: {start_datetime.strftime('%Y-%m-%d %H:%M:%S')}\n")
-
-        execute_ffmpeg(input_file, output_file,
-                       log_file, codec, preset, bitrate)
-
-        execute_monitor(log_file)
+        for input_file in movie_list:
+            file_name = os.path.splitext(os.path.basename(input_file))[0]
+            output_file = f"/mnt/data/{file_name}_{codec}_{preset}_{bitrate}.mp4"
+            log_file = f"/mnt/data/ff_{file_name}_{codec}_{preset}_{bitrate}.log"
+            start_time = time.time()
+            start_datetime = datetime.fromtimestamp(start_time)
+            with open(log_file, 'w') as log:
+                log.write(
+                    f"Script start time: {start_datetime.strftime('%Y-%m-%d %H:%M:%S')}\n")
+            execute_ffmpeg(input_file, output_file, log_file, codec, preset, bitrate)
+            execute_monitor(log_file)
 
     except Exception as e:
         error_message = f"Error: {e}"
