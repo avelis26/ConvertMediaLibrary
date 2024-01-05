@@ -180,10 +180,12 @@ def convert_to_h265(source_file_path, fail_file_path, status_file_path):
             os.remove(mkv_file)
             logging.info(f"Deleted {mkv_file}")
         old_file = source_file_path + '.old'
+        old_file_base = os.path.basename(old_file)
+        source_file_base = os.path.basename(source_file_path)
         if os.path.exists(old_file):
+            logging.info(f"Rename OLD: {old_file_base}")
+            logging.info(f"Rename NEW: {source_file_base}")
             os.rename(old_file, source_file_path)
-            logging.info(f"Rename OLD: {old_file}")
-            logging.info(f"Rename NEW: {source_file_path}")
         with open(fail_file_path, 'w') as file:
             file.write(source_file_path)
     except Exception as e:
@@ -194,12 +196,15 @@ def convert_to_h265(source_file_path, fail_file_path, status_file_path):
             os.remove(mkv_file)
             logging.info(f"Deleted {mkv_file}")
         old_file = source_file_path + '.old'
+        old_file_base = os.path.basename(old_file)
+        source_file_base = os.path.basename(source_file_path)
         if os.path.exists(old_file):
+            logging.info(f"Rename OLD: {old_file_base}")
+            logging.info(f"Rename NEW: {source_file_base}")
             os.rename(old_file, source_file_path)
-            logging.info(f"Rename OLD: {old_file}")
-            logging.info(f"Rename NEW: {source_file_path}")
         with open(fail_file_path, 'w') as file:
             file.write(source_file_path)
+
 def write_ffmpeg_info():
     try:
         ffmpeg_version = ffmpeg.get_ffmpeg_version()
