@@ -37,6 +37,19 @@
             ]
         },
         {
+            "name": "Python: PROD shows -s",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "-p",
+                "parameters_shows.json",
+                "-s"
+            ]
+        },
+        {
             "name": "Python: mTemp",
             "type": "python",
             "request": "launch",

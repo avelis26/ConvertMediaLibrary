@@ -64,7 +64,7 @@ def create_videos_manifest(parameters, status_file_path, id):
                                 video_list.append(file_path)
                     except ffmpeg.Error as e:
                         file_path_base = os.path.basename(file_path)
-                        logging.warn(f"Failed to probe file: {file_path_base}")
+                        logging.warning(f"Failed to probe file: {file_path_base}")
         video_set = set(video_list)
         logging.info('Total Non-h265 Videos: ' + str(len(video_set)))
         with open(videos_manifest_path, 'w') as file:
@@ -143,20 +143,25 @@ def check_active_status(status_file_path):
         logging.error(f"Failed to load status file: {e}")
         sys.exit(1)
 
-def convert_to_h265(source_file_path, fail_file_path, status_file_path):
+def convert_to_h265(source_file_path, fail_file_path):
     global total_before_filesize
     global total_after_filesize
     try:
         start_time = time.time()
-        base = os.path.splitext(source_file_path)[0]
-        output_file = base + '.mkv'
-        logging.info(output_file)
-        os.rename(source_file_path, source_file_path + '.old')
-        ffmpeg.input(source_file_path + '.old').output(output_file, vcodec='hevc_nvenc', preset=18, qp=24).run()
-        ffmpeg.input(output_file).output("null", f="null").run()
+        file_path_with_mkv = os.path.splitext(source_file_path)[0] + '.mkv'
+        file_name_with_mkv = os.path.basename(file_path_with_mkv)
+        original_file_name = os.path.basename(source_file_path)
+        old_file = source_file_path + '.old'
+        old_file_base = os.path.basename(old_file)
+        source_file_base = os.path.basename(source_file_path)
+        logging.info('--------------------------------------------------------------------------------')
+        logging.info(original_file_name)
+        os.rename(source_file_path, old_file)
+        ffmpeg.input(old_file).output(file_path_with_mkv, vcodec='hevc_nvenc', preset=18, qp=24).run()
+        ffmpeg.input(file_path_with_mkv).output('pipe:', format='null', vframes=128).run()
         logging.info("Video validation succeeded.")
-        before_file_size = os.path.getsize(source_file_path + '.old')
-        after_file_size = os.path.getsize(output_file)
+        before_file_size = os.path.getsize(old_file)
+        after_file_size = os.path.getsize(file_path_with_mkv)
         difference = before_file_size - after_file_size
         total_before_filesize.append(before_file_size)
         total_after_filesize.append(after_file_size)
@@ -173,16 +178,13 @@ def convert_to_h265(source_file_path, fail_file_path, status_file_path):
         logging.info(f"Execution Time: {execution_time_formatted}")
         logging.debug(f'Total Diff(B):  {total_difference}')
         logging.info(f'Total Diff(GB): {space_saved} GBs')
-        os.remove(source_file_path + '.old')
+        os.remove(old_file)
     except ffmpeg.Error as e:
         logging.error(f"FFMPEG ERROR!!! {e}")
-        mkv_file = os.path.splitext(source_file_path)[0] + '.mkv'
-        if os.path.exists(mkv_file):
-            os.remove(mkv_file)
-            logging.info(f"Deleted {mkv_file}")
-        old_file = source_file_path + '.old'
-        old_file_base = os.path.basename(old_file)
-        source_file_base = os.path.basename(source_file_path)
+        if os.path.exists(file_path_with_mkv):
+            os.remove(file_path_with_mkv)
+            logging.info(f"Deleted {file_name_with_mkv}")
+        
         if os.path.exists(old_file):
             logging.info(f"Rename OLD: {old_file_base}")
             logging.info(f"Rename NEW: {source_file_base}")
@@ -192,13 +194,9 @@ def convert_to_h265(source_file_path, fail_file_path, status_file_path):
     except Exception as e:
         logging.error(f"Failed to convert file: {source_file_path}")
         logging.error(f"{str(e)}")
-        mkv_file = os.path.splitext(source_file_path)[0] + '.mkv'
-        if os.path.exists(mkv_file):
-            os.remove(mkv_file)
-            logging.info(f"Deleted {mkv_file}")
-        old_file = source_file_path + '.old'
-        old_file_base = os.path.basename(old_file)
-        source_file_base = os.path.basename(source_file_path)
+        if os.path.exists(file_path_with_mkv):
+            os.remove(file_path_with_mkv)
+            logging.info(f"Deleted {file_name_with_mkv}")
         if os.path.exists(old_file):
             logging.info(f"Rename OLD: {old_file_base}")
             logging.info(f"Rename NEW: {source_file_base}")
@@ -222,7 +220,8 @@ def write_ffmpeg_info():
 def main():
     global conversion_counter
     parser = argparse.ArgumentParser(description='Find and convert all non-h265 video files to h265 with ffmpeg.')
-    parser.add_argument('-p', '--paramfile', type=str, help='Path to the input parameters file', required=True)
+    parser.add_argument('-p', '--paramfile', type=str, help='Path to the input parameters file.', required=True)
+    parser.add_argument('-s', '--skipManifest', action='store_true', default=False, help='Skip creating manifest.')
     args = parser.parse_args()
     parameters = load_parameters(args.paramfile)
     os.makedirs(parameters['log_parent_path'], exist_ok=True)
@@ -238,14 +237,19 @@ def main():
     logging.debug(f'opsLog:               {ops_log}')
     logging.debug(f'exitFile:             {exit_file_path}')
     write_status(status_file_path, id, "ACTIVE")
-    videos_manifest_path = create_videos_manifest(parameters, status_file_path, id)
+    
+    if args.skipManifest:
+        logging.info('Skipping manifest creation.')
+        videos_manifest_path = os.path.join(parameters['log_parent_path'], parameters['manifest_filename'])
+    else:
+        videos_manifest_path = create_videos_manifest(parameters, status_file_path, id)
     soft_exit(exit_file_path, status_file_path, id)
     logging.info('Beginning ffmpeg conversions...')
     with open(videos_manifest_path, 'r') as file:
         lines = file.readlines()
         for line in lines:
             conversion_counter += 1
-            convert_to_h265(line.strip(), parameters['log_parent_path'] + parameters['fail_filename'], status_file_path)
+            convert_to_h265(line.strip(), parameters['log_parent_path'] + parameters['fail_filename'])
             soft_exit(exit_file_path, status_file_path, id)
     write_status(status_file_path, id, "inactive")
     logging.info('EXECUTION STOP')
