@@ -157,8 +157,8 @@ def convert_to_h265(source_file_path, fail_file_path):
         logging.info('--------------------------------------------------------------------------------')
         logging.info(original_file_name)
         os.rename(source_file_path, old_file)
-        ffmpeg.input(old_file).output(file_path_with_mkv, vcodec='hevc_nvenc', preset=18, qp=24).run()
-        ffmpeg.input(file_path_with_mkv).output('pipe:', format='null', vframes=128).run()
+        ffmpeg.input(old_file).output(file_path_with_mkv, vcodec='hevc_nvenc', preset=18, qp=24).run(cmd="/usr/local/bin/ffmpeg")
+        ffmpeg.input(file_path_with_mkv).output('pipe:', format='null', vframes=128).run(cmd="/usr/local/bin/ffmpeg")
         logging.info("Video validation succeeded.")
         before_file_size = os.path.getsize(old_file)
         after_file_size = os.path.getsize(file_path_with_mkv)
@@ -237,7 +237,6 @@ def main():
     logging.debug(f'opsLog:               {ops_log}')
     logging.debug(f'exitFile:             {exit_file_path}')
     write_status(status_file_path, id, "ACTIVE")
-    
     if args.skipManifest:
         logging.info('Skipping manifest creation.')
         videos_manifest_path = os.path.join(parameters['log_parent_path'], parameters['manifest_filename'])
