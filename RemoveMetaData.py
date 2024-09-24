@@ -17,7 +17,7 @@ COLORS = {
 
 def search_and_delete_files(directory):
     # List of target extensions
-    target_extensions = {'.jpg', '.nfo', '.png', '.srt', '.mp3', '.xml'}
+    target_extensions = {'.jpg', '.nfo', '.png', '.srt', '.mp3', '.xml', '.txt', '.htm', '.html', '.json'}
     
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -27,7 +27,7 @@ def search_and_delete_files(directory):
                 color = COLORS.get(ext.lower(), COLORS['reset'])
                 print(f"{color}{file_path}{COLORS['reset']}")
                 try:
-                    #os.remove(file_path)
+                    os.remove(file_path)
                     print(f"{color}Deleted: {file_path}{COLORS['reset']}")
                 except Exception as e:
                     print(f"{COLORS['error']}ERROR DELETING FILE: {file_path}{COLORS['reset']}")
