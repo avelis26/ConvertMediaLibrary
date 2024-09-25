@@ -1,5 +1,5 @@
 # pip install opencv-python-headless imagehash requests Pillow
-
+# Created by Ai, THIS IS UNTESTED !!!
 import os
 import requests
 import cv2
